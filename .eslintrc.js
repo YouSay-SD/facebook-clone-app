@@ -40,20 +40,7 @@ module.exports = {
     'jsx-quotes': [2, 'prefer-single'],
     'react/jsx-filename-extension': [0],
     'import/extensions': 'off',
-    'object-curly-newline': [
-      'error',
-      {
-        ObjectExpression: 'always',
-        ObjectPattern: {
-          multiline: true,
-        },
-        ImportDeclaration: 'never',
-        ExportDeclaration: {
-          multiline: true,
-          minProperties: 3,
-        },
-      },
-    ],
+    'object-curly-newline': 'off',
   },
   settings: {
     'import/resolver': {
