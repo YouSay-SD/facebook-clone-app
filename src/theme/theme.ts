@@ -1,13 +1,3 @@
-// Interface
-declare module 'styled-components' {
-  interface DefaultTheme {
-    colors: {
-      primary: string;
-      secondary: string;
-    };
-  }
-}
-
 // Theme
 const theme = {
   // Colors
