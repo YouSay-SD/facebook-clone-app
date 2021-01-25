@@ -4,19 +4,30 @@ import { Global, css } from '@emotion/react';
 const GlobalStyle = () => (
   <Global
     styles={css`
-      html {
-        font-family: sans-serif;
-        -ms-text-size-adjust: 100%;
-        -webkit-text-size-adjust: 100%;
-        -webkit-font-smoothing: antialiased;
-        text-rendering: optimizeLegibility;
+      // Font Family
+      @font-face {
+        font-family: 'Segoe UI Historic';
+        src: url('./fonts/Segoe-ui-historic.ttf')
+          format('truetype');
       }
-      body {
+
+      @font-face {
+        font-family: 'SFProDisplay';
+        src: url('./fonts/SFProDisplay-Regular.ttf')
+          format('truetype');
+      }
+
+      * {
+        padding: 0;
         margin: 0;
-        font-family: 'Roboto', 'HelveticaNeue',
-          'Helvetica Neue', sans-serif;
-        background-color: black;
-        color: white;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI Historic',
+          'Segoe UI', Helvetica, Arial, sans-serif;
+        background-color: #f0f2f5;
+        color: #1c1e21;
       }
     `}
   />

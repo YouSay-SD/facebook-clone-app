@@ -4,11 +4,12 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
+import Login from '../pages/login';
 
 export const Routes: React.FC = () => {
   return (
     <Switch>
-      {/* <Route exact path='/' component={Home} /> */}
+      <Route exact path='/' component={Login} />
       <Redirect to='/' />
     </Switch>
   );
