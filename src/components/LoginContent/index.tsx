@@ -1,5 +1,6 @@
 import React from 'react';
 import FormLogin from '../FormLogin';
+import Modal from '../Modal';
 import {
   LogoContainer,
   LogoDescription,
@@ -21,6 +22,13 @@ const LoginContent: React.FC = () => {
         </LogoContainer>
         <FormContainer>
           <FormLogin />
+          <Modal
+            button={
+              <button type='button'>
+                Share Result & leave a message
+              </button>
+            }
+          />
         </FormContainer>
       </LoginContainer>
     </>
