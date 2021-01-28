@@ -15,10 +15,7 @@ export const Box = styled(animated.div)`
   width: 100%;
 `;
 
-export const ButtonContainer = styled.div`
-  background-color: black;
-  color: white;
-`;
+export const ButtonContainer = styled.div``;
 
 export const Background = styled(animated.div)`
   position: fixed;

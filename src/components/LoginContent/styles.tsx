@@ -26,3 +26,27 @@ export const FormContainer = styled.div`
   padding: 16px;
   border-radius: 6px;
 `;
+
+export const Button = styled.button`
+  background-color: ${({ theme }) =>
+    theme.colors.green};
+  color: ${({ theme }) => theme.colors.primary};
+  padding: 14px 16px;
+  font-size: 1rem;
+  border-radius: 6px;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  display: block;
+  margin: 16px auto 0 auto;
+  border: 1px solid
+    ${({ theme }) =>
+      theme.colors.fontColorSecondary};
+
+  &:hover {
+    background-color: ${({ theme }) =>
+      theme.colors.greenHover};
+  }
+`;

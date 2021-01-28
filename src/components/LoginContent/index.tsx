@@ -7,6 +7,7 @@ import {
   Logo,
   FormContainer,
   LoginContainer,
+  Button,
 } from './styles';
 
 const LoginContent: React.FC = () => {
@@ -24,11 +25,13 @@ const LoginContent: React.FC = () => {
           <FormLogin />
           <Modal
             button={
-              <button type='button'>
-                Share Result & leave a message
-              </button>
+              <Button type='button'>
+                Create New Account
+              </Button>
             }
-          />
+          >
+            <div>asdsadas</div>
+          </Modal>
         </FormContainer>
       </LoginContainer>
     </>
