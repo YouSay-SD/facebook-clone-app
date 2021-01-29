@@ -33,7 +33,6 @@ const FormRegister: React.FC = () => {
           type='text'
           placeholder='First name'
           name='firstName'
-          medium
         />
         <Input
           type='text'
