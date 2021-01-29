@@ -1,6 +1,7 @@
 import React from 'react';
 import FormLogin from '../FormLogin';
 import Modal from '../Modal';
+import FormRegister from '../FormRegister/index';
 import {
   LogoContainer,
   LogoDescription,
@@ -30,7 +31,7 @@ const LoginContent: React.FC = () => {
               </Button>
             }
           >
-            <div>asdsadas</div>
+            <FormRegister />
           </Modal>
         </FormContainer>
       </LoginContainer>

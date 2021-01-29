@@ -15,6 +15,9 @@ declare module '@emotion/react' {
       greenHover: string;
       red: string;
     };
+    colorsRGB: {
+      white: string;
+    };
   }
 }
 
@@ -54,6 +57,9 @@ const theme = {
     green: '#42B72A',
     greenHover: '#36A420',
     red: '#F02849',
+  },
+  colorsRGB: {
+    white: '255,255,255',
   },
 };
 

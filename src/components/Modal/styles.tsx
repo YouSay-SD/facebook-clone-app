@@ -2,8 +2,6 @@ import styled from '@emotion/styled/macro';
 import { animated } from 'react-spring';
 
 export const Box = styled(animated.div)`
-  background-color: black;
-  color: white;
   border-radius: 25px;
   padding: 30px;
   position: fixed;
@@ -24,5 +22,8 @@ export const Background = styled(animated.div)`
   width: 100%;
   height: 100%;
   z-index: 9;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(
+    ${({ theme }) => theme.colorsRGB.white},
+    0.8
+  );
 `;
