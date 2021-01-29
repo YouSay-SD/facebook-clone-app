@@ -1,5 +1,10 @@
 import React from 'react';
-import { Form, Button, Input } from './styles';
+import {
+  Form,
+  Button,
+  Input,
+  Archor,
+} from './styles';
 import { useForm } from '../../hooks/useForm';
 import { FormElement } from './interface';
 
@@ -37,7 +42,9 @@ const FormLogin: React.FC = () => {
         onChange={handleInputChange}
       />
       <Button type='submit' value='Log In' />
-      <a href='/'>Forgot Password?</a>
+      <Archor>
+        <a href='/'>Forgot Password?</a>
+      </Archor>
     </Form>
   );
 };

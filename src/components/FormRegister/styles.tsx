@@ -1,8 +1,18 @@
 import styled from '@emotion/styled/macro';
 
+export const RegisterContainer = styled.div`
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+    0 8px 16px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  padding: 16px;
+  border-radius: 6px;
+  background-color: ${({ theme }) =>
+    theme.colors.tertiary};
+`;
+
 export const Form = styled.form`
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
 `;
 
 export const Input = styled.input`
@@ -11,8 +21,8 @@ export const Input = styled.input`
   border: 1px solid
     ${({ theme }) =>
       theme.colors.fontColorSecondary};
-  padding: 14px 16px;
-  font-size: 1.1rem;
+  padding: 12px 14px;
+  font-size: 0.9rem;
   border-radius: 6px;
   margin-bottom: 13px;
 
