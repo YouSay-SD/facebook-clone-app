@@ -1,5 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
+import {
+  useDispatch,
+  useSelector,
+} from 'react-redux';
 import { useSpring } from 'react-spring';
+import { RootStore } from '../../store/store';
+import {
+  uiOpenModal,
+  uiCloseModal,
+} from '../../actions/ui';
 import {
   Box,
   Background,
@@ -7,13 +16,15 @@ import {
 } from './styles';
 
 const Modal = ({ children, button }: any) => {
-  const [openModal, setOpenModal] = useState(
-    false
+  const dispatch = useDispatch();
+
+  const { modalOpen } = useSelector(
+    (state: RootStore) => state.ui
   );
 
   const showHideModal = useSpring({
     to: async (next: any) => {
-      if (openModal) {
+      if (modalOpen) {
         await next({ display: 'flex' });
         await next({ opacity: 1 });
       } else {
@@ -28,14 +39,14 @@ const Modal = ({ children, button }: any) => {
   return (
     <div>
       <ButtonContainer
-        onClick={() => setOpenModal(!openModal)}
+        onClick={() => dispatch(uiOpenModal())}
       >
         {button}
       </ButtonContainer>
       <Box style={showHideModal}>{children}</Box>
       <Background
         style={showHideModal}
-        onClick={() => setOpenModal(!openModal)}
+        onClick={() => dispatch(uiCloseModal())}
       />
     </div>
   );
