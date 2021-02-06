@@ -1,6 +1,6 @@
 import React from 'react';
 import FormLogin from '../FormLogin';
-import Modal from '../Modal';
+import Modal from '../../general/Modal';
 import FormRegister from '../FormRegister/index';
 import {
   LogoContainer,
@@ -11,26 +11,19 @@ import {
   Button,
 } from './styles';
 
-const LoginContent: React.FC = () => {
+const AuthContent: React.FC = () => {
   return (
     <>
       <LoginContainer>
         <LogoContainer>
           <Logo src='./img/logo/logo.svg' />
           <LogoDescription>
-            Connect with friends and the world
-            around you on Facebook.
+            Connect with friends and the world around you on Facebook.
           </LogoDescription>
         </LogoContainer>
         <FormContainer>
           <FormLogin />
-          <Modal
-            button={
-              <Button type='button'>
-                Create New Account
-              </Button>
-            }
-          >
+          <Modal button={<Button type='button'>Create New Account</Button>}>
             <FormRegister />
           </Modal>
         </FormContainer>
@@ -39,4 +32,4 @@ const LoginContent: React.FC = () => {
   );
 };
 
-export default LoginContent;
+export default AuthContent;

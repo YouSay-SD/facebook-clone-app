@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
-import { IFields } from '../components/FormLogin/interface';
+import { IFields } from '../components/auth/FormLogin/interface';
 
-export const useForm = (
-  initialState: IFields
-) => {
-  const [
-    formValues,
-    setValues,
-  ] = useState<IFields>(initialState);
+export const useForm = (initialState: IFields) => {
+  const [formValues, setValues] = useState<IFields>(initialState);
 
   const reset = () => {
     setValues(initialState);

@@ -1,18 +1,10 @@
 import React from 'react';
-import {
-  Form,
-  Button,
-  Input,
-  Archor,
-} from './styles';
-import { useForm } from '../../hooks/useForm';
+import { Form, Button, Input, Archor } from './styles';
+import { useForm } from '../../../hooks/useForm';
 import { FormElement } from './interface';
 
 const FormLogin: React.FC = () => {
-  const {
-    formValues,
-    handleInputChange,
-  } = useForm({
+  const { formValues, handleInputChange } = useForm({
     name: '',
     email: '',
     password: '',

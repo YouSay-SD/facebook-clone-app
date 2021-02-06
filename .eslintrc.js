@@ -19,17 +19,11 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-    '@typescript-eslint',
-    'prettier',
-  ],
+  plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
     'no-console': 0,
     'no-use-before-define': 'off',
-    '@typescript-eslint/no-use-before-define': [
-      'error',
-    ],
+    '@typescript-eslint/no-use-before-define': ['error'],
     'no-var': 'error',
     'brace-style': 'error',
     'prefer-template': 'error',
@@ -45,12 +39,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       node: {
-        extensions: [
-          '.js',
-          '.jsx',
-          '.ts',
-          '.tsx',
-        ],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
   },

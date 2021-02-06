@@ -11,25 +11,23 @@ export const LogoContainer = styled.div`
 `;
 
 export const LogoDescription = styled.p`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-family: 'SFProDisplay';
   font-weight: 500;
 `;
 
 export const Logo = styled.img`
-  width: 310px;
+  width: 250px;
 `;
 
 export const FormContainer = styled.div`
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
-    0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
   padding: 16px;
   border-radius: 6px;
 `;
 
 export const Button = styled.button`
-  background-color: ${({ theme }) =>
-    theme.colors.green};
+  background-color: ${({ theme }) => theme.colors.green};
   color: ${({ theme }) => theme.colors.primary};
   padding: 14px 16px;
   font-size: 1rem;
@@ -41,12 +39,9 @@ export const Button = styled.button`
   outline: none;
   display: block;
   margin: 16px auto 0 auto;
-  border: 1px solid
-    ${({ theme }) =>
-      theme.colors.fontColorSecondary};
+  border: 1px solid ${({ theme }) => theme.colors.fontColorSecondary};
 
   &:hover {
-    background-color: ${({ theme }) =>
-      theme.colors.greenHover};
+    background-color: ${({ theme }) => theme.colors.greenHover};
   }
 `;

@@ -6,31 +6,25 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
-  color: ${({ theme }) =>
-    theme.colors.fontColorPrimary};
-  border: 1px solid
-    ${({ theme }) =>
-      theme.colors.fontColorSecondary};
+  color: ${({ theme }) => theme.colors.fontColorPrimary};
+  border: 1px solid ${({ theme }) => theme.colors.fontColorSecondary};
   padding: 14px 16px;
   font-size: 1.1rem;
   border-radius: 6px;
   margin-bottom: 13px;
 
   &::placeholder {
-    color: ${({ theme }) =>
-      theme.colors.fontColorSecondary};
+    color: ${({ theme }) => theme.colors.fontColorSecondary};
   }
 
   &:focus {
     outline: none;
-    border: 1px solid
-      ${({ theme }) => theme.colors.blue};
+    border: 1px solid ${({ theme }) => theme.colors.blue};
   }
 `;
 
 export const Button = styled.input`
-  background-color: ${({ theme }) =>
-    theme.colors.blue};
+  background-color: ${({ theme }) => theme.colors.blue};
   color: ${({ theme }) => theme.colors.primary};
   padding: 14px 16px;
   font-size: 1.2rem;
@@ -41,13 +35,10 @@ export const Button = styled.input`
   border: none;
   outline: none;
   margin-bottom: 15px;
-  border: 1px solid
-    ${({ theme }) =>
-      theme.colors.fontColorSecondary};
+  border: 1px solid ${({ theme }) => theme.colors.fontColorSecondary};
 
   &:hover {
-    background-color: ${({ theme }) =>
-      theme.colors.blueHover};
+    background-color: ${({ theme }) => theme.colors.blueHover};
   }
 `;
 

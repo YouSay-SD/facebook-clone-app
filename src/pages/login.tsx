@@ -1,13 +1,10 @@
 import React from 'react';
-import {
-  Container,
-  LoginContent,
-} from '../components';
+import { Container, AuthContent } from '../components';
 
 const Login: React.FC = () => {
   return (
     <Container>
-      <LoginContent />
+      <AuthContent />
     </Container>
   );
 };

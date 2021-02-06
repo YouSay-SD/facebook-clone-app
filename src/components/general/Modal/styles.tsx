@@ -22,8 +22,5 @@ export const Background = styled(animated.div)`
   width: 100%;
   height: 100%;
   z-index: 9;
-  background-color: rgba(
-    ${({ theme }) => theme.colorsRGB.white},
-    0.8
-  );
+  background-color: rgba(${({ theme }) => theme.colorsRGB.white}, 0.8);
 `;

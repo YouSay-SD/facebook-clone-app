@@ -1,4 +1,4 @@
-export { default as Container } from './Container';
-export { default as FormLogin } from './FormLogin';
-export { default as LoginContent } from './LoginContent';
-export { default as Modal } from './Modal';
+export { default as Container } from './general/Container';
+export { default as Modal } from './general/Modal';
+export { default as FormLogin } from './auth/FormLogin';
+export { default as AuthContent } from './auth/AuthContent';
