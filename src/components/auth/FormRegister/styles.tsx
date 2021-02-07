@@ -6,11 +6,24 @@ export const RegisterContainer = styled.div`
   padding: 16px;
   border-radius: 6px;
   background-color: ${({ theme }) => theme.colors.tertiary};
+
+  h2 {
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+  }
+
+  p {
+    font-size: 1rem;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.fontColorSecondary};
+  }
 `;
 
 export const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 `;
 
 export const Input = styled.input`
@@ -20,6 +33,7 @@ export const Input = styled.input`
   font-size: 0.9rem;
   border-radius: 6px;
   margin-bottom: 13px;
+  width: ${(props) => (props.width ? props.width : '100')}%;
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.fontColorSecondary};
@@ -32,10 +46,10 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.input`
-  background-color: ${({ theme }) => theme.colors.blue};
+  background-color: ${({ theme }) => theme.colors.green};
   color: ${({ theme }) => theme.colors.primary};
-  padding: 14px 16px;
-  font-size: 1.2rem;
+  padding: 9px 16px;
+  font-size: 1rem;
   border-radius: 6px;
   font-weight: 700;
   transition: background-color 0.3s ease;
@@ -44,9 +58,11 @@ export const Button = styled.input`
   outline: none;
   margin-bottom: 15px;
   border: 1px solid ${({ theme }) => theme.colors.fontColorSecondary};
+  margin: 10px auto 0;
+  width: 160px;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.blueHover};
+    background-color: ${({ theme }) => theme.colors.greenHover};
   }
 `;
 

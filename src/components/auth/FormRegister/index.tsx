@@ -18,9 +18,21 @@ const FormRegister: React.FC = () => {
 
   return (
     <RegisterContainer>
+      <h2>Sign Up</h2>
+      <p>It’s quick and easy.</p>
       <Form onSubmit={handleSubmit}>
-        <Input type='text' placeholder='First name' name='firstName' />
-        <Input type='text' placeholder='Last name' name='lastName' />
+        <Input
+          width={48.5}
+          type='text'
+          placeholder='First name'
+          name='firstName'
+        />
+        <Input
+          width={48.5}
+          type='text'
+          placeholder='Last name'
+          name='lastName'
+        />
         <Input type='email' placeholder='Email' name='email' />
         <Input type='password' placeholder='New password' name='password' />
         <Button type='submit' value='Sign Up' />

@@ -3,7 +3,7 @@ import { animated } from 'react-spring';
 
 export const Box = styled(animated.div)`
   border-radius: 25px;
-  padding: 30px;
+  padding: 20px;
   position: fixed;
   top: 50%;
   right: 50%;

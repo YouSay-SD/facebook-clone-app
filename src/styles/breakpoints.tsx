@@ -5,6 +5,9 @@ const breakpoints = {
   lg: '1199px',
 };
 
-export const bps = {
-  mobile: `@media screen and (min-width: ${breakpoints.xs})`,
+export const respondAbove = {
+  xs: `@media screen and (min-width: ${breakpoints.xs})`,
+  sm: `@media screen and (min-width: ${breakpoints.sm})`,
+  md: `@media screen and (min-width: ${breakpoints.md})`,
+  lg: `@media screen and (min-width: ${breakpoints.lg})`,
 };
