@@ -1,10 +1,10 @@
 import React from 'react';
 import { ThemeProvider } from '@emotion/react';
 import { Provider } from 'react-redux';
-import GlobalStyle from './styles/global-style';
+import GlobalStyle from './styles/globalStyle';
 import theme from './theme/theme';
-import { AppRouter } from './routers/app-router';
 import { store } from './store/store';
+import { AppRouter } from './routers/AppRouter';
 
 function App() {
   return (

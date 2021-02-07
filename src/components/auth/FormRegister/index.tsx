@@ -4,12 +4,13 @@ import { Input, Form, Button, RegisterContainer } from './styles';
 
 const FormRegister: React.FC = () => {
   const { formValues, handleInputChange } = useForm({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
   });
 
-  // const { email, password } = formValues;
+  const { firstName, lastName, email, password } = formValues;
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -26,15 +27,32 @@ const FormRegister: React.FC = () => {
           type='text'
           placeholder='First name'
           name='firstName'
+          value={firstName}
+          onChange={handleInputChange}
         />
         <Input
           width={48.5}
           type='text'
           placeholder='Last name'
           name='lastName'
+          value={lastName}
+          onChange={handleInputChange}
         />
-        <Input type='email' placeholder='Email' name='email' />
-        <Input type='password' placeholder='New password' name='password' />
+        <Input
+          type='email'
+          placeholder='Email'
+          name='email'
+          value={email}
+          onChange={handleInputChange}
+        />
+        <Input
+          type='password'
+          placeholder='New password'
+          name='password'
+          value={password}
+          onChange={handleInputChange}
+          autoComplete='false'
+        />
         <Button type='submit' value='Sign Up' />
       </Form>
     </RegisterContainer>

@@ -13,10 +13,7 @@ type Action = {
   payload: string;
 };
 
-export const uiReducer = (
-  state: UiState = initialState,
-  action: Action
-) => {
+export const uiReducer = (state: UiState = initialState, action: Action) => {
   switch (action.type) {
     case types.uiOpenModal:
       return {

@@ -1,8 +1,4 @@
-import {
-  applyMiddleware,
-  compose,
-  createStore,
-} from 'redux';
+import { applyMiddleware, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { rootReducer } from '../reducers/rootReducer';
 
@@ -23,6 +19,4 @@ export const store = createStore(
 );
 
 // Type
-export type RootStore = ReturnType<
-  typeof rootReducer
->;
+export type RootStore = ReturnType<typeof rootReducer>;

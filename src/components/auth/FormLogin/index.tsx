@@ -32,6 +32,7 @@ const FormLogin: React.FC = () => {
         name='password'
         value={password}
         onChange={handleInputChange}
+        autoComplete='false'
       />
       <Button type='submit' value='Log In' />
       <Archor>

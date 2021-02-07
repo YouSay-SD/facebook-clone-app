@@ -4,6 +4,7 @@ import { respondAbove } from '../../../styles/breakpoints';
 export const LoginContainer = styled.div`
   max-width: 400px;
   margin: 0 auto;
+  margin-top: 70px;
 
   ${respondAbove.sm} {
     display: flex;

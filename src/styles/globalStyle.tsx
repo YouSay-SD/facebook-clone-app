@@ -7,14 +7,12 @@ const GlobalStyle = () => (
       // Font Family
       @font-face {
         font-family: 'Segoe UI Historic';
-        src: url('./fonts/Segoe-ui-historic.ttf')
-          format('truetype');
+        src: url('./fonts/Segoe-ui-historic.ttf') format('truetype');
       }
 
       @font-face {
         font-family: 'SFProDisplay';
-        src: url('./fonts/SFProDisplay-Regular.ttf')
-          format('truetype');
+        src: url('./fonts/SFProDisplay-Regular.ttf') format('truetype');
       }
 
       * {
@@ -24,8 +22,8 @@ const GlobalStyle = () => (
       }
 
       body {
-        font-family: 'Segoe UI Historic',
-          'Segoe UI', Helvetica, Arial, sans-serif;
+        font-family: 'Segoe UI Historic', 'Segoe UI', Helvetica, Arial,
+          sans-serif;
         background-color: #f0f2f5;
         color: #1c1e21;
       }
