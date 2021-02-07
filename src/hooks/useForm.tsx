@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { IFields } from '../components/auth/FormLogin/interface';
+import { ChangeEvent, useState } from 'react';
 
-export const useForm = (initialState: IFields) => {
-  const [formValues, setValues] = useState<IFields>(initialState);
+export const useForm = <T extends Object>(initState: T) => {
+  const [formValues, setFormValues] = useState(initState);
 
   const reset = () => {
-    setValues(initialState);
+    setFormValues(initState);
   };
 
-  const handleInputChange = ({ target }: any) => {
-    setValues({
+  const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = target;
+    setFormValues({
       ...formValues,
-      [target.name]: target.value,
+      [name]: value,
     });
   };
 
