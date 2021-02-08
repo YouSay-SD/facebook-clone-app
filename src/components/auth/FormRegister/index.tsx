@@ -1,9 +1,10 @@
 import React from 'react';
 import { useForm } from '../../../hooks/useForm';
 import { Input, Form, Button, RegisterContainer } from './styles';
+import { FormData } from './interface';
 
 const FormRegister: React.FC = () => {
-  const { formValues, handleInputChange } = useForm({
+  const { formValues, handleInputChange } = useForm<FormData>({
     firstName: '',
     lastName: '',
     email: '',

@@ -1,7 +1,6 @@
 import React from 'react';
 
-export interface IFields {
-  name: string;
+export interface FormData {
   email: string;
   password: string;
 }
