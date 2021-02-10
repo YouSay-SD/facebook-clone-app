@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import validator from 'validator';
 import { Form, Button, Input, Archor } from './styles';
 import { useForm } from '../../../hooks/useForm';
@@ -12,55 +12,43 @@ const FormLogin: React.FC = () => {
 
   const { email, password } = formValues;
 
-  const [errorMsg, setMsgError] = useState({
-    errorMsgEmail: '',
-    errorMsgPassword: '',
-    hasMsgError: true,
+  const [valid, setValid] = useState({
+    isEmailValid: true,
+    isPasswordValid: true,
+    isAllValid: true,
   });
 
-  const { errorMsgEmail, errorMsgPassword, hasMsgError } = errorMsg;
+  const { isEmailValid, isPasswordValid, isAllValid } = valid;
 
-  const isFormValid = () => {
-    if (!validator.isEmail(email)) {
-      setMsgError({
-        ...errorMsg,
-        errorMsgEmail: 'Email is not valid',
-      });
-      console.log('email');
-      return false;
-    }
-    setMsgError({
-      ...errorMsg,
-      errorMsgEmail: '',
+  useEffect(() => {
+    setValid({
+      ...valid,
+      isAllValid: isEmailValid && isPasswordValid,
+    });
+  }, []);
+
+  const isFormValid = async () => {
+    setValid({
+      ...valid,
+      isEmailValid: validator.isEmail(email),
+      isPasswordValid: password.trim().length > 5,
+      isAllValid: validator.isEmail(email) && isEmailValid && isPasswordValid,
     });
 
-    if (password.trim().length < 5) {
-      setMsgError({
-        ...errorMsg,
-        errorMsgPassword: 'The password must have more than 5 characters',
-      });
-      console.log('password');
-      return false;
-    }
+    console.log(validator.isEmail(email));
+    console.log(password.trim().length > 5);
+    console.log(validator.isEmail(email) && isEmailValid && isPasswordValid);
 
-    setMsgError({
-      ...errorMsg,
-      errorMsgPassword: '',
-      hasMsgError: false,
-    });
-
-    console.log(hasMsgError);
-    // return false;
-    // return errorMsg.length > 0;
-    return hasMsgError;
+    console.log(valid);
+    // return isAllValid;
   };
 
   const handleSubmit = (e: FormElement) => {
     e.preventDefault();
-
-    if (isFormValid()) {
-      console.log('Form Correcto');
-    }
+    isFormValid();
+    // if (isFormValid()) {
+    //   console.log('Form Correcto');
+    // }
   };
 
   return (
@@ -72,7 +60,7 @@ const FormLogin: React.FC = () => {
         value={email}
         onChange={handleInputChange}
       />
-      {errorMsgEmail ? 'Error Email' : ''}
+      {!isEmailValid && 'Error Email'}
       <Input
         type='password'
         placeholder='Password'
@@ -81,7 +69,7 @@ const FormLogin: React.FC = () => {
         onChange={handleInputChange}
         autoComplete='false'
       />
-      {errorMsgPassword ? 'Error Password' : ''}
+      {!isPasswordValid && 'Error Password'}
 
       <Button type='submit' value='Log In' />
       <Archor>
