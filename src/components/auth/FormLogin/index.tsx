@@ -14,53 +14,103 @@ const FormLogin: React.FC = () => {
 
   const [valid, setValid] = useState({
     isEmailValid: true,
-    isPasswordValid: true,
-    isAllValid: true,
+    // isPasswordValid: true,
   });
-
-  const { isEmailValid, isPasswordValid, isAllValid } = valid;
 
   useEffect(() => {
     setValid({
       ...valid,
-      isAllValid: isEmailValid && isPasswordValid,
+      isEmailValid: email.length > 1,
     });
-  }, []);
+  }, [setValid]);
 
-  const isFormValid = async () => {
-    setValid({
-      ...valid,
-      isEmailValid: validator.isEmail(email),
-      isPasswordValid: password.trim().length > 5,
-      isAllValid: validator.isEmail(email) && isEmailValid && isPasswordValid,
-    });
+  // const { isEmailValid, isPasswordValid, isAllValid } = valid;
 
-    console.log(validator.isEmail(email));
-    console.log(password.trim().length > 5);
-    console.log(validator.isEmail(email) && isEmailValid && isPasswordValid);
+  // const isFormValid = () => {
+  //   console.log(validator.isEmail(email));
+  //   console.log(password.trim().length > 5);
+  //   console.log(validator.isEmail(email) && password.trim().length > 5);
 
-    console.log(valid);
-    // return isAllValid;
-  };
+  //   setValid({
+  //     ...valid,
+  //     isEmailValid: validator.isEmail(email),
+  //     isPasswordValid: password.trim().length > 5,
+  //     isAllValid: validator.isEmail(email) && password.trim().length > 5,
+  //   });
+
+  //   // console.log(valid);
+  //   // return isAllValid;
+  // };
 
   const handleSubmit = (e: FormElement) => {
     e.preventDefault();
-    isFormValid();
+
+    // setValid({
+    //   ...valid,
+    //   isEmailValid: validator.isEmail(email),
+    //   isPasswordValid: password.trim().length > 5,
+    //   isAllValid: validator.isEmail(email) && password.trim().length > 5,
+    // });
+
+    // const isEmail = new Promise((resolve, reject) => {
+    //   if (validator.isEmail(email)) {
+    //     resolve(true);
+    //   } else {
+    //     // eslint-disable-next-line prefer-promise-reject-errors
+    //     reject(false);
+    //   }
+    // });
+
+    // isEmail.then((res) => {
+    //   setValid({
+    //     ...valid,
+    //     isEmailValid: res,
+    //     // isPasswordValid: password.trim().length > 5,
+    //   });
+    // });
+
+    console.log('console', email.length > 1);
+    // const isE = email.length > 1;
+    setValid({
+      ...valid,
+      isEmailValid: validator.isEmail(email),
+      // isPasswordValid: password.trim().length > 5,
+    });
+
+    // console.log(valid);
     // if (isFormValid()) {
     //   console.log('Form Correcto');
     // }
   };
+  // console.log(valid);
+  console.log('renderizo');
+
+  // const test = () => {
+  //   console.log(email);
+  //   setValid({
+  //     ...valid,
+  //     isEmailValid: email.length > 1,
+  //     // isPasswordValid: password.trim().length > 5,
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   test();
+  // }, []);
+
+  // console.log(valid);
 
   return (
     <Form onSubmit={handleSubmit}>
       <Input
-        type='text'
+        type='email'
         placeholder='Email or Phone Number'
         name='email'
         value={email}
         onChange={handleInputChange}
+        // validate='false'
       />
-      {!isEmailValid && 'Error Email'}
+      {/* {!isEmailValid && 'Error Email'} */}
       <Input
         type='password'
         placeholder='Password'
@@ -69,7 +119,7 @@ const FormLogin: React.FC = () => {
         onChange={handleInputChange}
         autoComplete='false'
       />
-      {!isPasswordValid && 'Error Password'}
+      {/* {!isPasswordValid && 'Error Password'} */}
 
       <Button type='submit' value='Log In' />
       <Archor>
