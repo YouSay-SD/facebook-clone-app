@@ -5,4 +5,4 @@ export interface FormData {
   password: string;
 }
 
-export type FormElement = React.FormEvent<HTMLFormElement>;
+export type FormE = React.FormEvent<HTMLFormElement>;

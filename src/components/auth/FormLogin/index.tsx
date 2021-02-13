@@ -1,32 +1,49 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Form, Button, Input, Archor } from './styles';
-import { FormData, FormElement } from './interface';
+import { FormE, FormData } from './interface';
 
 const FormLogin: React.FC = () => {
   const { register, errors, handleSubmit } = useForm<FormData>();
 
-  const onSubmit = ({ email, password }: FormData) => {
-    console.log(email, password);
-  };
+  const onSubmit = handleSubmit(
+    ({ email, password }: FormData, { target }: any) => {
+      console.log(email, password);
+      target.reset();
+    }
+  );
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={onSubmit}>
       <Input
         type='email'
         placeholder='Email or Phone Number'
         name='email'
-        ref={register({ required: true })}
+        ref={register({
+          required: {
+            value: true,
+            message: 'Email is required',
+          },
+          pattern: {
+            value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+            message: 'It must be a valid email',
+          },
+        })}
       />
-      {errors.email && 'Enter your email'}
+      {errors?.email?.message}
       <Input
         type='password'
         placeholder='Password'
         name='password'
-        ref={register({ required: true })}
         autoComplete='false'
+        ref={register({
+          required: {
+            value: true,
+            message: 'Password is required',
+          },
+        })}
       />
-      {errors.email && 'Enter your password'}
+      {errors?.password?.message}
       <Button type='submit' value='Log In' />
       <Archor>
         <a href='/'>Forgot Password?</a>
