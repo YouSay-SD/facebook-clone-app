@@ -1,4 +1,5 @@
 import styled from '@emotion/styled/macro';
+import { respondAbove } from '../../../styles/breakpoints';
 
 export const RegisterContainer = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -33,7 +34,7 @@ export const Input = styled.input`
   font-size: 0.9rem;
   border-radius: 6px;
   margin-bottom: 13px;
-  width: ${(props) => (props.width ? props.width : '100')}%;
+  width: 100%;
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.fontColorSecondary};
@@ -42,6 +43,10 @@ export const Input = styled.input`
   &:focus {
     outline: none;
     border: 1px solid ${({ theme }) => theme.colors.blue};
+  }
+
+  ${respondAbove.sm} {
+    width: ${(props) => (props.width ? props.width : '100')}%;
   }
 `;
 

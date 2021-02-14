@@ -31,7 +31,8 @@ const FormLogin: React.FC = () => {
           },
         })}
       />
-      <Alert>{errors?.email?.message}</Alert>
+      {errors?.email && <Alert>{errors?.email?.message}</Alert>}
+
       <Input
         type='password'
         placeholder='Password'
@@ -44,7 +45,8 @@ const FormLogin: React.FC = () => {
           },
         })}
       />
-      <Alert>{errors?.password?.message}</Alert>
+      {errors?.password && <Alert>{errors?.password?.message}</Alert>}
+
       <Button type='submit' value='Log In' />
       <Archor>
         <a href='/'>Forgot Password?</a>

@@ -1,59 +1,87 @@
 import React from 'react';
-import { useForm } from '../../../hooks/useForm';
-import { Input, Form, Button, RegisterContainer } from './styles';
+import { useForm } from 'react-hook-form';
+import { Form, Button, RegisterContainer } from './styles';
 import { FormData } from './interface';
+import { Alert, Input } from '../../form';
 
 const FormRegister: React.FC = () => {
-  const { formValues, handleInputChange } = useForm<FormData>({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-  });
+  const { register, errors, handleSubmit } = useForm<FormData>();
 
-  const { firstName, lastName, email, password } = formValues;
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('submit');
-  };
+  const onSubmit = handleSubmit(
+    ({ email, password }: FormData, { target }: any) => {
+      console.log(email, password);
+      target.reset();
+    }
+  );
 
   return (
     <RegisterContainer>
       <h2>Sign Up</h2>
       <p>It’s quick and easy.</p>
-      <Form onSubmit={handleSubmit}>
-        <Input
-          width={48.5}
-          type='text'
-          placeholder='First name'
-          name='firstName'
-          value={firstName}
-          onChange={handleInputChange}
-        />
-        <Input
-          width={48.5}
-          type='text'
-          placeholder='Last name'
-          name='lastName'
-          value={lastName}
-          onChange={handleInputChange}
-        />
+      <Form onSubmit={onSubmit}>
+        <div>
+          <Input
+            width={48.5}
+            type='text'
+            placeholder='First name'
+            name='firstName'
+            ref={register({
+              required: {
+                value: true,
+                message: 'First name is required',
+              },
+            })}
+          />
+          {errors?.firstName && <Alert>{errors?.firstName?.message}</Alert>}
+        </div>
+
+        <div>
+          <Input
+            width={48.5}
+            type='text'
+            placeholder='Last name'
+            name='lastName'
+            ref={register({
+              required: {
+                value: true,
+                message: 'Last name is required',
+              },
+            })}
+          />
+          {errors?.lastName && <Alert>{errors?.lastName?.message}</Alert>}
+        </div>
+
         <Input
           type='email'
           placeholder='Email'
           name='email'
-          value={email}
-          onChange={handleInputChange}
+          ref={register({
+            required: {
+              value: true,
+              message: 'Email is required',
+            },
+            pattern: {
+              value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+              message: 'It must be a valid email',
+            },
+          })}
         />
+        {errors?.email && <Alert>{errors?.email?.message}</Alert>}
+
         <Input
           type='password'
           placeholder='New password'
           name='password'
-          value={password}
-          onChange={handleInputChange}
           autoComplete='false'
+          ref={register({
+            required: {
+              value: true,
+              message: 'Password is required',
+            },
+          })}
         />
+        {errors?.password && <Alert>{errors?.password?.message}</Alert>}
+
         <Button type='submit' value='Sign Up' />
       </Form>
     </RegisterContainer>

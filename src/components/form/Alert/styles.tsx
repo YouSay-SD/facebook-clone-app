@@ -4,4 +4,5 @@ export const AlertText = styled.div`
   font-size: 14px;
   color: ${({ theme }) => theme.colors.red};
   margin-bottom: 13px;
+  width: 100%;
 `;

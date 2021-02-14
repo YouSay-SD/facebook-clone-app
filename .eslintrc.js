@@ -35,6 +35,7 @@ module.exports = {
     'react/jsx-filename-extension': [0],
     'import/extensions': 'off',
     'object-curly-newline': 'off',
+    'react/jsx-props-no-spreading': 'off',
   },
   settings: {
     'import/resolver': {
