@@ -2,7 +2,7 @@ export interface InputProps {
   type: string;
   placeholder: string;
   name: string;
-  ref: any;
+  innerRef: any;
   width?: number;
   autoComplete?: string;
 }

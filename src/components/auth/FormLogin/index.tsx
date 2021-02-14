@@ -1,8 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Form, Button, Input, Archor } from './styles';
+import { Form, Button, Archor } from './styles';
 import { FormE, FormData } from './interface';
-import Alert from '../../form/Alert';
+import { Input, Alert } from '../../form';
 
 const FormLogin: React.FC = () => {
   const { register, errors, handleSubmit } = useForm<FormData>();
@@ -20,7 +20,7 @@ const FormLogin: React.FC = () => {
         type='email'
         placeholder='Email or Phone Number'
         name='email'
-        ref={register({
+        innerRef={register({
           required: {
             value: true,
             message: 'Email is required',
@@ -38,7 +38,7 @@ const FormLogin: React.FC = () => {
         placeholder='Password'
         name='password'
         autoComplete='false'
-        ref={register({
+        innerRef={register({
           required: {
             value: true,
             message: 'Password is required',

@@ -27,6 +27,13 @@ export const Form = styled.form`
   justify-content: space-between;
 `;
 
+export const GridFields = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0 10px;
+  width: 100%;
+`;
+
 export const Input = styled.input`
   color: ${({ theme }) => theme.colors.fontColorPrimary};
   border: 1px solid ${({ theme }) => theme.colors.fontColorSecondary};

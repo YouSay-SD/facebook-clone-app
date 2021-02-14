@@ -36,6 +36,7 @@ module.exports = {
     'import/extensions': 'off',
     'object-curly-newline': 'off',
     'react/jsx-props-no-spreading': 'off',
+    'react/prop-types': 'off',
   },
   settings: {
     'import/resolver': {

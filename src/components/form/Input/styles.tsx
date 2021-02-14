@@ -1,6 +1,17 @@
 import styled from '@emotion/styled/macro';
-import React from 'react';
 import { respondAbove } from '../../../styles/breakpoints';
+
+interface InputContainerProps {
+  width?: number;
+}
+
+export const InputContainer = styled.div<InputContainerProps>`
+  width: ${({ width }) => width || '100'}%;
+
+  ${respondAbove.sm} {
+    width: 100%;
+  }
+`;
 
 export const InputStyled = styled.input`
   color: ${({ theme }) => theme.colors.fontColorPrimary};
@@ -18,9 +29,5 @@ export const InputStyled = styled.input`
   &:focus {
     outline: none;
     border: 1px solid ${({ theme }) => theme.colors.blue};
-  }
-
-  ${respondAbove.sm} {
-    width: ${({ width }) => width || '100'}%;
   }
 `;
