@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Form, Button, Input, Archor } from './styles';
 import { FormE, FormData } from './interface';
+import Alert from '../../form/Alert';
 
 const FormLogin: React.FC = () => {
   const { register, errors, handleSubmit } = useForm<FormData>();
@@ -30,7 +31,7 @@ const FormLogin: React.FC = () => {
           },
         })}
       />
-      {errors?.email?.message}
+      <Alert>{errors?.email?.message}</Alert>
       <Input
         type='password'
         placeholder='Password'
@@ -43,7 +44,7 @@ const FormLogin: React.FC = () => {
           },
         })}
       />
-      {errors?.password?.message}
+      <Alert>{errors?.password?.message}</Alert>
       <Button type='submit' value='Log In' />
       <Archor>
         <a href='/'>Forgot Password?</a>

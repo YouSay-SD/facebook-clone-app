@@ -1,5 +1,4 @@
 import { ChangeEvent, useState } from 'react';
-import validator from 'validator';
 
 export const useForm = <T extends Object>(initState: T) => {
   const [formValues, setFormValues] = useState(initState);
