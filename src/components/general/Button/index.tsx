@@ -1,8 +1,17 @@
 import React, { FC } from 'react';
-import { ButtonStyled } from './styles';
+import { ButtonStyled, Icon } from './styles';
 
-const Button: FC = ({ children }) => {
-  return <ButtonStyled>{children}</ButtonStyled>;
+interface ButtonProps {
+  type?: string;
+}
+
+const Button: FC<ButtonProps> = ({ children, type }) => {
+  return (
+    <ButtonStyled>
+      {type && <Icon src={`./img/icons/${type}.svg`} alt={type} />}
+      <p>{children}</p>
+    </ButtonStyled>
+  );
 };
 
 export default Button;
