@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { AlertText } from './styles';
 
-const Alert: React.FC = ({ children }: any) => {
+const Alert: FC = ({ children }) => {
   return <AlertText>{children}</AlertText>;
 };
 

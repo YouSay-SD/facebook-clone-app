@@ -27,36 +27,6 @@ export const Form = styled.form`
   justify-content: space-between;
 `;
 
-export const GridFields = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0 10px;
-  width: 100%;
-`;
-
-export const Input = styled.input`
-  color: ${({ theme }) => theme.colors.fontColorPrimary};
-  border: 1px solid ${({ theme }) => theme.colors.fontColorSecondary};
-  padding: 12px 14px;
-  font-size: 0.9rem;
-  border-radius: 6px;
-  margin-bottom: 13px;
-  width: 100%;
-
-  &::placeholder {
-    color: ${({ theme }) => theme.colors.fontColorSecondary};
-  }
-
-  &:focus {
-    outline: none;
-    border: 1px solid ${({ theme }) => theme.colors.blue};
-  }
-
-  ${respondAbove.sm} {
-    width: ${(props) => (props.width ? props.width : '100')}%;
-  }
-`;
-
 export const Button = styled.input`
   background-color: ${({ theme }) => theme.colors.green};
   color: ${({ theme }) => theme.colors.primary};

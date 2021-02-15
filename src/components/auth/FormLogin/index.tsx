@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Form, Button, Archor } from './styles';
-import { FormE, FormData } from './interface';
+import { FormData } from './interface';
 import { Input, Alert } from '../../form';
 
 const FormLogin: React.FC = () => {
@@ -9,7 +9,6 @@ const FormLogin: React.FC = () => {
 
   const onSubmit = handleSubmit(
     ({ email, password }: FormData, { target }: any) => {
-      console.log(email, password);
       target.reset();
     }
   );

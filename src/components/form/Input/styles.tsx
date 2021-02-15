@@ -6,10 +6,10 @@ interface InputContainerProps {
 }
 
 export const InputContainer = styled.div<InputContainerProps>`
-  width: ${({ width }) => width || '100'}%;
+  width: 100%;
 
   ${respondAbove.sm} {
-    width: 100%;
+    width: ${({ width }) => width || '100'}%;
   }
 `;
 
