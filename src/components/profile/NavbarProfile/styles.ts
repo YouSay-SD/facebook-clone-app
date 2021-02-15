@@ -1,15 +1,17 @@
 import styled from '@emotion/styled/macro';
+import { respondAbove } from '../../../styles/breakpoints';
 
 export const NavbarContainer = styled.div`
   width: 100%;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.quarter};
 `;
 
 export const Navbar = styled.nav`
   border-top: 1px solid ${({ theme }) => theme.colors.quarter};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.quarter};
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 5px 0;
 `;
 
 export const ButtonContainer = styled.div`
@@ -22,4 +24,8 @@ export const NavBtn = styled.div`
   padding: 12px 10px;
   font-size: 0.8rem;
   font-weight: 600;
+
+  ${respondAbove.sm} {
+    font-size: 0.9rem;
+  }
 `;

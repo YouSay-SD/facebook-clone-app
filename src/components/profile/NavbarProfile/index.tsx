@@ -13,7 +13,7 @@ const NavbarProfile: FC = () => {
             <NavBtn>Friends</NavBtn>
           </ButtonContainer>
 
-          <Button>Edit Profile</Button>
+          <Button type='edit'>Edit Profile</Button>
         </Navbar>
       </Container>
     </NavbarContainer>

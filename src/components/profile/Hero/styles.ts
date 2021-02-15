@@ -24,6 +24,7 @@ export const Image = styled.div<ImageProps>`
 export const HeroContainer = styled.div`
   padding-bottom: 20px;
   position: relative;
+  overflow: hidden;
 `;
 
 export const BlurImage = styled.div<ImageProps>`
