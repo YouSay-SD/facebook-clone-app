@@ -1,11 +1,12 @@
 import React, { FC } from 'react';
-import { Hero, NavbarProfile } from '../components';
+import { Hero, NavbarProfile, Preview } from '../components';
 
 const Profile: FC = () => {
   return (
     <>
       <Hero />
       <NavbarProfile />
+      <Preview item='Photos' />
     </>
   );
 };
