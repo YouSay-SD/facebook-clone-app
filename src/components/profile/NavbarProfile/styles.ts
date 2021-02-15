@@ -7,6 +7,9 @@ export const NavbarContainer = styled.div`
 export const Navbar = styled.nav`
   border-top: 1px solid ${({ theme }) => theme.colors.quarter};
   border-bottom: 1px solid ${({ theme }) => theme.colors.quarter};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const ButtonContainer = styled.div`
@@ -17,6 +20,6 @@ export const NavBtn = styled.div`
   color: ${({ theme }) => theme.colors.fontColorSecondary};
   cursor: pointer;
   padding: 12px 10px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
 `;

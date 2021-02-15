@@ -6,6 +6,7 @@ declare module '@emotion/react' {
       primary: string;
       secondary: string;
       tertiary: string;
+      quarter: string;
       primaryHover: string;
       fontColorPrimary: string;
       fontColorSecondary: string;
@@ -16,6 +17,7 @@ declare module '@emotion/react' {
       red: string;
     };
     colorsRGB: {
+      tertiary: string;
       white: string;
     };
   }
@@ -30,13 +32,15 @@ const theme = {
     primary: '#E4E6EB',
     secondary: '#FFFFFF',
     tertiary: '#F0F2F5',
+    quarter: '#B0B3B8',
 
     // Hovers - BgColors
     primaryHover: '#D8DADF',
 
     // Font Color
     fontColorPrimary: '#050505',
-    fontColorSecondary: '#B0B3B8',
+    fontColorSecondary: '#65676B',
+    // fontColorTertiary: '#B0B3B8',
 
     // --- Theme Dark ---
     // Backgrounds Colors
@@ -59,6 +63,7 @@ const theme = {
     red: '#F02849',
   },
   colorsRGB: {
+    tertiary: '240,242,245',
     white: '255,255,255',
   },
 };

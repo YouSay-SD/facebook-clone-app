@@ -1,16 +1,21 @@
 import React, { FC } from 'react';
+import { Container, Button } from '../..';
 import { NavbarContainer, Navbar, ButtonContainer, NavBtn } from './styles';
 
 const NavbarProfile: FC = () => {
   return (
     <NavbarContainer>
-      <Navbar>
-        <ButtonContainer>
-          <NavBtn>Posts</NavBtn>
-          <NavBtn>About</NavBtn>
-          <NavBtn>Friends</NavBtn>
-        </ButtonContainer>
-      </Navbar>
+      <Container>
+        <Navbar>
+          <ButtonContainer>
+            <NavBtn>Posts</NavBtn>
+            <NavBtn>About</NavBtn>
+            <NavBtn>Friends</NavBtn>
+          </ButtonContainer>
+
+          <Button>Edit Profile</Button>
+        </Navbar>
+      </Container>
     </NavbarContainer>
   );
 };

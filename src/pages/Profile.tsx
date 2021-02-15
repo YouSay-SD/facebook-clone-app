@@ -1,8 +1,13 @@
 import React, { FC } from 'react';
-import { Hero } from '../components';
+import { Hero, NavbarProfile } from '../components';
 
 const Profile: FC = () => {
-  return <Hero />;
+  return (
+    <>
+      <Hero />
+      <NavbarProfile />
+    </>
+  );
 };
 
 export default Profile;

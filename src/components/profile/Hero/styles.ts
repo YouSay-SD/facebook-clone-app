@@ -1,4 +1,5 @@
 import styled from '@emotion/styled/macro';
+import { respondAbove } from '../../../styles/breakpoints';
 
 interface ImageProps {
   url: string;
@@ -7,12 +8,17 @@ interface ImageProps {
 export const Image = styled.div<ImageProps>`
   width: 100%;
   height: 250px;
+  border-radius: 0 0 10px 10px;
   background-image: url(${({ url }) => url || ''});
   background-position: center;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: flex-end;
+
+  ${respondAbove.sm} {
+    height: 350px;
+  }
 `;
 
 export const HeroContainer = styled.div`
@@ -37,8 +43,8 @@ export const BlurImage = styled.div<ImageProps>`
     content: '';
     background: linear-gradient(
       0deg,
-      rgba(65, 25, 25, 1) 24%,
-      rgba(255, 255, 255, 0) 70%
+      rgba(${({ theme }) => theme.colorsRGB.tertiary}) 44%,
+      rgba(${({ theme }) => theme.colorsRGB.tertiary}, 0) 70%
     );
     position: absolute;
     bottom: 0;
