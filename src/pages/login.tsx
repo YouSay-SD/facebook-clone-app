@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Container, AuthContent } from '../components';
 
-const Login: React.FC = () => {
+const Login: FC = () => {
   return (
     <Container>
       <AuthContent />
