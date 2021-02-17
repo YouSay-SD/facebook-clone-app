@@ -18,15 +18,23 @@ export const ViewerContent = styled.div`
   height: 50%;
   display: flex;
   align-items: center;
+  justify-content: center;
   background-color: #000000;
 
   ${respondAbove.sm} {
-    width: 75%;
+    width: 60%;
+    height: 100%;
+  }
+
+  ${respondAbove.lg} {
+    width: 70%;
     height: 100%;
   }
 `;
 
-export const Viewer = styled.img``;
+export const Viewer = styled.img`
+  max-width: 100%;
+`;
 
 export const PostContent = styled.div`
   width: 100%;
@@ -34,7 +42,12 @@ export const PostContent = styled.div`
   background-color: ${({ theme }) => theme.colors.secondary};
 
   ${respondAbove.sm} {
-    width: 25%;
+    width: 40%;
+    height: 100%;
+  }
+
+  ${respondAbove.lg} {
+    width: 30%;
     height: 100%;
   }
 `;

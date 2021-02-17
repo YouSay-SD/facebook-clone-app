@@ -16,6 +16,7 @@ export { default as NavbarProfile } from './profile/NavbarProfile';
 export { default as Grid } from './profile/Grid';
 export { default as Box } from './profile/Box';
 export { default as Preview } from './profile/Preview';
+export { default as Avatar } from './profile/Avatar';
 
 // Post
 export { default as Comments } from './post/Comments';
