@@ -27,6 +27,11 @@ const GlobalStyle = () => (
         background-color: #f0f2f5;
         color: #1c1e21;
       }
+
+      img {
+        width: 100%;
+        vertical-align: top;
+      }
     `}
   />
 );

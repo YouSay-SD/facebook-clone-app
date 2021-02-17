@@ -15,7 +15,7 @@ export const InputContainer = styled.div<InputContainerProps>`
 
 export const InputStyled = styled.input`
   color: ${({ theme }) => theme.colors.fontColorPrimary};
-  border: 1px solid ${({ theme }) => theme.colors.fontColorSecondary};
+  border: 1px solid ${({ theme }) => theme.colors.quarter};
   padding: 12px 14px;
   font-size: 0.9rem;
   border-radius: 6px;
