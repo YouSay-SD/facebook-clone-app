@@ -21,4 +21,4 @@ export { default as Avatar } from './profile/Avatar';
 // Post
 export { default as Comments } from './post/Comments';
 export { default as ModalPost } from './post/ModalPost';
-export { default as PostInfo } from './post/PostInfo';
+export { default as PostDate } from './post/PostDate';
