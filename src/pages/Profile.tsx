@@ -8,7 +8,8 @@ const Profile: FC = () => {
       <Hero />
       <NavbarProfile />
       <Preview item='Photos' />
-      <ModalPost />
+      <Preview item='Friends' />
+      {/* <ModalPost /> */}
     </>
   );
 };
