@@ -2,6 +2,7 @@ import styled from '@emotion/styled/macro';
 
 export const PostDateContainer = styled.div`
   display: flex;
+  padding: 5px 0;
 `;
 
 export const TextContainer = styled.div`
