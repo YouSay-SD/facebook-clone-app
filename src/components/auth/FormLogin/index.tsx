@@ -4,7 +4,10 @@ import { useDispatch } from 'react-redux';
 import { Form, Button, ButtonGoogle, Archor } from './styles';
 import { FormData } from './interface';
 import { Input, Alert } from '../../form';
-import { startGoogleLogin } from '../../../actions/auth/auth';
+import {
+  startGoogleLogin,
+  startLoginEmailPassword,
+} from '../../../actions/auth/auth';
 
 const FormLogin: React.FC = () => {
   const dispatch = useDispatch();
@@ -13,12 +16,9 @@ const FormLogin: React.FC = () => {
   const onSubmit = handleSubmit(
     ({ email, password }: FormData, { target }: any) => {
       target.reset();
+      dispatch(startLoginEmailPassword(email, password));
     }
   );
-
-  const handleLogin = () => {
-    // dispatch(startLoginEmailPassword(email, password));
-  };
 
   const handleGoogleLogin = () => {
     dispatch(startGoogleLogin());

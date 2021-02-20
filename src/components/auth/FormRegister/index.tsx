@@ -1,15 +1,19 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import { Form, Button, RegisterContainer } from './styles';
-import { FormData } from './interface';
+import { RegisterProps } from './interface';
 import { Alert, Input } from '../../form';
+import { startRegisterWithEmailPassword } from '../../../actions/auth/auth';
 
 const FormRegister: React.FC = () => {
-  const { register, errors, handleSubmit } = useForm<FormData>();
+  const dispatch = useDispatch();
+  const { register, errors, handleSubmit } = useForm<RegisterProps>();
 
   const onSubmit = handleSubmit(
-    ({ email, password }: FormData, { target }: any) => {
+    ({ email, password, userName }: RegisterProps, { target }: any) => {
       target.reset();
+      dispatch(startRegisterWithEmailPassword({ email, password, userName }));
     }
   );
 
@@ -21,8 +25,8 @@ const FormRegister: React.FC = () => {
         <Input
           width={48.5}
           type='text'
-          placeholder='First name'
-          name='firstName'
+          placeholder='User name'
+          name='userName'
           innerRef={register({
             required: {
               value: true,
@@ -30,22 +34,7 @@ const FormRegister: React.FC = () => {
             },
           })}
         >
-          {errors?.firstName && <Alert>{errors?.firstName?.message}</Alert>}
-        </Input>
-
-        <Input
-          width={48.5}
-          type='text'
-          placeholder='Last name'
-          name='lastName'
-          innerRef={register({
-            required: {
-              value: true,
-              message: 'Last name is required',
-            },
-          })}
-        >
-          {errors?.lastName && <Alert>{errors?.lastName?.message}</Alert>}
+          {errors?.userName && <Alert>{errors?.userName?.message}</Alert>}
         </Input>
 
         <Input
