@@ -1,6 +1,7 @@
 import { firebase, googleAuthProvider } from '../../firebase/firebaseConfig';
 import { types } from '../../types/types';
 import { RegisterProps } from '../../components/auth/FormRegister/interface';
+import { startLoading, finishLoading } from '../ui/ui';
 
 export const login = (uid: string, displayName: string) => {
   return {
@@ -14,6 +15,7 @@ export const login = (uid: string, displayName: string) => {
 
 export const startLoginEmailPassword = (email: string, password: string) => {
   return (dispatch: any) => {
+    dispatch(startLoading());
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -22,8 +24,13 @@ export const startLoginEmailPassword = (email: string, password: string) => {
           const { uid, displayName } = user;
           if (uid && displayName) {
             dispatch(login(uid, displayName));
+            dispatch(finishLoading());
           }
         }
+      })
+      .catch((e) => {
+        console.log(e);
+        dispatch(finishLoading());
       });
   };
 };
@@ -64,6 +71,9 @@ export const startGoogleLogin = () => {
             dispatch(login(uid, displayName));
           }
         }
+      })
+      .catch((e) => {
+        console.log(e);
       });
   };
 };

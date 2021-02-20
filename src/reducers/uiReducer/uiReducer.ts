@@ -1,11 +1,13 @@
-import { types } from '../types/types';
+import { types } from '../../types/types';
 
 export interface UiState {
   modalOpen: boolean;
+  loading: boolean;
 }
 
 const initialState = {
   modalOpen: false,
+  loading: false,
 };
 
 type Action = {

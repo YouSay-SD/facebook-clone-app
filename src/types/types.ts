@@ -4,4 +4,7 @@ export const types = {
 
   uiOpenModal: '[ui] Open Modal',
   uiCloseModal: '[ui] Close Modal',
+
+  uiStartLoading: '[UI] Start Loading',
+  uiFinishLoading: '[UI] Finish Loading',
 };

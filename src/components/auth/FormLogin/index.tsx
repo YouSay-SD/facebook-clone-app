@@ -1,9 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Form, Button, ButtonGoogle, Archor } from './styles';
 import { FormData } from './interface';
 import { Input, Alert } from '../../form';
+import { RootStore } from '../../../store/store';
 import {
   startGoogleLogin,
   startLoginEmailPassword,
@@ -11,6 +12,7 @@ import {
 
 const FormLogin: React.FC = () => {
   const dispatch = useDispatch();
+  const { loading } = useSelector((state: RootStore) => state.ui);
   const { register, errors, handleSubmit } = useForm<FormData>();
 
   const onSubmit = handleSubmit(
@@ -57,7 +59,7 @@ const FormLogin: React.FC = () => {
       />
       {errors?.password && <Alert>{errors?.password?.message}</Alert>}
 
-      <Button type='submit' value='Log In' />
+      <Button type='submit' value='Log In' disabled={loading} />
       <ButtonGoogle onClick={handleGoogleLogin}>
         <img src='./img/icons/google.svg' alt='Google Sign Up' />
         Sign up with Google

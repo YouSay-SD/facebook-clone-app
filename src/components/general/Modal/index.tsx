@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootStore } from '../../../store/store';
 import { modalAnimation } from './animations';
-import { uiOpenModal, uiCloseModal } from '../../../actions/ui';
+import { uiOpenModal, uiCloseModal } from '../../../actions/ui/ui';
 
 import { Box, Background, ButtonContainer } from './styles';
 
