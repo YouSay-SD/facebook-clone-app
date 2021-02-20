@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Form, Button, Archor } from './styles';
+import { Form, Button, ButtonGoogle, Archor } from './styles';
 import { FormData } from './interface';
 import { Input, Alert } from '../../form';
 
@@ -47,6 +47,10 @@ const FormLogin: React.FC = () => {
       {errors?.password && <Alert>{errors?.password?.message}</Alert>}
 
       <Button type='submit' value='Log In' />
+      <ButtonGoogle>
+        <img src='./img/icons/google.svg' alt='Google Sign Up' />
+        Sign up with Google
+      </ButtonGoogle>
       <Archor>
         <a href='/'>Forgot Password?</a>
       </Archor>
