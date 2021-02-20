@@ -66,7 +66,7 @@ const Preview: FC<PreviewProps> = ({ children, item }) => {
 
   const handleGoPhoto = (id: number) => {
     console.log('as');
-    history.push(`./photos/${id}`);
+    history.push(`/photos/${id}`);
   };
 
   return (
