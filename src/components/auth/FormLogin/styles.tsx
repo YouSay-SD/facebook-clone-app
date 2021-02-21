@@ -29,7 +29,7 @@ export const Button = styled.input`
   }
 `;
 
-export const ButtonGoogle = styled.button`
+export const ButtonGoogle = styled.span`
   background-color: ${({ theme }) => theme.colors.blue};
   color: ${({ theme }) => theme.colors.primary};
   padding: 14px 16px;
@@ -43,6 +43,7 @@ export const ButtonGoogle = styled.button`
   margin-bottom: 15px;
   border: 1px solid ${({ theme }) => theme.colors.fontColorSecondary};
   position: relative;
+  text-align: center;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.blueHover};

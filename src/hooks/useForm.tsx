@@ -8,7 +8,6 @@ export const useForm = <T extends Object>(initState: T) => {
   };
 
   const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    console.log(target.placeholder);
     const { name, value } = target;
     setFormValues({
       ...formValues,
