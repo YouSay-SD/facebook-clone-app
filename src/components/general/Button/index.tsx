@@ -8,7 +8,12 @@ interface ButtonProps {
 const Button: FC<ButtonProps> = ({ children, type }) => {
   return (
     <ButtonStyled>
-      {type && <Icon src={`./img/icons/${type}.svg`} alt={type} />}
+      {type && (
+        <Icon
+          src={`${process.env.REACT_APP_URL}/img/icons/${type}.svg`}
+          alt={type}
+        />
+      )}
       <p>{children}</p>
     </ButtonStyled>
   );

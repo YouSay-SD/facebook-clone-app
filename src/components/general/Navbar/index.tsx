@@ -13,7 +13,10 @@ const Navbar: FC = () => {
   return (
     <NavbarContainer>
       <LeftSide>
-        <Logo src='./img/icons/facebook.svg' alt='Facebook' />
+        <Logo
+          src={`${process.env.REACT_APP_URL}/img/icons/facebook.svg`}
+          alt='Facebook'
+        />
         {/* <Search type='text' name='search' /> */}
       </LeftSide>
       <RightSide>
