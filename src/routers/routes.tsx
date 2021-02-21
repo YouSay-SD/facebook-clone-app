@@ -1,17 +1,16 @@
-import React, { FC, useEffect, useState } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import React, { FC, useEffect } from 'react';
+import { Switch, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Login, Profile, Photos } from '../pages';
 import { firebase } from '../firebase/firebaseConfig';
-import { login } from '../actions/auth/auth';
+import { login, checkingFinish } from '../actions/auth/auth';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 import { RootStore } from '../store/store';
 
 export const Routes: FC = () => {
   const dispatch = useDispatch();
-
-  const { uid } = useSelector((state: RootStore) => state.auth);
+  const { checking, uid } = useSelector((state: RootStore) => state.auth);
 
   // Keep authentication status
   useEffect(() => {
@@ -20,13 +19,18 @@ export const Routes: FC = () => {
         if (user.uid && user.displayName) {
           dispatch(login(user.uid, user.displayName));
         }
+      } else {
+        dispatch(checkingFinish());
       }
     });
   }, []);
 
+  if (checking) {
+    return <h5>Loading...</h5>;
+  }
+
   return (
     <Switch>
-      {/* <Route exact path='/' component={Login} /> */}
       <PublicRoute
         exact
         path='/'

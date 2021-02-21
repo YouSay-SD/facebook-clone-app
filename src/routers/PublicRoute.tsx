@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import PropTypes from 'prop-types';
 
 import { Route, Redirect } from 'react-router-dom';
 import { RouteProps } from './interface';
@@ -17,9 +16,4 @@ export const PublicRoute: FC<RouteProps> = ({
       }
     />
   );
-};
-
-PublicRoute.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
-  component: PropTypes.func.isRequired,
 };

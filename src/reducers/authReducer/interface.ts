@@ -1,6 +1,7 @@
 export interface AuthState {
   uid?: string;
   name?: string;
+  checking: boolean;
 }
 
 export interface PayloadProps {

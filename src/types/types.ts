@@ -1,10 +1,11 @@
 export const types = {
   login: '[Auth] Login',
   logout: '[Auth] Logout',
+  checkingFinish: '[Auth] Finish Checking Login State',
 
-  uiOpenModal: '[ui] Open Modal',
-  uiCloseModal: '[ui] Close Modal',
+  uiOpenModal: '[Ui] Open Modal',
+  uiCloseModal: '[Ui] Close Modal',
 
-  uiStartLoading: '[UI] Start Loading',
-  uiFinishLoading: '[UI] Finish Loading',
+  uiStartLoading: '[Ui] Start Loading',
+  uiFinishLoading: '[Ui] Finish Loading',
 };

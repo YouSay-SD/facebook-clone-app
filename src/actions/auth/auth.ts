@@ -88,3 +88,5 @@ export const startLogout = () => {
     dispatch(logout());
   };
 };
+
+export const checkingFinish = () => ({ type: types.checkingFinish });
