@@ -1,4 +1,8 @@
-import { firebase, googleAuthProvider } from '../../firebase/firebaseConfig';
+import {
+  db,
+  firebase,
+  googleAuthProvider,
+} from '../../firebase/firebaseConfig';
 import { types } from '../../types/types';
 import { RegisterProps } from '../../components/auth/FormRegister/interface';
 import { startLoading, finishLoading } from '../ui/ui';
@@ -51,6 +55,15 @@ export const startRegisterWithEmailPassword = ({
           if (uid && displayName) {
             dispatch(login(uid, displayName));
           }
+
+          const newUser = {
+            uid,
+            userName: displayName,
+            avatar:
+              'https://pbs.twimg.com/profile_images/1036710543208398848/PzOO4lu8_400x400.jpg',
+          };
+
+          db.collection(`users/${userName}/userData`).add(newUser);
         }
       })
       .catch((e) => {

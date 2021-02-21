@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Container, P } from '../..';
+import { HeroProps } from './interface';
 import {
   HeroContainer,
   Image,
@@ -9,15 +10,15 @@ import {
   UserName,
 } from './styles';
 
-const Hero: FC = () => {
+const Hero: FC<HeroProps> = ({ userName, avatar }) => {
   return (
     <HeroContainer>
       <Container hasPaddingMobile={false}>
         <Image url='https://www.pockettactics.com/wp-content/uploads/2021/01/genshin-impact-ganyu.jpg'>
-          <Avatar url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRRn8HIKq1xFSeHJTiI7EBp1Cs_M0LCDxZgw&usqp=CAU' />
+          <Avatar url={avatar} />
         </Image>
         <TextContainer>
-          <UserName>YouSay</UserName>
+          <UserName>{userName}</UserName>
           <P>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry.
