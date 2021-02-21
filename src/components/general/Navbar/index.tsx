@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavbarContainer, LeftSide, RightSide, Logo, Avatar } from './styles';
-import { logout } from '../../../actions/auth/auth';
+import { startLogout } from '../../../actions/auth/auth';
 
 const Navbar: FC = () => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(startLogout());
   };
 
   return (
