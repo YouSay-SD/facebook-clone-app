@@ -8,4 +8,6 @@ export const types = {
 
   uiStartLoading: '[Ui] Start Loading',
   uiFinishLoading: '[Ui] Finish Loading',
+
+  setCurrentUser: '[User] Set Current User',
 };

@@ -8,9 +8,7 @@ import { RootStore } from '../store/store';
 
 export const Routes: FC = () => {
   const dispatch = useDispatch();
-  const { checking, uid, userName } = useSelector(
-    (state: RootStore) => state.auth
-  );
+  const { checking, uid } = useSelector((state: RootStore) => state.auth);
 
   // Keep authentication status
   useEffect(() => {

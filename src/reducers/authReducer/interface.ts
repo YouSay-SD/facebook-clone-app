@@ -1,6 +1,6 @@
 export interface AuthState {
   uid?: string;
-  name?: string;
+  userName?: string;
   checking: boolean;
 }
 
