@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Login, Profile, Photos } from '../pages';
 import { firebase } from '../firebase/firebaseConfig';
 import { login, checkingFinish } from '../actions/auth/auth';
-import { PrivateRoute } from './PrivateRoute';
-import { PublicRoute } from './PublicRoute';
 import { RootStore } from '../store/store';
 
 export const Routes: FC = () => {
   const dispatch = useDispatch();
-  const { checking, uid, name } = useSelector((state: RootStore) => state.auth);
+  const { checking, uid, userName } = useSelector(
+    (state: RootStore) => state.auth
+  );
 
   // Keep authentication status
   useEffect(() => {
@@ -38,26 +38,9 @@ export const Routes: FC = () => {
         </>
       ) : (
         <>
-          <Route exact path={`/profile/${name}`} component={Profile} />
-          <Redirect to={`/profile/${name}`} />
+          <Route exact path='/:userName' component={Profile} />
         </>
       )}
-      {/* <PublicRoute
-        exact
-        path='/'
-        component={Login}
-        isAuthenticated={!!uid}
-        // path='/photos/:photoId'
-        // component={Photos}
-      />
-      <PrivateRoute
-        exact
-        path={`/profile/${name}`}
-        component={Profile}
-        isAuthenticated={!!uid}
-      /> */}
-
-      {/* <Redirect to={`/profile/${name}`} /> */}
     </Switch>
   );
 };
