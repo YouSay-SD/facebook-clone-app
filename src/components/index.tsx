@@ -24,3 +24,8 @@ export { default as Comments } from './post/Comments';
 export { default as ModalPost } from './post/ModalPost';
 export { default as PostDate } from './post/PostDate';
 export { default as Photo } from './post/Photo';
+
+// Form
+export { default as Alert } from './form/Alert';
+export { default as Input } from './form/Input';
+export { default as Searcher } from './form/Searcher';

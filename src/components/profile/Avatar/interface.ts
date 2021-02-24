@@ -1,4 +1,12 @@
 export interface AvatarProps {
   url?: string;
-  width?: number;
+  size?: number;
+}
+
+export interface AvatarContainerProps {
+  size?: number;
+}
+
+export interface AvatarImgProps {
+  url?: string;
 }

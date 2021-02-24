@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import { AvatarContainer, AvatarImg, AvatarOnline } from './styles';
-import { AvatarProps } from './interface';
+import { AvatarContainerProps, AvatarProps } from './interface';
 
-const Avatar: FC<AvatarProps> = ({ url, width }) => {
+const Avatar: FC<AvatarProps> = ({ url, size }) => {
   return (
-    <AvatarContainer>
-      <AvatarImg src={url} width={width} />
+    <AvatarContainer size={size}>
+      <AvatarImg src={url} />
       <AvatarOnline />
     </AvatarContainer>
   );

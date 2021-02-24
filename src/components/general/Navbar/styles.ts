@@ -1,5 +1,6 @@
 import styled from '@emotion/styled/macro';
 import { respondAbove } from '../../../styles/breakpoints';
+import { flexCenterVertical } from '../../../styles/mixins';
 
 export const NavbarContainer = styled.div`
   display: flex;
@@ -24,7 +25,9 @@ export const Avatar = styled.img`
   border-radius: 50%;
 `;
 
-export const LeftSide = styled.div``;
+export const LeftSide = styled.div`
+  ${flexCenterVertical}
+`;
 
 export const RightSide = styled.div``;
 

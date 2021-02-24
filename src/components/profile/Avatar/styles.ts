@@ -1,13 +1,17 @@
 import styled from '@emotion/styled/macro';
-import { AvatarProps } from './interface';
+import { AvatarImgProps, AvatarContainerProps } from './interface';
 
-export const AvatarContainer = styled.div`
+export const AvatarContainer = styled.div<AvatarContainerProps>`
   position: relative;
+  width: ${({ size }) => size || '40'}px;
+  height: ${({ size }) => size || '40'}px;
 `;
 
-export const AvatarImg = styled.img<AvatarProps>`
+export const AvatarImg = styled.img<AvatarImgProps>`
   border-radius: 50%;
-  width: ${({ width }) => width || '40'}px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 export const AvatarOnline = styled.div`

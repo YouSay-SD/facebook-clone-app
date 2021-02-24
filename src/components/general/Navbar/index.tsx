@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavbarContainer, LeftSide, RightSide, Logo, Avatar } from './styles';
 import { startLogout } from '../../../actions/auth/auth';
+import { Searcher } from '../..';
 
 const Navbar: FC = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const Navbar: FC = () => {
           src={`${process.env.REACT_APP_URL}/img/icons/facebook.svg`}
           alt='Facebook'
         />
-        {/* <Search type='text' name='search' /> */}
+        <Searcher />
       </LeftSide>
       <RightSide>
         <button type='button' onClick={handleLogout}>
