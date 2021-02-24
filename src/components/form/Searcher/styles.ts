@@ -31,7 +31,7 @@ export const Icon = styled.img`
 
 export const ResultsContainer = styled.div`
   position: absolute;
-  bottom: -42px;
+  top: 56px;
   left: 0;
   padding: 10px;
   background-color: ${({ theme }) => theme.colors.secondary};
@@ -43,6 +43,13 @@ export const ResultsContainer = styled.div`
 
 export const Result = styled.div`
   ${flexCenterVertical};
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(68, 73, 80, 0.15);
+  }
 
   & > div {
     margin-right: 15px;
