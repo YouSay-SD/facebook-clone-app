@@ -5,6 +5,7 @@ export { default as Modal } from './general/Modal';
 export { default as P } from './general/P';
 export { default as Button } from './general/Button';
 export { default as Title } from './general/Title';
+export { default as Loader } from './general/Loader';
 
 // Auth
 export { default as FormLogin } from './auth/FormLogin';

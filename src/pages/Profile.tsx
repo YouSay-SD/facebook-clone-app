@@ -1,7 +1,14 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Navbar, Hero, NavbarProfile, Preview, ModalPost } from '../components';
+import {
+  Navbar,
+  Hero,
+  NavbarProfile,
+  Preview,
+  Loader,
+  ModalPost,
+} from '../components';
 import { getUserData } from '../actions/user/user';
 import { RootStore } from '../store/store';
 
@@ -18,7 +25,11 @@ const Profile: FC<ProfileProps> = () => {
   }, []);
 
   const { currentUser } = useSelector((state: RootStore) => state.user);
-  const { userName: username, avatar } = currentUser;
+  const { userName: username, avatar, uid } = currentUser;
+
+  if (!uid) {
+    return <Loader />;
+  }
 
   return (
     <>
