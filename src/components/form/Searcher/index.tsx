@@ -21,11 +21,11 @@ const Searcher: FC = () => {
       <ResultsContainer>
         <Result>
           <Avatar url='https://somoskudasai.com/wp-content/uploads/2021/01/portada_genshin-impact-29.jpg' />
-          <Title>YouSay</Title>
+          <Title size={15}>YouSay</Title>
         </Result>
         <Result>
           <Avatar url='https://somoskudasai.com/wp-content/uploads/2021/01/portada_genshin-impact-29.jpg' />
-          <Title>YouSay</Title>
+          <Title size={15}>YouSay</Title>
         </Result>
       </ResultsContainer>
     </SearchContainer>
