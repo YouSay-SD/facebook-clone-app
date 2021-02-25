@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Avatar, Title } from '../..';
+import { useForm } from '../../../hooks/useForm';
 import {
   SearchContainer,
   Search,
@@ -9,15 +10,26 @@ import {
 } from './styles';
 
 const Searcher: FC = () => {
+  const { formValues, handleInputChange } = useForm({
+    search: '',
+  });
+
+  const handleFormSearch = () => {
+    console.log(formValues);
+  };
+
   return (
     <SearchContainer>
       <Icon src={`${process.env.REACT_APP_URL}/img/icons/search.svg`} />
-      <Search
-        type='text'
-        name='search'
-        placeholder='Search Facebook'
-        autoComplete='off'
-      />
+      <form onChange={handleFormSearch}>
+        <Search
+          type='text'
+          name='search'
+          placeholder='Search Facebook'
+          autoComplete='off'
+          onChange={handleInputChange}
+        />
+      </form>
       <ResultsContainer>
         <Result>
           <Avatar url='https://somoskudasai.com/wp-content/uploads/2021/01/portada_genshin-impact-29.jpg' />
