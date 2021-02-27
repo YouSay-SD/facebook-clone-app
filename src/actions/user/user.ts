@@ -1,5 +1,5 @@
 import { types } from '../../types/types';
-import { db } from '../../firebase/firebaseConfig';
+import { db, usersRef } from '../../firebase/firebaseConfig';
 
 export const setCurrentUser = (currentUser: object) => ({
   type: types.setCurrentUser,
@@ -8,11 +8,20 @@ export const setCurrentUser = (currentUser: object) => ({
 
 export const getUserData = (userName: string) => {
   return async (dispatch: any) => {
-    const userSnap = await db.collection(`users/${userName}/userData`).get();
+    const userSnap = await db
+      .collection(`users`)
+      .where(userName, '==', userName);
 
-    userSnap.forEach((snapChildren: any) => {
-      const currentUser = snapChildren.data();
-      dispatch(setCurrentUser(currentUser));
+    userSnap.onSnapshot((snap) => {
+      snap.forEach((snapChilddren) => {
+        console.log(snapChilddren);
+        dispatch(setCurrentUser(snapChilddren.data()));
+      });
     });
+
+    // userSnap.forEach((snapChildren: any) => {
+    //   const currentUser = snapChildren.data();
+    //   dispatch(setCurrentUser(currentUser));
+    // });
   };
 };

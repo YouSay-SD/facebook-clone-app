@@ -56,14 +56,22 @@ export const startRegisterWithEmailPassword = ({
             dispatch(login(uid, displayName));
           }
 
-          const newUser = {
+          interface NewUserProps {
+            uid: string;
+            userName: any;
+            avatar: any;
+          }
+
+          const newUser: NewUserProps = {
             uid,
             userName: displayName,
             avatar:
               'https://pbs.twimg.com/profile_images/1036710543208398848/PzOO4lu8_400x400.jpg',
+            // https://cdn.shopify.com/s/files/1/0525/9585/1443/products/GeekJack_thumbnail__2020_____350x350_201211.jpg?v=1611499984
           };
 
-          db.collection(`users/${userName}/userData`).add(newUser);
+          // db.collection(`users/${userName}/data`).add(newUser);
+          db.collection('users').doc(userName).set(newUser);
         }
       })
       .catch((e) => {

@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { Avatar, Title } from '../..';
 import { useForm } from '../../../hooks/useForm';
+import { searchUser } from '../../../helpers/searchUsers';
 import {
   SearchContainer,
   Search,
@@ -14,8 +15,12 @@ const Searcher: FC = () => {
     search: '',
   });
 
-  const handleFormSearch = () => {
-    console.log(formValues);
+  const { search } = formValues;
+
+  const handleFormSearch = async () => {
+    const user = await searchUser(search);
+    // console.log(formValues.search);
+    // console.log(user);
   };
 
   return (
