@@ -71,7 +71,7 @@ export const startRegisterWithEmailPassword = ({
           };
 
           // db.collection(`users/${userName}/data`).add(newUser);
-          db.collection('users').doc(userName).set(newUser);
+          db.doc(`users/${userName}`).set(newUser);
         }
       })
       .catch((e) => {

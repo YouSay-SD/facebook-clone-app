@@ -8,20 +8,14 @@ export const setCurrentUser = (currentUser: object) => ({
 
 export const getUserData = (userName: string) => {
   return async (dispatch: any) => {
-    const userSnap = await db
-      .collection(`users`)
-      .where(userName, '==', userName);
+    const docRef: any = await usersRef.doc(userName);
 
-    userSnap.onSnapshot((snap) => {
-      snap.forEach((snapChilddren) => {
-        console.log(snapChilddren);
-        dispatch(setCurrentUser(snapChilddren.data()));
-      });
+    docRef.get().then((doc: any) => {
+      if (doc.exists) {
+        dispatch(setCurrentUser(doc.data()));
+      } else {
+        console.log('No such document!');
+      }
     });
-
-    // userSnap.forEach((snapChildren: any) => {
-    //   const currentUser = snapChildren.data();
-    //   dispatch(setCurrentUser(currentUser));
-    // });
   };
 };

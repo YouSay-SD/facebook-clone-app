@@ -39,6 +39,10 @@ export const ResultsContainer = styled.div`
   width: 260px;
   box-shadow: 0 12px 12px rgba(0, 0, 0, 0.2),
     inset 0 0 0 0 rgba(255, 255, 255, 0.5);
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 export const Result = styled.div`
