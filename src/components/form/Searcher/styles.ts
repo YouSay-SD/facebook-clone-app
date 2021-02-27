@@ -1,4 +1,5 @@
 import styled from '@emotion/styled/macro';
+import { respondAbove } from '../../../styles/breakpoints';
 import { flexCenterVertical } from '../../../styles/mixins';
 import { IconProps } from './interface';
 
@@ -36,9 +37,13 @@ export const ResultsContainer = styled.div`
   padding: 10px;
   background-color: ${({ theme }) => theme.colors.secondary};
   border-radius: 0 0 10px 10px;
-  width: 260px;
+  width: 100%;
   box-shadow: 0 12px 12px rgba(0, 0, 0, 0.2),
     inset 0 0 0 0 rgba(255, 255, 255, 0.5);
+
+  ${respondAbove.sm} {
+    width: 400px;
+  }
 
   a {
     text-decoration: none;

@@ -17,13 +17,7 @@ const Searcher: FC = () => {
     search: '',
   });
 
-  const [usersFound, setUsersFound] = useState([
-    {
-      uid: '',
-      userName: '',
-      avatar: '',
-    },
-  ]);
+  const [usersFound, setUsersFound] = useState([]);
 
   const { search } = formValues;
 
@@ -48,17 +42,20 @@ const Searcher: FC = () => {
           onChange={handleInputChange}
         />
       </form>
-      <ResultsContainer>
-        {usersFound &&
-          usersFound.map(({ avatar, uid, userName = '' }: CurrentUserProps) => (
-            <Link to={`/${userName}`} key={uid}>
-              <Result id={uid}>
-                <Avatar url={avatar} />
-                <Title size={15}>{userName}</Title>
-              </Result>
-            </Link>
-          ))}
-      </ResultsContainer>
+      {usersFound.length > 0 && (
+        <ResultsContainer>
+          {usersFound.map(
+            ({ avatar, uid, userName = '' }: CurrentUserProps) => (
+              <Link to={`/${userName}`} key={uid}>
+                <Result id={uid}>
+                  <Avatar url={avatar} />
+                  <Title size={15}>{userName}</Title>
+                </Result>
+              </Link>
+            )
+          )}
+        </ResultsContainer>
+      )}
     </SearchContainer>
   );
 };
