@@ -4,12 +4,12 @@ export interface AuthState {
   checking: boolean;
 }
 
-export interface PayloadProps {
+export interface AuthPayloadProps {
   uid: string;
   displayName: string;
 }
 
 export type Action = {
   type: string;
-  payload: PayloadProps;
+  payload: AuthPayloadProps;
 };

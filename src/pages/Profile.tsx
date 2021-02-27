@@ -22,7 +22,7 @@ const Profile: FC<ProfileProps> = () => {
 
   useEffect(() => {
     dispatch(getUserData(userName));
-  }, []);
+  }, [userName]);
 
   const { currentUser } = useSelector((state: RootStore) => state.user);
   const { userName: username, avatar, uid } = currentUser;

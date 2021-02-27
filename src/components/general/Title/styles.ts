@@ -5,6 +5,7 @@ import { TitleProps } from './interface';
 export const TitleContainer = styled.h2<TitleProps>`
   font-size: ${({ size }) => size || 16}px;
   font-weight: 800;
+  color: ${({ theme }) => theme.colors.fontColorPrimary};
 
   ${respondAbove.sm} {
     font-size: ${({ sizeDesk }) => sizeDesk || 16}px;
