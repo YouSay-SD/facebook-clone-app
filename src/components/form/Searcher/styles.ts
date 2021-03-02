@@ -1,7 +1,7 @@
 import styled from '@emotion/styled/macro';
 import { respondAbove } from '../../../styles/breakpoints';
 import { flexCenterVertical } from '../../../styles/mixins';
-import { IconProps } from './interface';
+import { IconProps, ResultsContainerProps } from './interface';
 
 export const SearchContainer = styled.div<IconProps>`
   ${flexCenterVertical}
@@ -30,7 +30,8 @@ export const Icon = styled.img`
   margin-right: 5px;
 `;
 
-export const ResultsContainer = styled.div`
+export const ResultsContainer = styled.div<ResultsContainerProps>`
+  display: ${({ displayResults }) => (displayResults ? 'block' : 'none')};
   position: absolute;
   top: 56px;
   left: 0;
