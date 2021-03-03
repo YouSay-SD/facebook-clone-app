@@ -11,6 +11,30 @@ const GlobalStyle = () => (
       }
 
       @font-face {
+        font-family: 'Segoe UI Historic';
+        src: url('./fonts/Segoe-ui-historic-regular.ttf') format('truetype');
+        font-weight: 400;
+      }
+
+      @font-face {
+        font-family: 'Segoe UI';
+        src: url('./fonts/Segoe-ui-semi-bold.ttf') format('truetype');
+        font-weight: 600;
+      }
+
+      @font-face {
+        font-family: 'Segoe UI';
+        src: url('./fonts/Segoe-ui-medium.ttf') format('truetype');
+        font-weight: 500;
+      }
+
+      @font-face {
+        font-family: 'Segoe UI';
+        src: url('./fonts/Segoe-ui-regular.ttf') format('truetype');
+        font-weight: 400;
+      }
+
+      @font-face {
         font-family: 'SFProDisplay';
         src: url('./fonts/SFProDisplay-Regular.ttf') format('truetype');
       }
@@ -31,6 +55,10 @@ const GlobalStyle = () => (
       img {
         max-width: 100%;
         vertical-align: top;
+      }
+
+      a {
+        text-decoration: none;
       }
     `}
   />

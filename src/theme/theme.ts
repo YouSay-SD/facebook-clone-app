@@ -20,6 +20,10 @@ declare module '@emotion/react' {
       tertiary: string;
       white: string;
     };
+    fontFamily: {
+      primary: string;
+      secondary: string;
+    };
   }
 }
 
@@ -65,6 +69,10 @@ const theme = {
   colorsRGB: {
     tertiary: '240,242,245',
     white: '255,255,255',
+  },
+  fontFamily: {
+    primary: 'Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif',
+    secondary: 'Segoe UI, Helvetica, Arial, sans-serif',
   },
 };
 

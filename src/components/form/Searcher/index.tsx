@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Avatar, Title } from '../..';
 import { useForm } from '../../../hooks/useForm';
 import { searchUsers } from '../../../helpers/searchUsers';
@@ -13,6 +13,7 @@ import {
 } from './styles';
 
 const Searcher: FC = () => {
+  const history = useHistory();
   const { formValues, handleInputChange } = useForm({
     search: '',
   });
@@ -24,6 +25,10 @@ const Searcher: FC = () => {
     const users = await searchUsers(search);
     setUsersFound(users);
     setDisplayInput(true);
+  };
+
+  const goSearchPage = async () => {
+    history.push(`/search/?q=${search}`);
   };
 
   const handleHideInput = () => {
@@ -39,7 +44,7 @@ const Searcher: FC = () => {
   return (
     <SearchContainer>
       <Icon src={`${process.env.REACT_APP_URL}/img/icons/search.svg`} />
-      <form onSubmit={handleSearch}>
+      <form onSubmit={goSearchPage}>
         <Search
           type='text'
           name='search'
@@ -53,7 +58,7 @@ const Searcher: FC = () => {
       {usersFound.length > 0 && (
         <ResultsContainer displayResults={displayInput}>
           {usersFound.map(({ avatar, uid, userName }: CurrentUserProps) => (
-            <Link to={`/${userName}`} key={uid}>
+            <Link to={`../profile/${userName}`} key={uid}>
               <Result id={uid}>
                 <Avatar url={avatar} />
                 <Title size={15}>{userName}</Title>
