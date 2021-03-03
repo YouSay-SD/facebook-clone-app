@@ -29,3 +29,6 @@ export { default as Photo } from './post/Photo';
 export { default as Alert } from './form/Alert';
 export { default as Input } from './form/Input';
 export { default as Searcher } from './form/Searcher';
+
+// Search
+export { default as SearchContent } from './search/SearchContent';

@@ -1,6 +1,6 @@
 import { firebase, db, usersRef } from '../firebase/firebaseConfig';
 
-export const searchUser = async (search: string) => {
+export const searchUsers = async (search: any) => {
   const allUsers: any = [];
 
   if (search) {

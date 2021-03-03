@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Avatar, Title } from '../..';
 import { useForm } from '../../../hooks/useForm';
-import { searchUser } from '../../../helpers/searchUsers';
+import { searchUsers } from '../../../helpers/searchUsers';
 import { CurrentUserProps } from '../../../reducers/userReducer/userReducer';
 import {
   SearchContainer,
@@ -21,7 +21,7 @@ const Searcher: FC = () => {
   const { search } = formValues;
 
   const handleSearch = async () => {
-    const users = await searchUser(search);
+    const users = await searchUsers(search);
     setUsersFound(users);
     setDisplayInput(true);
   };
