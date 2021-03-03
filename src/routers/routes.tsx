@@ -5,6 +5,7 @@ import { Login, Profile, Search } from '../pages';
 import { firebase } from '../firebase/firebaseConfig';
 import { login, checkingFinish } from '../actions/auth/auth';
 import { RootStore } from '../store/store';
+import { Navbar } from '../components';
 
 export const Routes: FC = () => {
   const dispatch = useDispatch();
@@ -36,8 +37,10 @@ export const Routes: FC = () => {
         </>
       ) : (
         <>
+          <Navbar />
           <Route exact path='/profile/:userName' component={Profile} />
           <Route exact path='/search' component={Search} />
+          <Redirect to='/profile/YouSay' />
         </>
       )}
     </Switch>

@@ -3,6 +3,10 @@ import styled from '@emotion/styled/macro';
 export const ResultsContainer = styled.div`
   display: flex;
   flex-direction: column;
+
+  button {
+    margin-top: 20px;
+  }
 `;
 
 export const TitleContainer = styled.div`
@@ -16,7 +20,7 @@ export const Result = styled.div`
   border-bottom: 2px solid ${({ theme }) => theme.colors.primary};
 
   h2 {
-    font-family: ${({ theme }) => theme.fontFamily.secondary};
+    font-family: ${({ theme }) => theme.fontFamily.primary};
     margin-left: 15px;
   }
 `;

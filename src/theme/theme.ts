@@ -71,8 +71,8 @@ const theme = {
     white: '255,255,255',
   },
   fontFamily: {
-    primary: 'Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif',
-    secondary: 'Segoe UI, Helvetica, Arial, sans-serif',
+    primary: 'Segoe UI, Segoe UI, Helvetica, Arial, sans-serif',
+    secondary: 'Segoe UI Historic, Helvetica, Arial, sans-serif',
   },
 };
 

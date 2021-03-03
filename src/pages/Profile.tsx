@@ -1,14 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import {
-  Navbar,
-  Hero,
-  NavbarProfile,
-  Preview,
-  Loader,
-  ModalPost,
-} from '../components';
+import { Hero, NavbarProfile, Preview, Loader, ModalPost } from '../components';
 import { getUserData } from '../actions/user/user';
 import { RootStore } from '../store/store';
 
@@ -33,7 +26,6 @@ const Profile: FC<ProfileProps> = () => {
 
   return (
     <>
-      <Navbar />
       <Hero userName={username} avatar={avatar} />
       <NavbarProfile />
       <Preview item='Photos' />

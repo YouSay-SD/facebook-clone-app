@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import queryString from 'query-string';
 import { Link, useLocation } from 'react-router-dom';
-import { Container, Title, Avatar, Box } from '../..';
+import { Container, Title, Avatar, Box, Button } from '../..';
 import { ResultsContainer, Result, TitleContainer } from './styles';
 import { searchUsers } from '../../../helpers/searchUsers';
 
@@ -19,6 +19,10 @@ const SearchContent: FC = () => {
 
   useEffect(() => {
     handleSearch();
+  }, [q]);
+
+  useEffect(() => {
+    handleSearch();
   }, []);
 
   return (
@@ -31,14 +35,23 @@ const SearchContent: FC = () => {
                 People
               </Title>
             </TitleContainer>
-            {usersFound.map(({ uid, userName, avatar }) => (
-              <Link to={`../profile/${userName}`} key={uid} target='_self'>
-                <Result>
-                  <Avatar url={avatar} size={60} />
-                  <Title fontWeight={500}>{userName}</Title>
-                </Result>
-              </Link>
-            ))}
+            {usersFound.length > 0 ? (
+              <>
+                {usersFound.map(({ uid, userName, avatar }) => (
+                  <Link to={`../profile/${userName}`} key={uid} target='_self'>
+                    <Result>
+                      <Avatar url={avatar} size={60} />
+                      <Title fontWeight={500}>{userName}</Title>
+                    </Result>
+                  </Link>
+                ))}
+              </>
+            ) : (
+              'Results not found'
+            )}
+            <Button fontSize={15} fontWeight={500}>
+              See More
+            </Button>
           </Box>
         </ResultsContainer>
       </Container>
