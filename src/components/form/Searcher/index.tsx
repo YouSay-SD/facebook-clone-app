@@ -27,14 +27,15 @@ const Searcher: FC = () => {
     setDisplayInput(true);
   };
 
-  const goSearchPage = async () => {
+  const goSearchPage = async (e: any) => {
+    e.preventDefault();
     history.push(`/search/?q=${search}`);
   };
 
   const handleHideInput = () => {
     setTimeout(() => {
       setDisplayInput(false);
-    }, 100);
+    }, 500);
   };
 
   useEffect(() => {

@@ -1,11 +1,13 @@
 import React, { FC } from 'react';
-import { ButtonStyled, Icon } from './styles';
+import { ButtonStyled, Text, Icon } from './styles';
 
-interface ButtonProps {
+export interface ButtonProps {
   type?: string;
+  fontWeight?: number;
+  fontSize?: number;
 }
 
-const Button: FC<ButtonProps> = ({ children, type }) => {
+const Button: FC<ButtonProps> = ({ children, type, fontWeight, fontSize }) => {
   return (
     <ButtonStyled>
       {type && (
@@ -14,7 +16,9 @@ const Button: FC<ButtonProps> = ({ children, type }) => {
           alt={type}
         />
       )}
-      <p>{children}</p>
+      <Text fontWeight={fontWeight} fontSize={fontSize}>
+        {children}
+      </Text>
     </ButtonStyled>
   );
 };
