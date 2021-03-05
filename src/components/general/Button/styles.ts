@@ -3,9 +3,9 @@ import { respondAbove } from '../../../styles/breakpoints';
 import { flexCenter } from '../../../styles/mixins';
 import { ButtonProps } from './index';
 
-export const ButtonStyled = styled.button`
+export const ButtonStyled = styled.button<ButtonProps>`
   border: none;
-  width: 100%;
+  ${({ width }) => width && `width: ${width}%`};
   height: 36px;
   background-color: ${({ theme }) => theme.colors.primary};
   transition: background-color 0.3s ease;

@@ -5,11 +5,19 @@ export interface ButtonProps {
   type?: string;
   fontWeight?: number;
   fontSize?: number;
+  width?: number;
+  onClick?: any;
 }
 
-const Button: FC<ButtonProps> = ({ children, type, fontWeight, fontSize }) => {
+const Button: FC<ButtonProps> = ({
+  children,
+  type,
+  fontWeight,
+  fontSize,
+  width,
+}) => {
   return (
-    <ButtonStyled>
+    <ButtonStyled width={width}>
       {type && (
         <Icon
           src={`${process.env.REACT_APP_URL}/img/icons/${type}.svg`}
