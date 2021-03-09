@@ -5,7 +5,7 @@ import { Login, Profile, Search } from '../pages';
 import { firebase } from '../firebase/firebaseConfig';
 import { login, checkingFinish } from '../actions/auth/auth';
 import { RootStore } from '../store/store';
-import { Navbar } from '../components';
+import { Navbar, Loader } from '../components';
 
 export const Routes: FC = () => {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ export const Routes: FC = () => {
   }, []);
 
   if (checking) {
-    return <h5>Loading...</h5>;
+    return <Loader />;
   }
 
   return (
