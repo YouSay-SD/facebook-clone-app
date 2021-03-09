@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { FC, useEffect, useState } from 'react';
 import queryString from 'query-string';
 import { Link, useLocation } from 'react-router-dom';
@@ -9,20 +10,13 @@ const SearchContent: FC = () => {
   const { search } = useLocation();
   const { q = '' } = queryString.parse(search);
   const [usersFound, setUsersFound] = useState([]);
-  const [limitUsers, setLimitUsers] = useState<number>(3);
+  const [limitUsers, setLimitUsers] = useState<number>(1);
 
   const handleSearch = async () => {
     if (q) {
-      const users = await searchUsers(q[0]);
+      const users = await searchUsers(q[0], limitUsers);
       setUsersFound(users);
     }
-  };
-
-  const handleLimitUsers = (e: any): void => {
-    e.preventDefault();
-    // setLimitUsers(limitUsers + 1);
-    // console.log(limitUsers);
-    console.log('a');
   };
 
   useEffect(() => {
@@ -57,12 +51,6 @@ const SearchContent: FC = () => {
             ) : (
               'Results not found'
             )}
-            <div>
-              adasas
-              {/* <Button fontSize={15} fontWeight={500} width={100}>
-                See More
-              </Button> */}
-            </div>
           </Box>
         </ResultsContainer>
       </Container>
