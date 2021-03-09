@@ -23,8 +23,8 @@ const Searcher: FC = () => {
 
   const handleSearch = async () => {
     const users = await searchUsers(search);
-    setUsersFound(users);
     setDisplayInput(true);
+    setUsersFound(users);
   };
 
   const goSearchPage = async (e: any) => {
@@ -33,9 +33,7 @@ const Searcher: FC = () => {
   };
 
   const handleHideInput = () => {
-    setTimeout(() => {
-      setDisplayInput(false);
-    }, 500);
+    setDisplayInput(false);
   };
 
   useEffect(() => {
@@ -53,14 +51,16 @@ const Searcher: FC = () => {
           autoComplete='off'
           onChange={handleInputChange}
           onClick={handleSearch}
-          onBlur={handleHideInput}
         />
       </form>
       {usersFound.length > 0 && (
-        <ResultsContainer displayResults={displayInput}>
+        <ResultsContainer
+          displayResults={displayInput}
+          onBlur={handleHideInput}
+        >
           {usersFound.map(({ avatar, uid, userName }: CurrentUserProps) => (
             <Link to={`../profile/${userName}`} key={uid}>
-              <Result id={uid}>
+              <Result id={uid} onClick={handleHideInput}>
                 <Avatar url={avatar} />
                 <Title size={15}>{userName}</Title>
               </Result>

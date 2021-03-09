@@ -10,11 +10,10 @@ const SearchContent: FC = () => {
   const { search } = useLocation();
   const { q = '' } = queryString.parse(search);
   const [usersFound, setUsersFound] = useState([]);
-  const [limitUsers, setLimitUsers] = useState<number>(1);
 
   const handleSearch = async () => {
     if (q) {
-      const users = await searchUsers(q[0], limitUsers);
+      const users = await searchUsers(q[0]);
       setUsersFound(users);
     }
   };
