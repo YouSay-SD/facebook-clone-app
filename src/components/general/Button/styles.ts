@@ -1,11 +1,11 @@
 import styled from '@emotion/styled/macro';
 import { respondAbove } from '../../../styles/breakpoints';
 import { flexCenter } from '../../../styles/mixins';
-import { ButtonProps } from './index';
+import { ButtonProps } from './interfase';
 
-export const ButtonStyled = styled.button<ButtonProps>`
+export const ButtonContainer = styled.button<ButtonProps>`
   border: none;
-  ${({ width }) => width && `width: ${width}%`};
+  width: ${({ width }) => (width ? `${width}%` : 'max-content')};
   height: 36px;
   background-color: ${({ theme }) => theme.colors.primary};
   transition: background-color 0.3s ease;
@@ -30,7 +30,7 @@ export const Text = styled.p<ButtonProps>`
 
 export const Icon = styled.img`
   width: 13px;
-  margin-right: 5px;
+  margin-right: 8px;
 
   ${respondAbove.sm} {
     width: 15px;

@@ -1,13 +1,6 @@
 import React, { FC } from 'react';
-import { ButtonStyled, Text, Icon } from './styles';
-
-export interface ButtonProps {
-  type?: string;
-  fontWeight?: number;
-  fontSize?: number;
-  width?: number;
-  onClick?: any;
-}
+import { ButtonContainer, Text, Icon } from './styles';
+import { ButtonProps } from './interfase';
 
 const Button: FC<ButtonProps> = ({
   children,
@@ -17,7 +10,7 @@ const Button: FC<ButtonProps> = ({
   width,
 }) => {
   return (
-    <ButtonStyled width={width}>
+    <ButtonContainer width={width}>
       {type && (
         <Icon
           src={`${process.env.REACT_APP_URL}/img/icons/${type}.svg`}
@@ -27,7 +20,7 @@ const Button: FC<ButtonProps> = ({
       <Text fontWeight={fontWeight} fontSize={fontSize}>
         {children}
       </Text>
-    </ButtonStyled>
+    </ButtonContainer>
   );
 };
 

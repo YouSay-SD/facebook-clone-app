@@ -14,7 +14,7 @@ export const AvatarImg = styled.img<AvatarImgProps>`
   object-fit: cover;
 `;
 
-export const AvatarOnline = styled.div`
+export const AvatarStatus = styled.div`
   background-color: ${({ theme }) => theme.colors.green};
   border: 2px solid ${({ theme }) => theme.colors.secondary};
   width: 13px;

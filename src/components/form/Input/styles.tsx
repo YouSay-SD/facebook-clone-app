@@ -1,5 +1,8 @@
 import styled from '@emotion/styled/macro';
 import { respondAbove } from '../../../styles/breakpoints';
+import { flexCenter } from '../../../styles/mixins';
+// import { ButtonStyled } from '../../general/Button/styles';
+import { ButtonProps } from '../../general/Button/interfase';
 
 interface InputContainerProps {
   width?: number;
@@ -22,6 +25,7 @@ export const InputStyled = styled.input<InputProps>`
   color: ${({ theme }) => theme.colors.fontColorPrimary};
   border: ${({ border, theme }) =>
     border ? `1px solid ${theme.colors.quarter}` : 'none'};
+  display: ${({ type }) => (type === 'file' ? 'none' : 'block')};
   padding: 12px 14px;
   font-size: 0.9rem;
   border-radius: 6px;
@@ -35,5 +39,11 @@ export const InputStyled = styled.input<InputProps>`
     outline: none;
     border: ${({ border, theme }) =>
       border ? `1px solid ${theme.colors.blue}` : 'none'};
+  }
+`;
+
+export const Label = styled.label`
+  button {
+    pointer-events: none;
   }
 `;

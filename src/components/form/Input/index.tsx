@@ -1,8 +1,10 @@
 import React, { FC } from 'react';
-import { InputContainer, InputStyled } from './styles';
+import { InputContainer, InputStyled, Label } from './styles';
 import { InputProps } from './interface';
+import { Button } from '../..';
 
 const Input: FC<InputProps> = ({
+  type,
   width,
   widthMobile,
   innerRef,
@@ -11,8 +13,22 @@ const Input: FC<InputProps> = ({
 }) => {
   return (
     <InputContainer width={width} widthMobile={widthMobile}>
-      <InputStyled ref={innerRef} {...props} />
-      {children}
+      {type === 'email' || type === 'password' || type === 'text' ? (
+        <>
+          <InputStyled type={type} ref={innerRef} {...props} />
+          {children}
+        </>
+      ) : (
+        <>
+          <Label htmlFor='file'>
+            <Button width={100} type='file'>
+              Photo
+            </Button>
+          </Label>
+          <InputStyled id='file' type={type} ref={innerRef} {...props} />
+          {children}
+        </>
+      )}
     </InputContainer>
   );
 };
