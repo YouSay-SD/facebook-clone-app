@@ -11,6 +11,7 @@ export const authReducer = (state: AuthState = initState, action: Action) => {
       return {
         uid: action.payload.uid,
         userName: action.payload.displayName,
+        avatar: action?.payload.avatar,
         checking: false,
       };
 

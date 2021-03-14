@@ -10,7 +10,7 @@ import {
   WritePost,
 } from '../components';
 import { RootStore } from '../store/store';
-import { startSetCurrentUser } from '../actions/user/user';
+import { setCurrentUser } from '../actions/user/user';
 import { getUserData } from '../helpers/getUserData';
 
 interface ProfileProps {
@@ -22,16 +22,12 @@ const Profile: FC<ProfileProps> = () => {
   const { userName } = useParams<ProfileProps>();
 
   const handleGetUserData = async (username: string) => {
-    startSetCurrentUser(username);
-    // const userData = await getUserData(userName);
-    // return userData;
+    const userData = await getUserData(username);
+    dispatch(setCurrentUser(userData));
   };
 
   useEffect(() => {
     handleGetUserData(userName);
-    // const userData = handleGetUserData(userName);
-    // console.log(userData);
-    // startSetCurrentUser(userName);
   }, [userName]);
 
   const { currentUser } = useSelector((state: RootStore) => state.user);

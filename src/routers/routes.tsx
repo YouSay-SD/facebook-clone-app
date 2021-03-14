@@ -6,6 +6,7 @@ import { firebase } from '../firebase/firebaseConfig';
 import { login, checkingFinish } from '../actions/auth/auth';
 import { RootStore } from '../store/store';
 import { Navbar, Loader } from '../components';
+import { getUserData } from '../helpers/getUserData';
 
 export const Routes: FC = () => {
   const dispatch = useDispatch();
@@ -13,10 +14,11 @@ export const Routes: FC = () => {
 
   // Keep authentication status
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged(async (user) => {
       if (user) {
         if (user.uid && user.displayName) {
-          dispatch(login(user.uid, user.displayName));
+          const { avatar } = await getUserData(user.displayName);
+          dispatch(login(user.uid, user.displayName, avatar));
         }
       } else {
         dispatch(checkingFinish());
