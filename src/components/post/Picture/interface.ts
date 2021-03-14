@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface PhotoProps {
+export interface PictureProps {
   url: string;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }

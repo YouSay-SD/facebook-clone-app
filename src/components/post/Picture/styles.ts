@@ -1,6 +1,6 @@
 import styled from '@emotion/styled/macro';
 
-export const PhotoContainer = styled.div`
+export const PictureContainer = styled.div`
   cursor: pointer;
 `;
 

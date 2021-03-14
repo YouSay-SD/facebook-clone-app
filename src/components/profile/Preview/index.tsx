@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Container, Box, Grid, Title, Photo } from '../..';
+import { Container, Box, Grid, Title, Picture } from '../..';
 import { PreviewProps } from './interface';
 import { PreviewContainer, TitleContainer, SeeAll } from './styles';
 
@@ -79,7 +79,7 @@ const Preview: FC<PreviewProps> = ({ children, item }) => {
           </TitleContainer>
           <Grid>
             {reducePhotos.map(({ url, id }) => (
-              <Photo url={url} onClick={() => handleGoPhoto(id)} key={id} />
+              <Picture url={url} onClick={() => handleGoPhoto(id)} key={id} />
             ))}
           </Grid>
         </Box>
