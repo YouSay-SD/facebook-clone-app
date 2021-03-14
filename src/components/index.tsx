@@ -29,6 +29,7 @@ export { default as WritePost } from './post/WritePost';
 // Form
 export { default as Alert } from './form/Alert';
 export { default as Input } from './form/Input';
+export { default as Textarea } from './form/Textarea';
 export { default as Searcher } from './form/Searcher';
 
 // Search

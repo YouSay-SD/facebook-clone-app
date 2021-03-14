@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
-import { WritePostContainer, WritePostForm } from './styles';
-import { Container, Box, Avatar, Input } from '../..';
+import { WritePostContainer, WritePostForm, WritePostContent } from './styles';
+import { Container, Box, Avatar, Input, Modal, Title, Textarea } from '../..';
 import { RootStore } from '../../../store/store';
 
 const WritePost: FC = () => {
@@ -17,7 +17,26 @@ const WritePost: FC = () => {
         <Box>
           <WritePostForm onSubmit={handleSubmit}>
             <Avatar url={avatar} status />
-            <Input type='text' placeholder="What's on your mind?" name='post' />
+            <Modal
+              button={
+                <Input
+                  type='text'
+                  placeholder="What's on your mind?"
+                  name='post'
+                  autoComplete='off'
+                />
+              }
+            >
+              <WritePostContent>
+                <Box>
+                  <Title>Create Post</Title>
+                  <Textarea
+                    name='textarea'
+                    placeholder="What's on your mind?"
+                  />
+                </Box>
+              </WritePostContent>
+            </Modal>
             <Input type='file' placeholder='Photo/Video' name='file' />
           </WritePostForm>
         </Box>

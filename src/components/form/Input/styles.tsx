@@ -43,6 +43,14 @@ export const InputStyled = styled.input<InputProps>`
 `;
 
 export const Label = styled.label`
+  cursor: pointer;
+
+  &:hover {
+    button {
+      background-color: ${({ theme }) => theme.colors.primaryHover};
+    }
+  }
+
   button {
     pointer-events: none;
   }

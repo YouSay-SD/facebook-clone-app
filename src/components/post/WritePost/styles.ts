@@ -21,3 +21,9 @@ export const WritePostForm = styled.form`
     }
   }
 `;
+
+export const WritePostContent = styled.div`
+  width: 100%;
+  text-align: center;
+  background-color: ${({ theme }) => theme.colors.secondary};
+`;
