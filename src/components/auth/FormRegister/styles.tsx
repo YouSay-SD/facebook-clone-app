@@ -22,9 +22,9 @@ export const RegisterContainer = styled.div`
 `;
 
 export const Form = styled.form`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 13px;
 `;
 
 export const Button = styled.input`

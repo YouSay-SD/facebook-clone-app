@@ -32,6 +32,7 @@ const FormLogin: React.FC = () => {
         type='email'
         placeholder='Email or Phone Number'
         name='email'
+        border
         innerRef={register({
           required: {
             value: true,
@@ -49,6 +50,7 @@ const FormLogin: React.FC = () => {
         type='password'
         placeholder='Password'
         name='password'
+        border
         autoComplete='false'
         innerRef={register({
           required: {

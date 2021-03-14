@@ -27,6 +27,7 @@ const FormRegister: React.FC = () => {
           type='text'
           placeholder='User name'
           name='userName'
+          border
           innerRef={register({
             required: {
               value: true,
@@ -41,6 +42,7 @@ const FormRegister: React.FC = () => {
           type='email'
           placeholder='Email'
           name='email'
+          border
           innerRef={register({
             required: {
               value: true,
@@ -60,6 +62,7 @@ const FormRegister: React.FC = () => {
           placeholder='New password'
           name='password'
           autoComplete='false'
+          border
           innerRef={register({
             required: {
               value: true,

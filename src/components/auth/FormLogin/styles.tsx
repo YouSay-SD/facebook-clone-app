@@ -2,8 +2,9 @@ import styled from '@emotion/styled/macro';
 import { respondAbove } from '../../../styles/breakpoints';
 
 export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 13px;
 `;
 
 export const Button = styled.input`
@@ -17,7 +18,6 @@ export const Button = styled.input`
   cursor: pointer;
   border: none;
   outline: none;
-  margin-bottom: 15px;
   border: 1px solid ${({ theme }) => theme.colors.fontColorSecondary};
 
   &:hover {
@@ -40,7 +40,6 @@ export const ButtonGoogle = styled.span`
   cursor: pointer;
   border: none;
   outline: none;
-  margin-bottom: 15px;
   border: 1px solid ${({ theme }) => theme.colors.fontColorSecondary};
   position: relative;
   text-align: center;
