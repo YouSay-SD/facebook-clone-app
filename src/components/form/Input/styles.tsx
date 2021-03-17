@@ -1,8 +1,5 @@
 import styled from '@emotion/styled/macro';
 import { respondAbove } from '../../../styles/breakpoints';
-import { flexCenter } from '../../../styles/mixins';
-// import { ButtonStyled } from '../../general/Button/styles';
-import { ButtonProps } from '../../general/Button/interfase';
 
 interface InputContainerProps {
   width?: number;
@@ -53,5 +50,27 @@ export const Label = styled.label`
 
   button {
     pointer-events: none;
+  }
+`;
+
+export const InputSubmit = styled.input`
+  width: 100%;
+  padding: 8px 10px;
+  color: white;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  background-color: ${({ theme }) => theme.colors.blue};
+  cursor: pointer;
+
+  :hover {
+    background-color: ${({ theme }) => theme.colors.blueHover};
+  }
+
+  :disabled {
+    background-color: #e4e6eb;
+    color: #bcc0c4;
   }
 `;
