@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootStore } from '../../../store/store';
 import { modalAnimation } from './animations';
 import { uiOpenModal, uiCloseModal } from '../../../actions/ui/ui';
-
-import { Box, Background, ButtonContainer } from './styles';
+import { BoxModal, BoxShadow, Background, ButtonContainer } from './styles';
 
 const Modal = ({ children, button }: any) => {
   const dispatch = useDispatch();
@@ -17,7 +16,9 @@ const Modal = ({ children, button }: any) => {
         {button}
       </ButtonContainer>
 
-      <Box style={showHideModal}>{children}</Box>
+      <BoxModal style={showHideModal}>
+        <BoxShadow>{children}</BoxShadow>
+      </BoxModal>
 
       <Background
         style={showHideModal}

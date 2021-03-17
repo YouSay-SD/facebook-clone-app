@@ -19,6 +19,7 @@ declare module '@emotion/react' {
     colorsRGB: {
       tertiary: string;
       white: string;
+      black: string;
     };
     fontFamily: {
       primary: string;
@@ -69,6 +70,7 @@ const theme = {
   colorsRGB: {
     tertiary: '240,242,245',
     white: '255,255,255',
+    black: '0,0,0',
   },
   fontFamily: {
     primary: 'Segoe UI, Segoe UI, Helvetica, Arial, sans-serif',

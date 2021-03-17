@@ -43,11 +43,11 @@ const GlobalStyle = () => (
         padding: 0;
         margin: 0;
         box-sizing: border-box;
+        font-family: 'Segoe UI Historic', 'Segoe UI', Helvetica, Arial,
+          sans-serif;
       }
 
       body {
-        font-family: 'Segoe UI Historic', 'Segoe UI', Helvetica, Arial,
-          sans-serif;
         background-color: #f0f2f5;
         color: #1c1e21;
       }

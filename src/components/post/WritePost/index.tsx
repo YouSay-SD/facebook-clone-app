@@ -1,6 +1,11 @@
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
-import { WritePostContainer, WritePostForm, WritePostContent } from './styles';
+import {
+  WritePostContainer,
+  WritePostForm,
+  WritePostContent,
+  InputContainer,
+} from './styles';
 import { Container, Box, Avatar, Input, Modal, Title, Textarea } from '../..';
 import { RootStore } from '../../../store/store';
 
@@ -19,12 +24,14 @@ const WritePost: FC = () => {
             <Avatar url={avatar} status />
             <Modal
               button={
-                <Input
-                  type='text'
-                  placeholder="What's on your mind?"
-                  name='post'
-                  autoComplete='off'
-                />
+                <InputContainer>
+                  <Input
+                    type='text'
+                    placeholder="What's on your mind?"
+                    name='post'
+                    autoComplete='off'
+                  />
+                </InputContainer>
               }
             >
               <WritePostContent>
@@ -33,6 +40,12 @@ const WritePost: FC = () => {
                   <Textarea
                     name='textarea'
                     placeholder="What's on your mind?"
+                  />
+                  <Input
+                    type='submit'
+                    name='submit'
+                    value='Post'
+                    placeholder='Post'
                   />
                 </Box>
               </WritePostContent>
