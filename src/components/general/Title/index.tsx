@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { TitleContainer } from './styles';
 import { TitleProps } from './interface';
 
-const Title: FC<TitleProps> = ({ children, size, fontWeight }) => {
+const Title: FC<TitleProps> = ({ children, size = 'medium', fontWeight }) => {
   return (
     <TitleContainer size={size} fontWeight={fontWeight}>
       {children}

@@ -32,9 +32,7 @@ const SearchContent: FC = () => {
         <ResultsContainer>
           <Box>
             <TitleContainer>
-              <Title size={20} fontWeight={700}>
-                People
-              </Title>
+              <Title fontWeight={700}>People</Title>
             </TitleContainer>
             {usersFound.length > 0 ? (
               <>

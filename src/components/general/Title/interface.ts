@@ -1,5 +1,6 @@
 export interface TitleProps {
-  size?: number;
+  size?: string;
+  // sizes?: any;
   sizeDesk?: number;
   fontWeight?: number;
 }

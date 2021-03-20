@@ -62,7 +62,7 @@ const Searcher: FC = () => {
             <Link to={`../profile/${userName}`} key={uid}>
               <Result id={uid} onClick={handleHideInput}>
                 <Avatar url={avatar} />
-                <Title size={15}>{userName}</Title>
+                <Title size='small'>{userName}</Title>
               </Result>
             </Link>
           ))}
