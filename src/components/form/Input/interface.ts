@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface InputProps {
   type: string;
   placeholder: string;
@@ -9,4 +11,5 @@ export interface InputProps {
   autoComplete?: string;
   border?: boolean;
   disabled?: boolean;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }

@@ -9,6 +9,7 @@ const Input: FC<InputProps> = ({
   widthMobile,
   innerRef,
   children,
+  onChange,
   ...props
 }) => {
   return (
@@ -27,7 +28,13 @@ const Input: FC<InputProps> = ({
               Photo
             </Button>
           </Label>
-          <InputStyled id='file' type='file' ref={innerRef} {...props} />
+          <InputStyled
+            id='file'
+            type='file'
+            ref={innerRef}
+            onChange={onChange}
+            {...props}
+          />
           {children}
         </>
       )}

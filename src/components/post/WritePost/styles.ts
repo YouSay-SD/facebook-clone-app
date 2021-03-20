@@ -1,4 +1,5 @@
 import styled from '@emotion/styled/macro';
+import { respondAbove } from '../../../styles/breakpoints';
 
 export const WritePostContainer = styled.div``;
 export const WritePostForm = styled.form`
@@ -36,5 +37,17 @@ export const InputContainer = styled.div`
     &:hover {
       background-color: ${({ theme }) => theme.colors.primary};
     }
+  }
+`;
+
+export const PhotoPreview = styled.img`
+  object-fit: cover;
+  width: 100%;
+  max-height: 170px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+
+  ${respondAbove.sm} {
+    max-height: 550px;
   }
 `;
