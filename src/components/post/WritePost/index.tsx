@@ -6,28 +6,43 @@ import {
   WritePostForm,
   WritePostContent,
   InputContainer,
+  PhotoPreviewContainer,
+  RemovePhotoPreview,
   PhotoPreview,
 } from './styles';
-import { Container, Box, Avatar, Input, Modal, Title, Textarea } from '../..';
+import {
+  Container,
+  Box,
+  Avatar,
+  Input,
+  Modal,
+  Title,
+  Textarea,
+  Loader,
+} from '../..';
 import { RootStore } from '../../../store/store';
-import { uiOpenModal } from '../../../actions/ui/ui';
-import { startUploading, startNewPost } from '../../../actions/post/post';
-import { FormPostProps } from '../../../reducers/postReducer/interface';
+import { uiOpenModal, uiCloseModal } from '../../../actions/ui/ui';
+import {
+  startNewPost,
+  startLoadingPost,
+  finishLoadingPost,
+} from '../../../actions/post/post';
 import { fileUpload } from '../../../helpers/fileUpload';
 import { useFormCustom } from '../../../hooks/useFormCustom';
 
 const WritePost: FC = () => {
   const { avatar } = useSelector((state: RootStore) => state.auth);
+  const { loadingPost } = useSelector((state: RootStore) => state.post);
   const [photoPreview, setPhotoPreview] = useState<any>();
   const [fileObject, setFileObject] = useState<any>();
   // const { register, getValues, handleSubmit } = useForm<FormPostProps>();
-  const { formValues, handleInputChange } = useFormCustom({
+  const { reset, formValues, handleInputChange } = useFormCustom({
     body: '',
   });
   const { body } = formValues;
   const dispatch = useDispatch();
 
-  const handlerImage = (e: any) => {
+  const handleImage = (e: any) => {
     const reader = new FileReader();
     reader.onload = () => {
       if (reader.readyState === 2) {
@@ -65,10 +80,16 @@ const WritePost: FC = () => {
   //   }
   // );
 
+  const handleRemovePreview = () => {
+    setPhotoPreview(null);
+    setFileObject(null);
+  };
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    dispatch(startLoadingPost());
 
-    const fileUrl = await fileUpload(fileObject);
+    const fileUrl = fileObject ? await fileUpload(fileObject) : null;
     const newPost = {
       body,
       picture: fileUrl,
@@ -76,10 +97,15 @@ const WritePost: FC = () => {
     };
 
     dispatch(startNewPost(newPost));
+    dispatch(finishLoadingPost());
+    dispatch(uiCloseModal());
+    setPhotoPreview(null);
+    reset();
   };
 
   return (
     <WritePostContainer>
+      {loadingPost && <Loader type='post' text='Posting...' />}
       <Container>
         <Box>
           <WritePostForm onSubmit={handleSubmit}>
@@ -105,12 +131,18 @@ const WritePost: FC = () => {
                     onChange={handleInputChange}
                     placeholder="What's on your mind?"
                   />
-                  <PhotoPreview src={photoPreview} />
+                  {photoPreview && (
+                    <PhotoPreviewContainer>
+                      <RemovePhotoPreview onClick={handleRemovePreview} />
+                      <PhotoPreview src={photoPreview} />
+                    </PhotoPreviewContainer>
+                  )}
                   <Input
                     type='submit'
                     name='submit'
                     value='Post'
                     placeholder='Post'
+                    disabled={loadingPost}
                   />
                 </Box>
               </WritePostContent>
@@ -119,7 +151,7 @@ const WritePost: FC = () => {
               type='file'
               placeholder='Photo'
               name='file'
-              onChange={handlerImage}
+              onChange={handleImage}
             />
           </WritePostForm>
         </Box>

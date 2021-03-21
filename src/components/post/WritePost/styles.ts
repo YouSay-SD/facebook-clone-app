@@ -51,3 +51,36 @@ export const PhotoPreview = styled.img`
     max-height: 550px;
   }
 `;
+
+export const PhotoPreviewContainer = styled.div`
+  position: relative;
+`;
+
+export const RemovePhotoPreview = styled.div`
+  position: absolute;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  right: 10px;
+  top: 10px;
+  background-color: ${({ theme }) => theme.colors.secondary};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:after,
+  &:before {
+    content: '/';
+    color: ${({ theme }) => theme.colors.fontColorSecondary};
+    transform: rotate(25deg) translateY(-1.5px);
+    display: inline-block;
+    position: absolute;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  &:before {
+    transform: rotate(-70deg) translateY(-2px);
+  }
+`;
