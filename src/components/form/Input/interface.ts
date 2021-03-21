@@ -1,6 +1,7 @@
 import React from 'react';
 
 export interface InputProps {
+  id?: any;
   type: string;
   placeholder: string;
   name: string;

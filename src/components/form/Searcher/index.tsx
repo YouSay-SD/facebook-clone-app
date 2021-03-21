@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Avatar, Title } from '../..';
-import { useForm } from '../../../hooks/useForm';
+import { useFormCustom } from '../../../hooks/useFormCustom';
 import { searchUsers } from '../../../helpers/searchUsers';
 import { CurrentUserProps } from '../../../reducers/userReducer/userReducer';
 import {
@@ -14,7 +14,7 @@ import {
 
 const Searcher: FC = () => {
   const history = useHistory();
-  const { formValues, handleInputChange } = useForm({
+  const { formValues, handleInputChange } = useFormCustom({
     search: '',
   });
   const [usersFound, setUsersFound] = useState([]);

@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import { TextareaContainer, TextareaStyled } from './styles';
 import { TextareaProps } from './interface';
 
-const Textarea: FC<TextareaProps> = ({ ...props }) => {
+const Textarea: FC<TextareaProps> = ({ onChange, ...props }) => {
   return (
     <TextareaContainer>
-      <TextareaStyled {...props} />
+      <TextareaStyled onChange={onChange} {...props} />
     </TextareaContainer>
   );
 };

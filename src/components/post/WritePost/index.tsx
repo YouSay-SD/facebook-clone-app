@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useForm } from 'react-hook-form';
 import {
   WritePostContainer,
   WritePostForm,
@@ -10,11 +11,20 @@ import {
 import { Container, Box, Avatar, Input, Modal, Title, Textarea } from '../..';
 import { RootStore } from '../../../store/store';
 import { uiOpenModal } from '../../../actions/ui/ui';
-import { startUploading } from '../../../actions/post/post';
+import { startUploading, startNewPost } from '../../../actions/post/post';
+import { FormPostProps } from '../../../reducers/postReducer/interface';
+import { fileUpload } from '../../../helpers/fileUpload';
+import { useFormCustom } from '../../../hooks/useFormCustom';
 
 const WritePost: FC = () => {
   const { avatar } = useSelector((state: RootStore) => state.auth);
   const [photoPreview, setPhotoPreview] = useState<any>();
+  const [fileObject, setFileObject] = useState<any>();
+  // const { register, getValues, handleSubmit } = useForm<FormPostProps>();
+  const { formValues, handleInputChange } = useFormCustom({
+    body: '',
+  });
+  const { body } = formValues;
   const dispatch = useDispatch();
 
   const handlerImage = (e: any) => {
@@ -28,13 +38,44 @@ const WritePost: FC = () => {
     reader.readAsDataURL(e.target.files[0]);
 
     const file = e.target.files[0];
-    if (file) {
-      dispatch(startUploading(file));
-    }
+    setFileObject(file);
+    // if (file) {
+    //   const asd = dispatch(startUploading(file));
+    // }
   };
 
-  const handleSubmit = (e: any) => {
+  // const onSubmit = handleSubmit(
+  //   async ({ description }: FormPostProps, { target }: any) => {
+  //     target.reset();
+
+  //     // const textarea = document.getElementById('description');
+  //     console.log(descriptionS);
+  //     // console.log(textarea.value);
+
+  //     // const fileUrl = await fileUpload(fileObject);
+  //     const newPost = {
+  //       description,
+  //       // picture: fileUrl,
+  //       date: new Date().getTime(),
+  //     };
+
+  //     console.log(newPost);
+  //     // dispatch(startNewPost(newPost));
+  //     // dispatch(startLoginEmailPassword(email, password));
+  //   }
+  // );
+
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
+
+    const fileUrl = await fileUpload(fileObject);
+    const newPost = {
+      body,
+      picture: fileUrl,
+      date: new Date().getTime(),
+    };
+
+    dispatch(startNewPost(newPost));
   };
 
   return (
@@ -59,7 +100,9 @@ const WritePost: FC = () => {
                 <Box>
                   <Title>Create Post</Title>
                   <Textarea
-                    name='textarea'
+                    name='body'
+                    value={body}
+                    onChange={handleInputChange}
                     placeholder="What's on your mind?"
                   />
                   <PhotoPreview src={photoPreview} />
