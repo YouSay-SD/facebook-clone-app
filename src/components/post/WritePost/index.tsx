@@ -10,6 +10,7 @@ import {
 import { Container, Box, Avatar, Input, Modal, Title, Textarea } from '../..';
 import { RootStore } from '../../../store/store';
 import { uiOpenModal } from '../../../actions/ui/ui';
+import { startUploading } from '../../../actions/post/post';
 
 const WritePost: FC = () => {
   const { avatar } = useSelector((state: RootStore) => state.auth);
@@ -25,6 +26,11 @@ const WritePost: FC = () => {
       }
     };
     reader.readAsDataURL(e.target.files[0]);
+
+    const file = e.target.files[0];
+    if (file) {
+      dispatch(startUploading(file));
+    }
   };
 
   const handleSubmit = (e: any) => {
