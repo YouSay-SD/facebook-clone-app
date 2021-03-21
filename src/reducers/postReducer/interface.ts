@@ -1,14 +1,21 @@
 export interface PostState {
-  uid?: string;
-  userName?: string;
-  avatar?: string;
-  checking: boolean;
+  posts: object;
+}
+
+export interface PostProps {
+  body: string;
+  id: string;
+  date: number;
+}
+
+export interface FormPostProps {
+  body?: string;
+  date?: number;
+  picture?: string;
 }
 
 export interface AuthPayloadProps {
-  uid: string;
-  displayName: string;
-  avatar: string;
+  posts: PostProps[];
 }
 
 export type Action = {

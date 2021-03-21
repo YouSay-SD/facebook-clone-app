@@ -10,4 +10,7 @@ export const types = {
   uiFinishLoading: '[Ui] Finish Loading',
 
   setCurrentUser: '[User] Set Current User',
+
+  createPost: '[Post] Create Post',
+  loadPosts: '[Post] Load Posts',
 };

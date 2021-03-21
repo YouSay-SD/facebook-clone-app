@@ -2,17 +2,15 @@ import { types } from '../../types/types';
 import { PostState, Action } from './interface';
 
 const initState = {
-  checking: true,
+  posts: [],
 };
 
 export const postReducer = (state: PostState = initState, action: Action) => {
   switch (action.type) {
-    case types.login:
+    case types.loadPosts:
       return {
-        uid: action.payload.uid,
-        userName: action.payload.displayName,
-        avatar: action?.payload.avatar,
-        checking: false,
+        ...state,
+        posts: { ...action.payload },
       };
 
     default:
