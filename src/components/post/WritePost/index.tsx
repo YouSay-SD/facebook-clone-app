@@ -1,6 +1,5 @@
 import React, { FC, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useForm } from 'react-hook-form';
 import {
   WritePostContainer,
   WritePostForm,
@@ -35,7 +34,6 @@ const WritePost: FC = () => {
   const { loadingPost } = useSelector((state: RootStore) => state.post);
   const [photoPreview, setPhotoPreview] = useState<any>();
   const [fileObject, setFileObject] = useState<any>();
-  // const { register, getValues, handleSubmit } = useForm<FormPostProps>();
   const { reset, formValues, handleInputChange } = useFormCustom({
     body: '',
   });
@@ -54,31 +52,7 @@ const WritePost: FC = () => {
 
     const file = e.target.files[0];
     setFileObject(file);
-    // if (file) {
-    //   const asd = dispatch(startUploading(file));
-    // }
   };
-
-  // const onSubmit = handleSubmit(
-  //   async ({ description }: FormPostProps, { target }: any) => {
-  //     target.reset();
-
-  //     // const textarea = document.getElementById('description');
-  //     console.log(descriptionS);
-  //     // console.log(textarea.value);
-
-  //     // const fileUrl = await fileUpload(fileObject);
-  //     const newPost = {
-  //       description,
-  //       // picture: fileUrl,
-  //       date: new Date().getTime(),
-  //     };
-
-  //     console.log(newPost);
-  //     // dispatch(startNewPost(newPost));
-  //     // dispatch(startLoginEmailPassword(email, password));
-  //   }
-  // );
 
   const handleRemovePreview = () => {
     setPhotoPreview(null);

@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import { PictureContainer, Image } from './styles';
 import { PictureProps } from './interface';
 
-const Picture: FC<PictureProps> = ({ url }) => {
+const Picture: FC<PictureProps> = ({ picture }) => {
   return (
     <PictureContainer>
-      <Image src={url} alt='Picture' />
+      <Image src={picture} alt='Picture' />
     </PictureContainer>
   );
 };

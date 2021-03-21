@@ -1,7 +1,7 @@
 import { types } from '../../types/types';
 import { fileUpload } from '../../helpers/fileUpload';
 import { db } from '../../firebase/firebaseConfig';
-import { FormPostProps } from '../../reducers/postReducer/interface';
+import { FormPostProps, PostProps } from '../../reducers/postReducer/interface';
 
 export const startNewPost = (newPost: FormPostProps) => {
   return async (dispatch: any, getState: any) => {
@@ -11,7 +11,7 @@ export const startNewPost = (newPost: FormPostProps) => {
   };
 };
 
-export const setPosts = (posts: object) => ({
+export const setPosts = (posts: PostProps[]) => ({
   type: types.loadPosts,
   payload: posts,
 });

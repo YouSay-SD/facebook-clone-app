@@ -11,7 +11,10 @@ export const postReducer = (state: PostState = initState, action: Action) => {
     case types.loadPosts:
       return {
         ...state,
-        posts: { ...action.payload },
+        // posts: [action.payload, ...state.posts],
+        posts: action.payload,
+        ...state.posts,
+        // posts: [{ ...action.payload }],
       };
 
     case types.startLoadingPost:

@@ -1,12 +1,13 @@
 export interface PostState {
-  posts: object;
+  posts: PostProps[];
   loadingPost: boolean;
 }
 
 export interface PostProps {
-  body: string;
+  body?: string;
   id: string;
   date: number;
+  picture?: string;
 }
 
 export interface FormPostProps {
