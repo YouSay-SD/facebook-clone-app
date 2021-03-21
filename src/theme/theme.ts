@@ -68,6 +68,7 @@ const theme = {
     red: '#F02849',
   },
   colorsRGB: {
+    secondary: '255,255,255',
     tertiary: '240,242,245',
     white: '255,255,255',
     black: '0,0,0',

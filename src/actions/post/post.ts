@@ -21,3 +21,11 @@ export const startUploading = (file: string) => {
     const fileUrl = await fileUpload(file);
   };
 };
+
+export const startLoadingPost = () => ({
+  type: types.startLoadingPost,
+});
+
+export const finishLoadingPost = () => ({
+  type: types.finishLoadingPost,
+});

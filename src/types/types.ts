@@ -13,4 +13,6 @@ export const types = {
 
   createPost: '[Post] Create Post',
   loadPosts: '[Post] Load Posts',
+  startLoadingPost: '[Post] Start Loading Post',
+  finishLoadingPost: '[Post] Finish Loading Post',
 };

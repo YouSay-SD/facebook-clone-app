@@ -3,6 +3,7 @@ import { PostState, Action } from './interface';
 
 const initState = {
   posts: [],
+  loadingPost: false,
 };
 
 export const postReducer = (state: PostState = initState, action: Action) => {
@@ -11,6 +12,18 @@ export const postReducer = (state: PostState = initState, action: Action) => {
       return {
         ...state,
         posts: { ...action.payload },
+      };
+
+    case types.startLoadingPost:
+      return {
+        ...state,
+        loadingPost: true,
+      };
+
+    case types.finishLoadingPost:
+      return {
+        ...state,
+        loadingPost: false,
       };
 
     default:

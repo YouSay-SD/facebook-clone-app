@@ -1,5 +1,6 @@
 export interface PostState {
   posts: object;
+  loadingPost: boolean;
 }
 
 export interface PostProps {
