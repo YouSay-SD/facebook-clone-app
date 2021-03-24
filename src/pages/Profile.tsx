@@ -22,10 +22,15 @@ interface ProfileProps {
 const Profile: FC<ProfileProps> = () => {
   const dispatch = useDispatch();
   const { userName } = useParams<ProfileProps>();
+  const { userName: authUserName } = useSelector(
+    (state: RootStore) => state.auth
+  );
+
+  const { pictures } = useSelector((state: RootStore) => state.post);
 
   const handleGetPictures = async (username: string) => {
-    const pictures = await getPictures(userName);
-    dispatch(setPictures(pictures));
+    const picturesObtained = await getPictures(userName);
+    dispatch(setPictures(picturesObtained));
   };
 
   const handleGetUserData = async (username: string) => {
@@ -38,8 +43,12 @@ const Profile: FC<ProfileProps> = () => {
     handleGetPictures(userName);
   }, [userName]);
 
+  useEffect(() => {
+    handleGetPictures(userName);
+  }, [pictures]);
+
   const { currentUser } = useSelector((state: RootStore) => state.user);
-  const { userName: username, avatar, uid } = currentUser;
+  const { userName: currentUserName, avatar, uid } = currentUser;
 
   if (!uid) {
     return <Loader />;
@@ -47,11 +56,11 @@ const Profile: FC<ProfileProps> = () => {
 
   return (
     <>
-      <Hero userName={username} avatar={avatar} />
+      <Hero userName={currentUserName} avatar={avatar} />
       <NavbarProfile />
       <Preview item='Photos' />
-      <Preview item='Friends' />
-      <WritePost />
+      {/* <Preview item='Friends' /> */}
+      {currentUserName === authUserName && <WritePost />}
       {/* <ModalPost /> */}
     </>
   );

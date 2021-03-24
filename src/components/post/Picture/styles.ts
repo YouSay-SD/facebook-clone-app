@@ -1,7 +1,13 @@
 import styled from '@emotion/styled/macro';
+import { respondAbove } from '../../../styles/breakpoints';
 
 export const PictureContainer = styled.div`
   cursor: pointer;
+  height: 30vw;
+
+  ${respondAbove.md} {
+    height: 300px;
+  }
 `;
 
 export const Image = styled.img`

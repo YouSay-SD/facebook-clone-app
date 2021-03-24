@@ -31,7 +31,9 @@ import { useFormCustom } from '../../../hooks/useFormCustom';
 
 const WritePost: FC = () => {
   const { avatar } = useSelector((state: RootStore) => state.auth);
-  const { loadingPost } = useSelector((state: RootStore) => state.post);
+  const { loadingPost, pictures } = useSelector(
+    (state: RootStore) => state.post
+  );
   const [photoPreview, setPhotoPreview] = useState<any>();
   const [fileObject, setFileObject] = useState<any>();
   const { reset, formValues, handleInputChange } = useFormCustom({
