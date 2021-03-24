@@ -21,9 +21,11 @@ export { default as Avatar } from './profile/Avatar';
 
 // Post
 export { default as Post } from './post/Post';
+export { default as PostWrapper } from './post/PostWrapper';
+export { default as PostHeader } from './post/PostHeader';
+export { default as PostContent } from './post/PostContent';
 export { default as Comments } from './post/Comments';
 export { default as ModalPost } from './post/ModalPost';
-export { default as PostHeader } from './post/PostHeader';
 export { default as Picture } from './post/Picture';
 export { default as WritePost } from './post/WritePost';
 

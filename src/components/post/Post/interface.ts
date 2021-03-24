@@ -1,4 +1,6 @@
-export interface PostProps {
-  post: Object[];
-  // picture: string;
+export interface PostComponentProps {
+  id: string;
+  author: string;
+  body?: string;
+  picture?: string;
 }

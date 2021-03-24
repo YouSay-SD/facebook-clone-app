@@ -8,7 +8,6 @@ import { RootStore } from '../../../store/store';
 
 const Preview: FC<PreviewProps> = ({ type, pictures = [] }) => {
   const reducePictures = pictures.slice(0, 9);
-  console.log(reducePictures);
 
   const history = useHistory();
   // console.log(Array.from(posts));
@@ -27,16 +26,13 @@ const Preview: FC<PreviewProps> = ({ type, pictures = [] }) => {
           </TitleContainer>
           <Grid>
             {pictures &&
-              reducePictures.map(
-                ({ picture, id }) =>
-                  picture && (
-                    <Picture
-                      key={id}
-                      picture={picture}
-                      onClick={() => handleGoPhoto(id)}
-                    />
-                  )
-              )}
+              reducePictures.map(({ picture, id }) => (
+                <Picture
+                  key={id}
+                  picture={picture}
+                  onClick={() => handleGoPhoto(id)}
+                />
+              ))}
           </Grid>
         </Box>
       </Container>

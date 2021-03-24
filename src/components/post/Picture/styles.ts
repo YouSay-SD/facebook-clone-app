@@ -1,18 +1,19 @@
 import styled from '@emotion/styled/macro';
 import { respondAbove } from '../../../styles/breakpoints';
+import { PictureContainerProps } from './interface';
 
-export const PictureContainer = styled.div`
+export const PictureContainer = styled.div<PictureContainerProps>`
   cursor: pointer;
-  height: 30vw;
+  height: ${({ fullSize }) => (fullSize ? 'initial' : '30vw')};
+  text-align: center;
 
   ${respondAbove.md} {
-    height: 300px;
+    height: ${({ fullSize }) => (fullSize ? 'initial' : '300px')};
   }
 `;
 
-export const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+export const Image = styled.img<PictureContainerProps>`
+  ${({ fullSize }) => (fullSize ? 'max-height: 600px' : 'height: 100%')};
+  ${({ fullSize }) => !fullSize && 'width: 100%; object-fit: cover;'}
   background-position: center;
 `;
