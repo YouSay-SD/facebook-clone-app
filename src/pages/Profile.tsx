@@ -9,10 +9,11 @@ import {
   ModalPost,
   WritePost,
   Post,
+  PostWrapper,
 } from '../components';
 import { RootStore } from '../store/store';
 import { setCurrentUser } from '../actions/user/user';
-import { setPictures } from '../actions/post/post';
+import { setPictures, setPosts } from '../actions/post/post';
 
 interface ProfileProps {
   userName: string;
@@ -25,13 +26,15 @@ const Profile: FC<ProfileProps> = () => {
     (state: RootStore) => state.auth
   );
 
-  const { pictures } = useSelector((state: RootStore) => state.post);
+  const { pictures, posts } = useSelector((state: RootStore) => state.post);
 
   useEffect(() => {
     dispatch(setCurrentUser(userName));
     dispatch(setPictures(userName));
+    dispatch(setPosts(userName));
   }, [userName]);
 
+  // console.log(posts);
   const { currentUser } = useSelector((state: RootStore) => state.user);
   const { userName: currentUserName, avatar, uid } = currentUser;
 
@@ -44,13 +47,9 @@ const Profile: FC<ProfileProps> = () => {
       <Hero userName={currentUserName} avatar={avatar} />
       <NavbarProfile />
       <Preview type='Photos' pictures={pictures} />
-      {/* {posts &&
-        // eslint-disable-next-line array-callback-return
-        posts.map((post) => {
-          <Post post={post} />;
-        })} */}
-      {/* <Preview item='Friends' /> */}
       {currentUserName === authUserName && <WritePost />}
+      <PostWrapper posts={posts} />
+      {/* <Preview item='Friends' /> */}
       {/* <ModalPost /> */}
     </>
   );

@@ -17,7 +17,7 @@ const ModalPost: FC = ({ children }) => {
         />
       </ViewerContent>
       <PostContent>
-        <PostHeader />
+        {/* <PostHeader /> */}
         <Comments />
       </PostContent>
     </ModalPostContainer>

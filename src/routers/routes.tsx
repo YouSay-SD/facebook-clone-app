@@ -7,11 +7,12 @@ import { login, checkingFinish } from '../actions/auth/auth';
 import { RootStore } from '../store/store';
 import { Navbar, Loader } from '../components';
 import { getUserData } from '../helpers/getUserData';
-import { setPosts } from '../actions/post/post';
 
 export const Routes: FC = () => {
   const dispatch = useDispatch();
-  const { checking, uid } = useSelector((state: RootStore) => state.auth);
+  const { checking, uid, userName } = useSelector(
+    (state: RootStore) => state.auth
+  );
 
   // Keep authentication status
   useEffect(() => {
@@ -43,7 +44,7 @@ export const Routes: FC = () => {
           <Navbar />
           <Route exact path='/profile/:userName' component={Profile} />
           <Route exact path='/search' component={Search} />
-          <Redirect to='/profile/YouSay' />
+          <Redirect to={`/profile/${userName}`} />
         </>
       )}
     </Switch>

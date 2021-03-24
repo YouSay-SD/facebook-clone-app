@@ -1,5 +1,5 @@
 export interface PostHeaderProps {
-  userName?: string;
-  avatar?: string;
+  author: string;
+  avatar: string;
   date?: string;
 }

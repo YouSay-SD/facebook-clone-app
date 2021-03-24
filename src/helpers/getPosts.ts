@@ -9,9 +9,10 @@ export const getPosts = async (userName: string) => {
   const posts: PostProps[] = [];
 
   postsSnap.forEach((snapChildren) => {
-    const { body, picture, date } = snapChildren.data();
+    const { author, body, picture, date } = snapChildren.data();
     posts.push({
       id: snapChildren.id,
+      author,
       body,
       picture,
       date,

@@ -5,6 +5,7 @@ export interface PostState {
 }
 
 export interface PostProps {
+  author: string;
   body?: string;
   id: string;
   date: number;

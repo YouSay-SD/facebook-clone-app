@@ -2,6 +2,7 @@ import { types } from '../../types/types';
 import { fileUpload } from '../../helpers/fileUpload';
 import { db } from '../../firebase/firebaseConfig';
 import { getPictures } from '../../helpers/getPictures';
+import { getPosts } from '../../helpers/getPosts';
 import {
   FormPostProps,
   PostProps,
@@ -16,10 +17,17 @@ export const startNewPost = (newPost: FormPostProps) => {
   };
 };
 
-export const setPosts = (posts: PostProps[]) => ({
+export const startSetPosts = (posts: PostProps[]) => ({
   type: types.getPosts,
   payload: posts,
 });
+
+export const setPosts = (userName: string) => {
+  return async (dispatch: any) => {
+    const posts = await getPosts(userName);
+    dispatch(startSetPosts(posts));
+  };
+};
 
 export const startSetPictures = (pictures: PictureProps[]) => ({
   type: types.getPictures,
