@@ -20,9 +20,10 @@ export { default as Preview } from './profile/Preview';
 export { default as Avatar } from './profile/Avatar';
 
 // Post
+export { default as Post } from './post/Post';
 export { default as Comments } from './post/Comments';
 export { default as ModalPost } from './post/ModalPost';
-export { default as PostDate } from './post/PostDate';
+export { default as PostHeader } from './post/PostHeader';
 export { default as Picture } from './post/Picture';
 export { default as WritePost } from './post/WritePost';
 

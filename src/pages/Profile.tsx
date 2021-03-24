@@ -8,6 +8,7 @@ import {
   Loader,
   ModalPost,
   WritePost,
+  Post,
 } from '../components';
 import { RootStore } from '../store/store';
 import { setCurrentUser } from '../actions/user/user';
@@ -27,25 +28,23 @@ const Profile: FC<ProfileProps> = () => {
   );
 
   const { pictures } = useSelector((state: RootStore) => state.post);
+  // console.log(posts);
+  console.log(pictures);
 
-  const handleGetPictures = async (username: string) => {
-    const picturesObtained = await getPictures(userName);
-    dispatch(setPictures(picturesObtained));
-  };
+  // const handleGetPictures = async (username: string) => {
+  //   const picturesObtained = await getPictures(username);
+  //   dispatch(setPictures(picturesObtained));
+  // };
 
   const handleGetUserData = async (username: string) => {
     const userData = await getUserData(username);
     dispatch(setCurrentUser(userData));
   };
 
-  useEffect(() => {
-    handleGetUserData(userName);
-    handleGetPictures(userName);
-  }, [userName]);
-
-  useEffect(() => {
-    handleGetPictures(userName);
-  }, [pictures]);
+  // useEffect(() => {
+  //   handleGetUserData(userName);
+  //   // handleGetPictures(userName);
+  // }, [userName]);
 
   const { currentUser } = useSelector((state: RootStore) => state.user);
   const { userName: currentUserName, avatar, uid } = currentUser;
@@ -59,6 +58,11 @@ const Profile: FC<ProfileProps> = () => {
       <Hero userName={currentUserName} avatar={avatar} />
       <NavbarProfile />
       <Preview item='Photos' />
+      {/* {posts &&
+        // eslint-disable-next-line array-callback-return
+        posts.map((post) => {
+          <Post post={post} />;
+        })} */}
       {/* <Preview item='Friends' /> */}
       {currentUserName === authUserName && <WritePost />}
       {/* <ModalPost /> */}

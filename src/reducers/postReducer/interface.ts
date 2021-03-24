@@ -12,6 +12,7 @@ export interface PostProps {
 }
 
 export interface PictureProps {
+  author: string;
   id: string;
   date: number;
   picture: string;

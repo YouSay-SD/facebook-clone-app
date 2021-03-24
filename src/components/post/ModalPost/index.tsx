@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { PostDate, Comments } from '../..';
+import { PostHeader, Comments } from '../..';
 import {
   ModalPostContainer,
   PostContent,
@@ -17,7 +17,7 @@ const ModalPost: FC = ({ children }) => {
         />
       </ViewerContent>
       <PostContent>
-        <PostDate />
+        <PostHeader />
         <Comments />
       </PostContent>
     </ModalPostContainer>

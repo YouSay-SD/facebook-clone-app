@@ -25,15 +25,15 @@ import {
   startNewPost,
   startLoadingPost,
   finishLoadingPost,
+  setPictures,
 } from '../../../actions/post/post';
 import { fileUpload } from '../../../helpers/fileUpload';
 import { useFormCustom } from '../../../hooks/useFormCustom';
+import { getPictures } from '../../../helpers/getPictures';
 
 const WritePost: FC = () => {
-  const { avatar } = useSelector((state: RootStore) => state.auth);
-  const { loadingPost, pictures } = useSelector(
-    (state: RootStore) => state.post
-  );
+  const { avatar, userName } = useSelector((state: RootStore) => state.auth);
+  const { loadingPost } = useSelector((state: RootStore) => state.post);
   const [photoPreview, setPhotoPreview] = useState<any>();
   const [fileObject, setFileObject] = useState<any>();
   const { reset, formValues, handleInputChange } = useFormCustom({
@@ -56,6 +56,17 @@ const WritePost: FC = () => {
     setFileObject(file);
   };
 
+  console.log('a');
+
+  // const handleGetPictures = async (username: string) => {
+  //   const picturesObtained = await getPictures(username);
+  //   dispatch(setPictures(picturesObtained));
+  // };
+
+  if (userName) {
+    dispatch(setPictures(userName));
+  }
+
   const handleRemovePreview = () => {
     setPhotoPreview(null);
     setFileObject(null);
@@ -67,12 +78,14 @@ const WritePost: FC = () => {
 
     const fileUrl = fileObject ? await fileUpload(fileObject) : null;
     const newPost = {
+      author: userName,
       body,
       picture: fileUrl,
       date: new Date().getTime(),
     };
 
     dispatch(startNewPost(newPost));
+    // handleGetPictures(userName);
     dispatch(finishLoadingPost());
     dispatch(uiCloseModal());
     setPhotoPreview(null);

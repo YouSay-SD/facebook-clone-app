@@ -1,6 +1,7 @@
 import { types } from '../../types/types';
 import { fileUpload } from '../../helpers/fileUpload';
 import { db } from '../../firebase/firebaseConfig';
+import { getPictures } from '../../helpers/getPictures';
 import {
   FormPostProps,
   PostProps,
@@ -20,10 +21,17 @@ export const setPosts = (posts: PostProps[]) => ({
   payload: posts,
 });
 
-export const setPictures = (pictures: PictureProps[]) => ({
+export const startSetPictures = (pictures: PictureProps[]) => ({
   type: types.getPictures,
   payload: pictures,
 });
+
+export const setPictures = (userName: string) => {
+  return async (dispatch: any) => {
+    const pictures = await getPictures(userName);
+    dispatch(startSetPictures(pictures));
+  };
+};
 
 export const startUploading = (file: string) => {
   return async (dispatch: any, getState: any) => {

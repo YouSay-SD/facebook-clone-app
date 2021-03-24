@@ -1,6 +1,6 @@
 import styled from '@emotion/styled/macro';
 
-export const PostDateContainer = styled.div`
+export const PostHeaderContainer = styled.div`
   display: flex;
   padding: 5px 0;
 `;
