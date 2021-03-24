@@ -26,6 +26,7 @@ import {
   startLoadingPost,
   finishLoadingPost,
   setPictures,
+  setPosts,
 } from '../../../actions/post/post';
 import { fileUpload } from '../../../helpers/fileUpload';
 import { useFormCustom } from '../../../hooks/useFormCustom';
@@ -76,6 +77,7 @@ const WritePost: FC = () => {
     dispatch(startNewPost(newPost));
     if (userName) {
       dispatch(setPictures(userName));
+      dispatch(setPosts(userName));
     }
     dispatch(finishLoadingPost());
     dispatch(uiCloseModal());
