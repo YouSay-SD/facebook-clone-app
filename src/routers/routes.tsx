@@ -8,7 +8,6 @@ import { RootStore } from '../store/store';
 import { Navbar, Loader } from '../components';
 import { getUserData } from '../helpers/getUserData';
 import { setPosts } from '../actions/post/post';
-import { loadPosts } from '../helpers/loadPosts';
 
 export const Routes: FC = () => {
   const dispatch = useDispatch();
@@ -21,9 +20,6 @@ export const Routes: FC = () => {
         if (user.uid && user.displayName) {
           const { avatar } = await getUserData(user.displayName);
           dispatch(login(user.uid, user.displayName, avatar));
-
-          const posts = await loadPosts(user.displayName);
-          dispatch(setPosts(posts));
         }
       } else {
         dispatch(checkingFinish());

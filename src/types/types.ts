@@ -12,7 +12,8 @@ export const types = {
   setCurrentUser: '[User] Set Current User',
 
   createPost: '[Post] Create Post',
-  loadPosts: '[Post] Load Posts',
+  getPosts: '[Post] Get Posts',
+  getPictures: '[Post] Get Pictures',
   startLoadingPost: '[Post] Start Loading Post',
   finishLoadingPost: '[Post] Finish Loading Post',
 };

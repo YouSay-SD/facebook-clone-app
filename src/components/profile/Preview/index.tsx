@@ -7,8 +7,8 @@ import { PreviewContainer, TitleContainer, SeeAll } from './styles';
 import { RootStore } from '../../../store/store';
 
 const Preview: FC<PreviewProps> = ({ children, item }) => {
-  const { posts = [] } = useSelector((state: RootStore) => state.post);
-  // const reducePosts = posts.slice(0, 11);
+  const { pictures = [] } = useSelector((state: RootStore) => state.post);
+  const reducePictures = pictures.slice(0, 9);
 
   const history = useHistory();
   // console.log(Array.from(posts));
@@ -26,9 +26,9 @@ const Preview: FC<PreviewProps> = ({ children, item }) => {
             <SeeAll>See All {item}</SeeAll>
           </TitleContainer>
           <Grid>
-            {posts &&
-              posts.map(
-                ({ picture, id, index }) =>
+            {pictures &&
+              reducePictures.map(
+                ({ picture, id }) =>
                   picture && (
                     <Picture
                       key={id}

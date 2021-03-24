@@ -3,18 +3,24 @@ import { PostState, Action } from './interface';
 
 const initState = {
   posts: [],
+  pictures: [],
   loadingPost: false,
 };
 
 export const postReducer = (state: PostState = initState, action: Action) => {
   switch (action.type) {
-    case types.loadPosts:
+    case types.getPosts:
       return {
         ...state,
-        // posts: [action.payload, ...state.posts],
         posts: action.payload,
         ...state.posts,
-        // posts: [{ ...action.payload }],
+      };
+
+    case types.getPictures:
+      return {
+        ...state,
+        pictures: action.payload,
+        ...state.pictures,
       };
 
     case types.startLoadingPost:

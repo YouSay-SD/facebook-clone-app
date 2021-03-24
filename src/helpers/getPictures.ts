@@ -1,18 +1,18 @@
 import { db } from '../firebase/firebaseConfig';
-import { PostProps } from '../reducers/postReducer/interface';
+import { PictureProps } from '../reducers/postReducer/interface';
 
-export const loadPosts = async (userName: string) => {
+export const getPictures = async (userName: string) => {
   const postsSnap = await db
     .collection(`posts/${userName}/post`)
-    .orderBy('date', 'desc')
+    .where('picture', '!=', null)
+    .orderBy('picture', 'desc')
     .get();
-  const posts: PostProps[] = [];
+  const posts: PictureProps[] = [];
 
   postsSnap.forEach((snapChildren) => {
-    const { body, picture, date } = snapChildren.data();
+    const { picture, date } = snapChildren.data();
     posts.push({
       id: snapChildren.id,
-      body,
       picture,
       date,
     });
