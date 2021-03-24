@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   WritePostContainer,
@@ -56,17 +56,6 @@ const WritePost: FC = () => {
     setFileObject(file);
   };
 
-  console.log('a');
-
-  // const handleGetPictures = async (username: string) => {
-  //   const picturesObtained = await getPictures(username);
-  //   dispatch(setPictures(picturesObtained));
-  // };
-
-  if (userName) {
-    dispatch(setPictures(userName));
-  }
-
   const handleRemovePreview = () => {
     setPhotoPreview(null);
     setFileObject(null);
@@ -85,7 +74,9 @@ const WritePost: FC = () => {
     };
 
     dispatch(startNewPost(newPost));
-    // handleGetPictures(userName);
+    if (userName) {
+      dispatch(setPictures(userName));
+    }
     dispatch(finishLoadingPost());
     dispatch(uiCloseModal());
     setPhotoPreview(null);

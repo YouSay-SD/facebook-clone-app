@@ -1,3 +1,4 @@
 export interface PreviewProps {
-  item?: string;
+  type: string;
+  pictures?: [];
 }

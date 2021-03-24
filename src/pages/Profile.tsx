@@ -12,8 +12,6 @@ import {
 } from '../components';
 import { RootStore } from '../store/store';
 import { setCurrentUser } from '../actions/user/user';
-import { getUserData } from '../helpers/getUserData';
-import { getPictures } from '../helpers/getPictures';
 import { setPictures } from '../actions/post/post';
 
 interface ProfileProps {
@@ -28,23 +26,11 @@ const Profile: FC<ProfileProps> = () => {
   );
 
   const { pictures } = useSelector((state: RootStore) => state.post);
-  // console.log(posts);
-  console.log(pictures);
 
-  // const handleGetPictures = async (username: string) => {
-  //   const picturesObtained = await getPictures(username);
-  //   dispatch(setPictures(picturesObtained));
-  // };
-
-  const handleGetUserData = async (username: string) => {
-    const userData = await getUserData(username);
-    dispatch(setCurrentUser(userData));
-  };
-
-  // useEffect(() => {
-  //   handleGetUserData(userName);
-  //   // handleGetPictures(userName);
-  // }, [userName]);
+  useEffect(() => {
+    dispatch(setCurrentUser(userName));
+    dispatch(setPictures(userName));
+  }, [userName]);
 
   const { currentUser } = useSelector((state: RootStore) => state.user);
   const { userName: currentUserName, avatar, uid } = currentUser;
@@ -57,7 +43,7 @@ const Profile: FC<ProfileProps> = () => {
     <>
       <Hero userName={currentUserName} avatar={avatar} />
       <NavbarProfile />
-      <Preview item='Photos' />
+      <Preview type='Photos' pictures={pictures} />
       {/* {posts &&
         // eslint-disable-next-line array-callback-return
         posts.map((post) => {
