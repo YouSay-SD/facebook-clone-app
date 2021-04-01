@@ -1,6 +1,8 @@
 import styled from '@emotion/styled/macro';
 
-export const PreviewContainer = styled.div``;
+export const PreviewContainer = styled.div`
+  margin-bottom: 30px;
+`;
 
 export const TitleContainer = styled.div`
   display: flex;

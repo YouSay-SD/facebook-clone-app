@@ -100,6 +100,7 @@ const WritePost: FC = () => {
                     placeholder="What's on your mind?"
                     name='post'
                     autoComplete='off'
+                    disabled
                   />
                 </InputContainer>
               }

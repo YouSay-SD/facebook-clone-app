@@ -1,7 +1,10 @@
 import styled from '@emotion/styled/macro';
 import { respondAbove } from '../../../styles/breakpoints';
 
-export const WritePostContainer = styled.div``;
+export const WritePostContainer = styled.div`
+  margin-bottom: 30px;
+`;
+
 export const WritePostForm = styled.form`
   display: grid;
   grid-template-columns: 40px 1fr;
@@ -33,6 +36,7 @@ export const InputContainer = styled.div`
   input {
     background-color: ${({ theme }) => theme.colors.tertiary};
     border-radius: 30px;
+    cursor: pointer;
 
     &:hover {
       background-color: ${({ theme }) => theme.colors.primary};
