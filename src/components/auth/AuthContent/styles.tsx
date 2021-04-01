@@ -44,6 +44,7 @@ export const Logo = styled.img`
 `;
 
 export const FormContainer = styled.div`
+  background-color: ${({ theme }) => theme.colors.secondary};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
   padding: 16px;
   border-radius: 6px;

@@ -6,7 +6,7 @@ export const RegisterContainer = styled.div`
   width: 100%;
   padding: 16px;
   border-radius: 6px;
-  background-color: ${({ theme }) => theme.colors.tertiary};
+  background-color: ${({ theme }) => theme.colors.secondary};
 
   h2 {
     font-size: 1.6rem;

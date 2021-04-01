@@ -26,11 +26,11 @@ export const Text = styled.p<ButtonProps>`
   font-weight: ${({ fontWeight }) => fontWeight || 600};
   color: ${({ theme }) => theme.colors.fontColorPrimary};
   text-align: center;
+  ${({ type }) => type && `margin-left: 8px;`};
 `;
 
 export const Icon = styled.img`
   width: 13px;
-  margin-right: 8px;
 
   ${respondAbove.sm} {
     width: 15px;

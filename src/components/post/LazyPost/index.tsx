@@ -14,7 +14,9 @@ const LazyPost: FC<PostComponentProps> = ({ author, body, picture }) => {
       <Suspense fallback={<PostLoader />}>
         {isNearScreen ? (
           <Post author={author} body={body} picture={picture} />
-        ) : null}
+        ) : (
+          <PostLoader />
+        )}
       </Suspense>
     </div>
   );

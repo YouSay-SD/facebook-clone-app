@@ -1,7 +1,9 @@
+import React from 'react';
+
 export interface ButtonProps {
   type?: string;
   fontWeight?: number;
   fontSize?: number;
   width?: number;
-  onClick?: any;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }

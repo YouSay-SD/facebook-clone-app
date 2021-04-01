@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   WritePostContainer,
@@ -30,7 +30,6 @@ import {
 } from '../../../actions/post/post';
 import { fileUpload } from '../../../helpers/fileUpload';
 import { useFormCustom } from '../../../hooks/useFormCustom';
-import { getPictures } from '../../../helpers/getPictures';
 
 const WritePost: FC = () => {
   const { avatar, userName } = useSelector((state: RootStore) => state.auth);
@@ -81,6 +80,7 @@ const WritePost: FC = () => {
     }
     dispatch(finishLoadingPost());
     dispatch(uiCloseModal());
+    setFileObject(null);
     setPhotoPreview(null);
     reset();
   };

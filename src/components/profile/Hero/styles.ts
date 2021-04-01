@@ -44,8 +44,8 @@ export const BlurImage = styled.div<ImageProps>`
     content: '';
     background: linear-gradient(
       0deg,
-      rgba(${({ theme }) => theme.colorsRGB.tertiary}) 44%,
-      rgba(${({ theme }) => theme.colorsRGB.tertiary}, 0) 70%
+      rgba(${({ theme }) => theme.colorsRGB.secondary}) 44%,
+      rgba(${({ theme }) => theme.colorsRGB.secondary}, 0) 70%
     );
     position: absolute;
     bottom: 0;

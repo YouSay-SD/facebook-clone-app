@@ -9,3 +9,10 @@ export const PostContainer = styled.div`
     }
   }
 `;
+
+export const PostHeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const PostMenu = styled.div``;

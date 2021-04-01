@@ -8,18 +8,21 @@ const Button: FC<ButtonProps> = ({
   fontWeight,
   fontSize,
   width,
+  onClick,
 }) => {
   return (
-    <ButtonContainer width={width}>
+    <ButtonContainer width={width} onClick={onClick}>
       {type && (
         <Icon
           src={`${process.env.REACT_APP_URL}/img/icons/${type}.svg`}
           alt={type}
         />
       )}
-      <Text fontWeight={fontWeight} fontSize={fontSize}>
-        {children}
-      </Text>
+      {children && (
+        <Text fontWeight={fontWeight} fontSize={fontSize} type={type}>
+          {children}
+        </Text>
+      )}
     </ButtonContainer>
   );
 };

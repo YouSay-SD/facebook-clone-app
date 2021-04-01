@@ -23,7 +23,6 @@ const FormRegister: React.FC = () => {
       <p>It’s quick and easy.</p>
       <Form onSubmit={onSubmit}>
         <Input
-          width={48.5}
           type='text'
           placeholder='User name'
           name='userName'
