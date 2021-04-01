@@ -1,9 +1,7 @@
 import styled from '@emotion/styled/macro';
 import { respondAbove } from '../../../styles/breakpoints';
 
-export const WritePostContainer = styled.div`
-  margin-bottom: 30px;
-`;
+export const WritePostContainer = styled.div``;
 
 export const WritePostForm = styled.form`
   display: grid;

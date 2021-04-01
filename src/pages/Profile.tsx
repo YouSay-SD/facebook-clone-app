@@ -6,7 +6,7 @@ import {
   NavbarProfile,
   Preview,
   Loader,
-  ModalPost,
+  Grid,
   WritePost,
   PostWrapper,
 } from '../components';
@@ -45,9 +45,11 @@ const Profile: FC<ProfileProps> = () => {
     <>
       <Hero userName={currentUserName} avatar={avatar} />
       <NavbarProfile />
-      <Preview type='Photos' pictures={pictures} />
-      {currentUserName === authUserName && <WritePost />}
-      <PostWrapper posts={posts} />
+      <Grid columns={1} gap={20}>
+        <Preview type='Photos' pictures={pictures} />
+        {currentUserName === authUserName && <WritePost />}
+        <PostWrapper posts={posts} />
+      </Grid>
       {/* <Preview item='Friends' /> */}
       {/* <ModalPost /> */}
     </>

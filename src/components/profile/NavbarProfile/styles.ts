@@ -4,6 +4,8 @@ import { respondAbove } from '../../../styles/breakpoints';
 export const NavbarContainer = styled.div`
   width: 100%;
   border-bottom: 1px solid ${({ theme }) => theme.colors.quarter};
+  margin-bottom: 20px;
+  background-color: ${({ theme }) => theme.colors.secondary};
 `;
 
 export const Navbar = styled.nav`

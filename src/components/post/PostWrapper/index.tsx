@@ -1,19 +1,19 @@
 import React, { FC } from 'react';
-import { Container, LazyPost } from '../..';
+import { Container, LazyPost, Grid } from '../..';
 import { PostWrapperProps } from './interface';
-import { PostWrapperContainer, PostWrapperGrid } from './styles';
+import { PostWrapperContainer } from './styles';
 import { PostComponentProps } from '../Post/interface';
 
 const PostWrapper: FC<PostWrapperProps> = ({ posts }) => {
   return (
     <PostWrapperContainer>
       <Container>
-        <PostWrapperGrid>
+        <Grid columns={1} gap={20}>
           {posts &&
             posts.map(({ ...props }: PostComponentProps) => {
               return <LazyPost key={props.id} {...props} />;
             })}
-        </PostWrapperGrid>
+        </Grid>
       </Container>
     </PostWrapperContainer>
   );
