@@ -1,19 +1,12 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState, useRef } from 'react';
 import { PostHeader, PostContent } from '../..';
 // import { PostProps } from '../../../reducers/postReducer/interface';
 import { PostContainer } from './styles';
 import { PostComponentProps } from './interface';
 import { getUserData } from '../../../helpers/getUserData';
+import useNearScreen from '../../../hooks/useNearScreen';
 
 const Post: FC<PostComponentProps> = ({ author, body, picture }) => {
-  // const { body, author } = post;
-  // console.log('post', body);
-  // console.log('a');
-  // const userData = (handleGetUserData = () => async (username: string) => {
-  //   const resp = await getUserData(author);
-  //   return resp;
-  // });
-
   const [userData, setUserData] = useState<any>({
     avatar: '',
   });
@@ -39,4 +32,17 @@ const Post: FC<PostComponentProps> = ({ author, body, picture }) => {
   );
 };
 
-export default Post;
+// Lazy Post
+const LazyPost: FC<PostComponentProps> = ({ author, body, picture }) => {
+  const { isNearScreen, fromRef } = useNearScreen({ distance: '200px' });
+
+  return (
+    <div ref={fromRef}>
+      {isNearScreen ? (
+        <Post author={author} body={body} picture={picture} />
+      ) : null}
+    </div>
+  );
+};
+
+export default LazyPost;

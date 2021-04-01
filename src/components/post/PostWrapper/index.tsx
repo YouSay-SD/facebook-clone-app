@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Container, Post } from '../..';
+import { Container, LazyPost } from '../..';
 import { PostWrapperProps } from './interface';
 import { PostWrapperContainer, PostWrapperGrid } from './styles';
 import { PostComponentProps } from '../Post/interface';
@@ -11,7 +11,7 @@ const PostWrapper: FC<PostWrapperProps> = ({ posts }) => {
         <PostWrapperGrid>
           {posts &&
             posts.map(({ ...props }: PostComponentProps) => {
-              return <Post key={props.id} {...props} />;
+              return <LazyPost key={props.id} {...props} />;
             })}
         </PostWrapperGrid>
       </Container>

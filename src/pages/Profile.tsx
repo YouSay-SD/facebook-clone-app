@@ -8,7 +8,6 @@ import {
   Loader,
   ModalPost,
   WritePost,
-  Post,
   PostWrapper,
 } from '../components';
 import { RootStore } from '../store/store';

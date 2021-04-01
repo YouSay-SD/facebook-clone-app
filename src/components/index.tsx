@@ -20,7 +20,7 @@ export { default as Preview } from './profile/Preview';
 export { default as Avatar } from './profile/Avatar';
 
 // Post
-export { default as Post } from './post/Post';
+export { default as LazyPost } from './post/Post';
 export { default as PostWrapper } from './post/PostWrapper';
 export { default as PostHeader } from './post/PostHeader';
 export { default as PostContent } from './post/PostContent';
