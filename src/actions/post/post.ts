@@ -54,3 +54,32 @@ export const startLoadingPost = () => ({
 export const finishLoadingPost = () => ({
   type: types.finishLoadingPost,
 });
+
+// Active Post
+export const startSetActivePost = (activePost: any) => ({
+  type: types.setActivePost,
+  payload: activePost,
+});
+
+export const setActivePost = ({ idPost }: any) => {
+  return (dispatch: any, getState: any) => {
+    const { posts } = getState().post;
+    const activePost = posts.filter(({ id }: any) => id === idPost);
+    dispatch(startSetActivePost(activePost));
+  };
+};
+
+// Delete Post
+export const startDeletePost = (idPost: string) => ({
+  type: types.deletePost,
+  payload: idPost,
+});
+
+export const DeletePost = (idPost: string) => {
+  return async (dispatch: any, getState: any) => {
+    const { uid } = getState().auth;
+    db.collection(`posts`).doc(uid).collection('post').doc(idPost).delete();
+
+    dispatch(startDeletePost(idPost));
+  };
+};

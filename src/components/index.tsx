@@ -21,7 +21,7 @@ export { default as Avatar } from './profile/Avatar';
 
 // Post
 export { default as Post } from './post/Post';
-export { default as DeletePost } from './post/DeletePost';
+export { default as TrashButton } from './post/TrashButton';
 export { default as LazyPost } from './post/LazyPost';
 export { default as PostLoader } from './post/PostLoader';
 export { default as PostWrapper } from './post/PostWrapper';

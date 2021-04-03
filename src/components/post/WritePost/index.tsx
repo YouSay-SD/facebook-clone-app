@@ -20,7 +20,6 @@ import {
   Loader,
 } from '../..';
 import { RootStore } from '../../../store/store';
-import { uiOpenModal, uiCloseModal } from '../../../actions/ui/ui';
 import {
   startNewPost,
   startLoadingPost,
@@ -35,6 +34,7 @@ const WritePost: FC = () => {
   const { avatar, userName } = useSelector((state: RootStore) => state.auth);
   const { loadingPost } = useSelector((state: RootStore) => state.post);
   const [photoPreview, setPhotoPreview] = useState<any>();
+  const [openModal, setOpenModal] = useState<boolean>();
   const [fileObject, setFileObject] = useState<any>();
   const { reset, formValues, handleInputChange } = useFormCustom({
     body: '',
@@ -47,7 +47,6 @@ const WritePost: FC = () => {
     reader.onload = () => {
       if (reader.readyState === 2) {
         setPhotoPreview(reader.result);
-        dispatch(uiOpenModal());
       }
     };
     reader.readAsDataURL(e.target.files[0]);
@@ -79,7 +78,6 @@ const WritePost: FC = () => {
       dispatch(setPosts(userName));
     }
     dispatch(finishLoadingPost());
-    dispatch(uiCloseModal());
     setFileObject(null);
     setPhotoPreview(null);
     reset();
@@ -93,6 +91,7 @@ const WritePost: FC = () => {
           <WritePostForm onSubmit={handleSubmit}>
             <Avatar url={avatar} status />
             <Modal
+              openModal={openModal}
               button={
                 <InputContainer>
                   <Input

@@ -1,5 +1,5 @@
 export interface PostComponentProps {
-  id?: string;
+  id: string;
   author: string;
   body?: string;
   picture?: string;

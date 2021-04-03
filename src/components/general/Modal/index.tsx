@@ -1,18 +1,15 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootStore } from '../../../store/store';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { modalAnimation } from './animations';
-import { uiOpenModal, uiCloseModal } from '../../../actions/ui/ui';
 import { BoxModal, BoxShadow, Background, ButtonContainer } from './styles';
 
 const Modal = ({ children, button }: any) => {
-  const dispatch = useDispatch();
-  const { modalOpen } = useSelector((state: RootStore) => state.ui);
-  const showHideModal = modalAnimation(modalOpen);
+  const [openModal, setOpenModal] = useState<boolean>(false);
+  const showHideModal = modalAnimation(openModal);
 
   return (
     <div>
-      <ButtonContainer onClick={() => dispatch(uiOpenModal())}>
+      <ButtonContainer onClick={() => setOpenModal(true)}>
         {button}
       </ButtonContainer>
 
@@ -20,10 +17,7 @@ const Modal = ({ children, button }: any) => {
         <BoxShadow>{children}</BoxShadow>
       </BoxModal>
 
-      <Background
-        style={showHideModal}
-        onClick={() => dispatch(uiCloseModal())}
-      />
+      <Background style={showHideModal} onClick={() => setOpenModal(false)} />
     </div>
   );
 };

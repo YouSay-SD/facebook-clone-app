@@ -1,9 +1,9 @@
 import { useSpring } from 'react-spring';
 
-export const modalAnimation = (modalOpen: any) => {
+export const modalAnimation = (openModal: boolean) => {
   const showHideModal = useSpring({
     to: async (next: any) => {
-      if (modalOpen) {
+      if (openModal) {
         await next({ display: 'flex' });
         await next({ opacity: 1 });
       } else {
