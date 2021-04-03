@@ -34,7 +34,6 @@ const WritePost: FC = () => {
   const { avatar, userName } = useSelector((state: RootStore) => state.auth);
   const { loadingPost } = useSelector((state: RootStore) => state.post);
   const [photoPreview, setPhotoPreview] = useState<any>();
-  const [openModal, setOpenModal] = useState<boolean>();
   const [fileObject, setFileObject] = useState<any>();
   const { reset, formValues, handleInputChange } = useFormCustom({
     body: '',
@@ -91,7 +90,6 @@ const WritePost: FC = () => {
           <WritePostForm onSubmit={handleSubmit}>
             <Avatar url={avatar} status />
             <Modal
-              openModal={openModal}
               button={
                 <InputContainer>
                   <Input
