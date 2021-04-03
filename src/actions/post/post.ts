@@ -88,3 +88,28 @@ export const DeletePost = (idPost: string) => {
     await dispatch(startDeletePost(idPost));
   };
 };
+
+// Update Post
+export const startUpdatePost = (idPost: string, body: string) => ({
+  type: types.updatePost,
+  payload: {
+    id: idPost,
+    body,
+  },
+});
+
+export const UpdatePost = (idPost: string, body: string) => {
+  return async (dispatch: any, getState: any) => {
+    const { userName } = getState().auth;
+    await db
+      .collection(`posts`)
+      .doc(userName)
+      .collection('post')
+      .doc(idPost)
+      .update({
+        body,
+      });
+
+    await dispatch(startUpdatePost(idPost, body));
+  };
+};

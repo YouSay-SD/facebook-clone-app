@@ -1,6 +1,6 @@
 export interface PostComponentProps {
   id: string;
   author: string;
-  body?: string;
-  picture?: string;
+  body: string;
+  picture: string | null;
 }

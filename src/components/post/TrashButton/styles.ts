@@ -1,7 +1,5 @@
 import styled from '@emotion/styled/macro';
 
-export const TrashContainer = styled.div``;
-
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;

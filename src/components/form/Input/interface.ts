@@ -13,4 +13,5 @@ export interface InputProps {
   border?: boolean;
   disabled?: boolean;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  defaultValue?: string;
 }

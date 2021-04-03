@@ -1,4 +1,4 @@
 export interface PostContentProps {
-  body?: string;
-  picture?: string;
+  body: string;
+  picture: string | null;
 }

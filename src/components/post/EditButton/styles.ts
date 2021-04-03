@@ -1,6 +1,8 @@
 import styled from '@emotion/styled/macro';
 
-export const EditContainer = styled.div``;
+export const FormEditPost = styled.form`
+  width: 100%;
+`;
 
 export const ButtonContainer = styled.div`
   display: flex;
@@ -8,7 +10,6 @@ export const ButtonContainer = styled.div`
 `;
 
 export const Content = styled.div`
-  max-width: 226px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

@@ -1,29 +1,47 @@
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { EditContainer, Content } from './styles';
-import { Modal, Box, Button, Title, P } from '../..';
+import { useForm } from 'react-hook-form';
+import { Content, FormEditPost } from './styles';
+import { Modal, Box, Button, Title, P, Textarea, Input, Alert } from '../..';
 import { EditButtonProps } from './interface';
-import { DeletePost } from '../../../actions/post/post';
+import { UpdatePost } from '../../../actions/post/post';
 
-const EditButton: FC<EditButtonProps> = ({ idPost }) => {
+const EditButton: FC<EditButtonProps> = ({ idPost, body }) => {
   const dispatch = useDispatch();
+  const { register, errors, handleSubmit } = useForm();
 
-  const handleDeletePost = async () => {
-    // dispatch(EditPost(idPost));
+  const onSubmit = ({ bodyEdited }: any) => {
+    dispatch(UpdatePost(idPost, bodyEdited));
   };
 
   return (
-    <EditContainer>
+    <div>
       <Modal button={<Button type='edit' />}>
         <Box>
           <Content>
             <Title>Edit Post</Title>
-            <P>You won,t be able to revert this!</P>
-            <Button onClick={handleDeletePost}>Yes, delete it!</Button>
+            <FormEditPost onSubmit={handleSubmit(onSubmit)}>
+              <Textarea
+                name='bodyEdited'
+                defaultValue={body}
+                innerRef={register({
+                  required: { value: true, message: 'The text is required' },
+                })}
+              />
+              {errors?.bodyEdited && (
+                <Alert>{errors?.bodyEdited?.message}</Alert>
+              )}
+              <Input
+                type='submit'
+                placeholder='Update Post!'
+                name='updatePost'
+                value='Update Post!'
+              />
+            </FormEditPost>
           </Content>
         </Box>
       </Modal>
-    </EditContainer>
+    </div>
   );
 };
 

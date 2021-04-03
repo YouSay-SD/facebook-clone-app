@@ -32,7 +32,7 @@ const Post: FC<PostComponentProps> = ({ id, author, body, picture }) => {
           <PostHeader author={author} avatar={avatar} />
           {userName === currentUserName && (
             <PostMenu>
-              <EditButton idPost={id} />
+              <EditButton idPost={id} body={body} />
               <TrashButton idPost={id} />
             </PostMenu>
           )}

@@ -15,4 +15,5 @@ export const types = {
   finishLoadingPost: '[Post] Finish Loading Post',
   setActivePost: '[Post] Set Active Post',
   deletePost: '[Post] Delete Post',
+  updatePost: '[Post] Update Post',
 };

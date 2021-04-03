@@ -38,6 +38,19 @@ export const postReducer = (state: PostState = initState, action: Action) => {
         ),
       };
 
+    case types.updatePost:
+      return {
+        ...state,
+        activePost: null,
+        // eslint-disable-next-line no-return-assign
+        posts: state.posts.map((post) =>
+          post.id === action.payload.id
+            ? // eslint-disable-next-line no-param-reassign
+              (post = { ...post, body: action.payload.body })
+            : post
+        ),
+      };
+
     case types.startLoadingPost:
       return {
         ...state,
