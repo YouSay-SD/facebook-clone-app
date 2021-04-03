@@ -10,19 +10,3 @@ export const startLoading = () => ({
 export const finishLoading = () => ({
   type: types.uiFinishLoading,
 });
-
-// Is My Profile
-export const startSetIsMyProfile = (isMyProfile: boolean) => ({
-  type: types.isMyProfile,
-});
-
-export const setIsMyProfile = (userName: string, currentUser: string) => {
-  return (dispatch: any) => {
-    const isMyProfile: boolean = userName === currentUser;
-
-    console.log(isMyProfile);
-    console.log(userName, currentUser);
-
-    dispatch(startSetIsMyProfile(isMyProfile));
-  };
-};

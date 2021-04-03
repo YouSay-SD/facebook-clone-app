@@ -7,8 +7,9 @@ import { getUserData } from '../../../helpers/getUserData';
 import { RootStore } from '../../../store/store';
 
 const Post: FC<PostComponentProps> = ({ id, author, body, picture }) => {
-  const { isMyProfile } = useSelector((state: RootStore) => state.ui);
-
+  const { userName } = useSelector((state: RootStore) => state.auth);
+  const { currentUser } = useSelector((state: RootStore) => state.user);
+  const { userName: currentUserName } = currentUser;
   const [userData, setUserData] = useState<any>({
     avatar: '',
   });
@@ -29,7 +30,7 @@ const Post: FC<PostComponentProps> = ({ id, author, body, picture }) => {
       <PostContainer>
         <PostHeaderContainer>
           <PostHeader author={author} avatar={avatar} />
-          {isMyProfile && (
+          {userName === currentUserName && (
             <PostMenu>
               <TrashButton idPost={id} />
             </PostMenu>

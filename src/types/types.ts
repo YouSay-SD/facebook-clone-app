@@ -5,7 +5,6 @@ export const types = {
 
   uiStartLoading: '[Ui] Start Loading',
   uiFinishLoading: '[Ui] Finish Loading',
-  isMyProfile: '[Ui] Is My Profile',
 
   setCurrentUser: '[User] Set Current User',
 
