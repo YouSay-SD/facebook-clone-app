@@ -34,5 +34,5 @@ export interface AuthPayloadProps {
 
 export type Action = {
   type: string;
-  payload: AuthPayloadProps;
+  payload: any;
 };

@@ -77,9 +77,14 @@ export const startDeletePost = (idPost: string) => ({
 
 export const DeletePost = (idPost: string) => {
   return async (dispatch: any, getState: any) => {
-    const { uid } = getState().auth;
-    db.collection(`posts`).doc(uid).collection('post').doc(idPost).delete();
+    const { userName } = getState().auth;
+    await db
+      .collection(`posts`)
+      .doc(userName)
+      .collection('post')
+      .doc(idPost)
+      .delete();
 
-    dispatch(startDeletePost(idPost));
+    await dispatch(startDeletePost(idPost));
   };
 };

@@ -1,20 +1,19 @@
 import { types } from '../../types/types';
-
-export interface UiState {
-  loading: boolean;
-}
+import { UiState, Action } from './interface';
 
 const initialState = {
   loading: false,
-};
-
-type Action = {
-  type: string;
-  payload: string;
+  isMyProfile: false,
 };
 
 export const uiReducer = (state: UiState = initialState, action: Action) => {
   switch (action.type) {
+    case types.isMyProfile:
+      return {
+        ...state,
+        isMyProfile: action.payload,
+      };
+
     default:
       return state;
   }

@@ -14,14 +14,12 @@ export const postReducer = (state: PostState = initState, action: Action) => {
       return {
         ...state,
         posts: action.payload,
-        // ...state.posts,
       };
 
     case types.getPictures:
       return {
         ...state,
         pictures: action.payload,
-        // ...state.pictures,
       };
 
     case types.setActivePost:
@@ -35,6 +33,9 @@ export const postReducer = (state: PostState = initState, action: Action) => {
         ...state,
         activePost: null,
         posts: state.posts.filter((post) => post.id !== action.payload),
+        pictures: state.pictures.filter(
+          (picture) => picture.id !== action.payload
+        ),
       };
 
     case types.startLoadingPost:
