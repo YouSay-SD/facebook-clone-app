@@ -4,6 +4,7 @@ import { PostState, Action } from './interface';
 const initState = {
   posts: [],
   pictures: [],
+  activePost: null,
   loadingPost: false,
 };
 
@@ -13,14 +14,27 @@ export const postReducer = (state: PostState = initState, action: Action) => {
       return {
         ...state,
         posts: action.payload,
-        ...state.posts,
+        // ...state.posts,
       };
 
     case types.getPictures:
       return {
         ...state,
         pictures: action.payload,
-        ...state.pictures,
+        // ...state.pictures,
+      };
+
+    case types.setActivePost:
+      return {
+        ...state,
+        activePost: action.payload,
+      };
+
+    case types.deletePost:
+      return {
+        ...state,
+        activePost: null,
+        posts: state.posts.filter((post) => post.id !== action.payload),
       };
 
     case types.startLoadingPost:

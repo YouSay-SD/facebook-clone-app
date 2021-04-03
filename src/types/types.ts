@@ -3,9 +3,6 @@ export const types = {
   logout: '[Auth] Logout',
   checkingFinish: '[Auth] Finish Checking Login State',
 
-  uiOpenModal: '[Ui] Open Modal',
-  uiCloseModal: '[Ui] Close Modal',
-
   uiStartLoading: '[Ui] Start Loading',
   uiFinishLoading: '[Ui] Finish Loading',
 
@@ -16,4 +13,6 @@ export const types = {
   getPictures: '[Post] Get Pictures',
   startLoadingPost: '[Post] Start Loading Post',
   finishLoadingPost: '[Post] Finish Loading Post',
+  setActivePost: '[Post] Set Active Post',
+  deletePost: '[Post] Delete Post',
 };

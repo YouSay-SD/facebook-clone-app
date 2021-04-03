@@ -1,12 +1,10 @@
 import { types } from '../../types/types';
 
 export interface UiState {
-  modalOpen: boolean;
   loading: boolean;
 }
 
 const initialState = {
-  modalOpen: false,
   loading: false,
 };
 
@@ -17,18 +15,6 @@ type Action = {
 
 export const uiReducer = (state: UiState = initialState, action: Action) => {
   switch (action.type) {
-    case types.uiOpenModal:
-      return {
-        ...state,
-        modalOpen: true,
-      };
-
-    case types.uiCloseModal:
-      return {
-        ...state,
-        modalOpen: false,
-      };
-
     default:
       return state;
   }
