@@ -1,30 +1,30 @@
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { TrashContainer, Content } from './styles';
+import { EditContainer, Content } from './styles';
 import { Modal, Box, Button, Title, P } from '../..';
-import { TrashButtonProps } from './interface';
+import { EditButtonProps } from './interface';
 import { DeletePost } from '../../../actions/post/post';
 
-const TrashButton: FC<TrashButtonProps> = ({ idPost }) => {
+const EditButton: FC<EditButtonProps> = ({ idPost }) => {
   const dispatch = useDispatch();
 
   const handleDeletePost = async () => {
-    dispatch(DeletePost(idPost));
+    // dispatch(EditPost(idPost));
   };
 
   return (
-    <TrashContainer>
-      <Modal button={<Button type='delete' />}>
+    <EditContainer>
+      <Modal button={<Button type='edit' />}>
         <Box>
           <Content>
-            <Title>Are you sure?</Title>
+            <Title>Edit Post</Title>
             <P>You won,t be able to revert this!</P>
             <Button onClick={handleDeletePost}>Yes, delete it!</Button>
           </Content>
         </Box>
       </Modal>
-    </TrashContainer>
+    </EditContainer>
   );
 };
 
-export default TrashButton;
+export default EditButton;

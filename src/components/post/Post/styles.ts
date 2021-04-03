@@ -15,4 +15,8 @@ export const PostHeaderContainer = styled.div`
   justify-content: space-between;
 `;
 
-export const PostMenu = styled.div``;
+export const PostMenu = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+`;

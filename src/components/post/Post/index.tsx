@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { PostHeader, PostContent, Box, TrashButton } from '../..';
+import { PostHeader, PostContent, Box, TrashButton, EditButton } from '../..';
 import { PostContainer, PostHeaderContainer, PostMenu } from './styles';
 import { PostComponentProps } from './interface';
 import { getUserData } from '../../../helpers/getUserData';
@@ -32,6 +32,7 @@ const Post: FC<PostComponentProps> = ({ id, author, body, picture }) => {
           <PostHeader author={author} avatar={avatar} />
           {userName === currentUserName && (
             <PostMenu>
+              <EditButton idPost={id} />
               <TrashButton idPost={id} />
             </PostMenu>
           )}
