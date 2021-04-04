@@ -3,11 +3,11 @@ import { PostContentProps } from './interface';
 import { PostContentContainer, PostBody } from './styles';
 import { Picture } from '../..';
 
-const PostContent: FC<PostContentProps> = ({ body, picture }) => {
+const PostContent: FC<PostContentProps> = ({ body, idPicture, picture }) => {
   return (
     <PostContentContainer>
       {body && <PostBody>{body}</PostBody>}
-      {picture && <Picture picture={picture} fullSize />}
+      {picture && <Picture idPicture={idPicture} picture={picture} fullSize />}
     </PostContentContainer>
   );
 };

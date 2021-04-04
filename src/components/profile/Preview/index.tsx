@@ -12,7 +12,6 @@ const Preview: FC<PreviewProps> = ({ type, pictures = [] }) => {
   const history = useHistory();
   // console.log(Array.from(posts));
   const handleGoPhoto = (id: number) => {
-    console.log('as');
     // history.push(`/photos/${id}`);
   };
 

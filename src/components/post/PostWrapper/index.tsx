@@ -11,7 +11,9 @@ const PostWrapper: FC<PostWrapperProps> = ({ posts }) => {
         <Grid col={1} gap={20}>
           {posts &&
             posts.map(({ ...props }: PostComponentProps) => {
-              return <LazyPost key={props.id} {...props} />;
+              return (
+                <LazyPost key={props.id} idPicture={props.id} {...props} />
+              );
             })}
         </Grid>
       </Container>

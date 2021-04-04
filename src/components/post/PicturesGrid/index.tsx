@@ -12,8 +12,8 @@ const PicturesGrid: FC<IPicturesGrid> = (userName) => {
   return (
     <PicturesGridContainer>
       <Grid autoCol={280} gap={8}>
-        {allPictures.map(({ picture }: any) => {
-          return <Picture picture={picture} />;
+        {allPictures.map(({ picture, id }: any) => {
+          return <Picture idPicture={id} picture={picture} />;
         })}
       </Grid>
       <Preview>

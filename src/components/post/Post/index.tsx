@@ -6,7 +6,13 @@ import { PostComponentProps } from './interface';
 import { getUserData } from '../../../helpers/getUserData';
 import { RootStore } from '../../../store/store';
 
-const Post: FC<PostComponentProps> = ({ id, author, body, picture }) => {
+const Post: FC<PostComponentProps> = ({
+  id,
+  author,
+  body,
+  picture,
+  idPicture,
+}) => {
   const { userName } = useSelector((state: RootStore) => state.auth);
   const { currentUser } = useSelector((state: RootStore) => state.user);
   const { userName: currentUserName } = currentUser;
@@ -37,7 +43,7 @@ const Post: FC<PostComponentProps> = ({ id, author, body, picture }) => {
             </PostMenu>
           )}
         </PostHeaderContainer>
-        <PostContent body={body} picture={picture} />
+        <PostContent body={body} idPicture={idPicture} picture={picture} />
       </PostContainer>
     </Box>
   );
