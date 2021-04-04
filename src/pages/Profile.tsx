@@ -21,7 +21,7 @@ interface ProfileProps {
 const Profile: FC<ProfileProps> = () => {
   const dispatch = useDispatch();
   const { userName } = useParams<ProfileProps>();
-  const { pictures, posts } = useSelector((state: RootStore) => state.post);
+  const { posts } = useSelector((state: RootStore) => state.post);
   const { currentUser } = useSelector((state: RootStore) => state.user);
   const { userName: authUserName } = useSelector(
     (state: RootStore) => state.auth
@@ -30,7 +30,6 @@ const Profile: FC<ProfileProps> = () => {
 
   useEffect(() => {
     dispatch(setCurrentUser(userName));
-    dispatch(setPictures(userName));
     dispatch(setPosts(userName));
   }, [userName]);
 
@@ -43,7 +42,7 @@ const Profile: FC<ProfileProps> = () => {
       <Hero userName={currentUserName} avatar={avatar} />
       <NavbarProfile />
       <Grid col={1} gap={20}>
-        <Preview type='Photos' pictures={pictures} />
+        <Preview type='Photos' posts={posts} />
         {authUserName === currentUserName && <WritePost />}
         <PostWrapper posts={posts} />
       </Grid>

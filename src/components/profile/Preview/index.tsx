@@ -6,10 +6,11 @@ import { RootStore } from '../../../store/store';
 import { PreviewProps } from './interface';
 import { PreviewContainer, TitleContainer, SeeAll } from './styles';
 
-const Preview: FC<PreviewProps> = ({ type, pictures = [] }) => {
+const Preview: FC<PreviewProps> = ({ type, posts = [] }) => {
   const { currentUser } = useSelector((state: RootStore) => state.user);
   const { userName } = currentUser;
-  const reducePictures = pictures.slice(0, 9);
+  const postsFilter = posts.filter((post) => post.picture !== null);
+  const reducePosts = postsFilter.slice(0, 9);
   const history = useHistory();
 
   const goAlbumPage = () => {
@@ -25,9 +26,9 @@ const Preview: FC<PreviewProps> = ({ type, pictures = [] }) => {
             <SeeAll onClick={goAlbumPage}>See All {type}</SeeAll>
           </TitleContainer>
           <Grid col={3} gap={10}>
-            {pictures &&
-              reducePictures.map(({ picture, id }) => (
-                <Picture redirect id={id} key={id} picture={picture} />
+            {posts &&
+              reducePosts.map(({ picture, id }) => (
+                <Picture redirect key={id} picture={picture} id={id} />
               ))}
           </Grid>
         </Box>
