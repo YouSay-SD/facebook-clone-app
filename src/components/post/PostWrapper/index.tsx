@@ -8,7 +8,7 @@ const PostWrapper: FC<PostWrapperProps> = ({ posts }) => {
   return (
     <PostWrapperContainer>
       <Container>
-        <Grid columns={1} gap={20}>
+        <Grid col={1} gap={20}>
           {posts &&
             posts.map(({ ...props }: PostComponentProps) => {
               return <LazyPost key={props.id} {...props} />;

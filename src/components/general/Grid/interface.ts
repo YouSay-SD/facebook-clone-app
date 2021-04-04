@@ -1,5 +1,8 @@
 export interface GridProps {
   rows?: number;
-  columns?: number;
+  col?: number;
+  colSM?: number;
+  colMD?: number;
   gap?: number;
+  autoCol?: number;
 }

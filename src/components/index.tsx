@@ -32,6 +32,7 @@ export { default as Comments } from './post/Comments';
 export { default as ModalPost } from './post/ModalPost';
 export { default as Picture } from './post/Picture';
 export { default as WritePost } from './post/WritePost';
+export { default as PicturesGrid } from './post/PicturesGrid';
 
 // Form
 export { default as Alert } from './form/Alert';

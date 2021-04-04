@@ -24,7 +24,7 @@ const Preview: FC<PreviewProps> = ({ type, pictures = [] }) => {
             <Title>{type}</Title>
             <SeeAll>See All {type}</SeeAll>
           </TitleContainer>
-          <Grid columns={3} gap={10}>
+          <Grid col={3} gap={10}>
             {pictures &&
               reducePictures.map(({ picture, id }) => (
                 <Picture
