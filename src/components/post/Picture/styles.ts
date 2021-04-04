@@ -3,7 +3,7 @@ import { respondAbove } from '../../../styles/breakpoints';
 import { PictureContainerProps } from './interface';
 
 export const PictureContainer = styled.div<PictureContainerProps>`
-  cursor: pointer;
+  ${({ redirect }) => redirect && 'cursor: pointer;'};
   height: ${({ fullSize }) => (fullSize ? 'initial' : '30vw')};
   text-align: center;
 

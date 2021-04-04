@@ -3,16 +3,22 @@ import { useHistory } from 'react-router-dom';
 import { PictureContainer, Image } from './styles';
 import { PictureProps } from './interface';
 
-const Picture: FC<PictureProps> = ({ idPicture, picture, fullSize }) => {
+const Picture: FC<PictureProps> = ({ redirect, id, picture, fullSize }) => {
   const history = useHistory();
 
   const goPictureSingle = () => {
-    history.push(`/picture/YouSay/${idPicture}`);
-    console.log('asdasd', idPicture);
+    if (redirect) {
+      history.push(`/picture/YouSay/${id}`);
+      console.log('asdasd', id);
+    }
   };
 
   return (
-    <PictureContainer fullSize={fullSize} onClick={goPictureSingle}>
+    <PictureContainer
+      redirect={redirect}
+      fullSize={fullSize}
+      onClick={goPictureSingle}
+    >
       <Image src={picture} fullSize={fullSize} alt='Picture' />
     </PictureContainer>
   );

@@ -18,7 +18,7 @@ const PictureSingle: FC<IPictureSingle> = ({ idPicture }) => {
   return (
     <PictureSingleContainer>
       <ViewerContent>
-        <Picture idPicture={idPicture} picture={picture} fullSize />
+        <Picture picture={picture} fullSize />
       </ViewerContent>
       <PostContent>
         {/* <PostHeader /> */}

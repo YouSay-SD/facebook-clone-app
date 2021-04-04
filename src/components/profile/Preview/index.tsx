@@ -9,12 +9,6 @@ import { RootStore } from '../../../store/store';
 const Preview: FC<PreviewProps> = ({ type, pictures = [] }) => {
   const reducePictures = pictures.slice(0, 9);
 
-  const history = useHistory();
-  // console.log(Array.from(posts));
-  const handleGoPhoto = (id: number) => {
-    // history.push(`/photos/${id}`);
-  };
-
   return (
     <PreviewContainer>
       <Container>
@@ -26,11 +20,7 @@ const Preview: FC<PreviewProps> = ({ type, pictures = [] }) => {
           <Grid col={3} gap={10}>
             {pictures &&
               reducePictures.map(({ picture, id }) => (
-                <Picture
-                  key={id}
-                  picture={picture}
-                  onClick={() => handleGoPhoto(id)}
-                />
+                <Picture redirect id={id} key={id} picture={picture} />
               ))}
           </Grid>
         </Box>

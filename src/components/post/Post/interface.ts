@@ -3,5 +3,4 @@ export interface PostComponentProps {
   author: string;
   body: string;
   picture: string | null;
-  idPicture?: string;
 }
