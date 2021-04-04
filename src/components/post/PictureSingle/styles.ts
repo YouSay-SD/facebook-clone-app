@@ -1,14 +1,12 @@
 import styled from '@emotion/styled/macro';
 import { respondAbove } from '../../../styles/breakpoints';
 
-export const ModalPostContainer = styled.div`
-  position: fixed;
+export const PictureSingleContainer = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 56px);
   z-index: 8;
   top: 0;
   left: 0;
-  padding-top: 50px;
   display: flex;
   flex-wrap: wrap;
 `;

@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { Switch, Redirect, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Login, Profile, Search, Pictures } from '../pages';
+import { Login, Profile, Search, Album, Picture } from '../pages';
 import { firebase } from '../firebase/firebaseConfig';
 import { login, checkingFinish } from '../actions/auth/auth';
 import { RootStore } from '../store/store';
@@ -43,10 +43,11 @@ export const Routes: FC = () => {
         <>
           <Navbar />
           <Route exact path='/profile/:userName' component={Profile} />
+          <Route exact path='/album/:userName' component={Album} />
           <Route
             exact
-            path='/profile/:userName/pictures'
-            component={Pictures}
+            path='/picture/:userName/:idPicture'
+            component={Picture}
           />
           <Route exact path='/search' component={Search} />
           {/* <Redirect to={`/profile/${userName}`} /> */}

@@ -11,6 +11,7 @@ export const NavbarContainer = styled.div`
   z-index: 10;
   padding: 8px 20px;
   background-color: ${({ theme }) => theme.colors.secondary};
+  box-shadow: 0 10px 20px 0 rgb(58 66 74 / 10%);
 
   ${respondAbove.sm} {
     padding: 8px 30px;

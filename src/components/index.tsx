@@ -29,7 +29,7 @@ export { default as PostWrapper } from './post/PostWrapper';
 export { default as PostHeader } from './post/PostHeader';
 export { default as PostContent } from './post/PostContent';
 export { default as Comments } from './post/Comments';
-export { default as ModalPost } from './post/ModalPost';
+export { default as PictureSingle } from './post/PictureSingle';
 export { default as Picture } from './post/Picture';
 export { default as WritePost } from './post/WritePost';
 export { default as PicturesGrid } from './post/PicturesGrid';

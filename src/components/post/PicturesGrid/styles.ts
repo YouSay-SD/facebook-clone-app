@@ -6,7 +6,9 @@ export const PicturesGridContainer = styled.div`
   gap: 15px;
 `;
 
-export const Preview = styled.div``;
+export const Preview = styled.div`
+  background-color: ${({ theme }) => theme.colors.secondary};
+`;
 
 export const PreviewContent = styled.div`
   position: sticky;

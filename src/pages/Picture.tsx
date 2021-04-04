@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Loader, PicturesGrid } from '../components';
+import { Loader, PictureSingle } from '../components';
 import { RootStore } from '../store/store';
 import { setCurrentUser } from '../actions/user/user';
 import { setPosts } from '../actions/post/post';
@@ -10,9 +10,10 @@ interface ProfileProps {
   userName: string;
 }
 
-const Pictures: FC<ProfileProps> = () => {
+const Picture: FC<ProfileProps> = () => {
   const dispatch = useDispatch();
   const { userName } = useParams<ProfileProps>();
+  const { idPicture } = useParams<any>();
   const { currentUser } = useSelector((state: RootStore) => state.user);
   const { uid } = currentUser;
 
@@ -27,9 +28,9 @@ const Pictures: FC<ProfileProps> = () => {
 
   return (
     <div>
-      <PicturesGrid />
+      <PictureSingle idPicture={idPicture} />
     </div>
   );
 };
 
-export default Pictures;
+export default Picture;
