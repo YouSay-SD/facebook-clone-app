@@ -9,7 +9,7 @@ const PostHeader: FC<PostHeaderProps> = ({ author, avatar, date }) => {
       <Avatar url={avatar} />
       <TextContainer>
         <UserName>{author}</UserName>
-        <Date>February 15 at 7:36 PM</Date>
+        <Date>{date} February 15 at 7:36 PM</Date>
       </TextContainer>
     </PostHeaderContainer>
   );

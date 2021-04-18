@@ -6,11 +6,11 @@ export interface PostState {
 }
 
 export interface PostProps {
-  author: string;
-  body?: string;
   id: string;
   date: number;
-  picture?: string;
+  author: string;
+  body: string | null;
+  picture: string | null;
 }
 
 export interface PictureProps {

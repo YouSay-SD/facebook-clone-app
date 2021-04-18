@@ -1,7 +1,7 @@
 import React from 'react';
 
 export interface PictureProps {
-  id?: string;
+  id: string;
   picture: string;
   fullSize?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;

@@ -1,28 +1,34 @@
-import React, { FC } from 'react';
-import { useSelector } from 'react-redux';
-import { PostHeader, Comments, Picture } from '../..';
+import React, { FC, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { PostHeader, Picture } from '../..';
 import {
   PictureSingleContainer,
   PostContent,
   ViewerContent,
-  Viewer,
+  PostWrapper,
 } from './styles';
 import { RootStore } from '../../../store/store';
 import { IPictureSingle } from './interface';
+import { PostProps } from '../../../reducers/postReducer/interface';
 
 const PictureSingle: FC<IPictureSingle> = ({ idPicture }) => {
+  const { currentUser } = useSelector((state: RootStore) => state.user);
+  const { avatar } = currentUser;
   const { posts } = useSelector((state: RootStore) => state.post);
-  const post = posts.filter(({ id }: any) => id === idPicture);
-  const { picture } = post[0];
+  console.log(posts);
+  const { picture, id, author, date } = posts.find(
+    (post: PostProps) => post.id === idPicture
+  );
 
   return (
     <PictureSingleContainer>
       <ViewerContent>
-        <Picture picture={picture} fullSize />
+        <Picture id={id} picture={picture} fullSize />
       </ViewerContent>
       <PostContent>
-        {/* <PostHeader /> */}
-        <Comments />
+        <PostWrapper>
+          <PostHeader author={author} date={date} avatar={avatar} />
+        </PostWrapper>
       </PostContent>
     </PictureSingleContainer>
   );

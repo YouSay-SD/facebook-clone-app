@@ -42,7 +42,7 @@ const Profile: FC<ProfileProps> = () => {
       <Hero userName={currentUserName} avatar={avatar} />
       <NavbarProfile />
       <Grid col={1} gap={20}>
-        <Preview type='Photos' posts={posts} />
+        {posts.length !== 0 && <Preview type='Photos' posts={posts} />}
         {authUserName === currentUserName && <WritePost />}
         <PostWrapper posts={posts} />
       </Grid>
