@@ -7,6 +7,7 @@ export { default as Button } from './general/Button';
 export { default as Title } from './general/Title';
 export { default as Loader } from './general/Loader';
 export { default as Grid } from './general/Grid';
+export { default as DropDown } from './general/DropDown';
 
 // Auth
 export { default as FormLogin } from './auth/FormLogin';

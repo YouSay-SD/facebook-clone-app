@@ -1,11 +1,21 @@
 import React, { FC } from 'react';
-import { useDispatch } from 'react-redux';
-import { NavbarContainer, LeftSide, RightSide, Logo, Avatar } from './styles';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import {
+  NavbarContainer,
+  LeftSide,
+  RightSide,
+  Logo,
+  UserButton,
+  Menu,
+} from './styles';
 import { startLogout } from '../../../actions/auth/auth';
-import { Searcher } from '../..';
+import { Searcher, Title, P, Avatar, DropDown } from '../..';
+import { RootStore } from '../../../store/store';
 
 const Navbar: FC = () => {
   const dispatch = useDispatch();
+  const { userName, avatar } = useSelector((state: RootStore) => state.auth);
 
   const handleLogout = () => {
     dispatch(startLogout());
@@ -24,10 +34,21 @@ const Navbar: FC = () => {
         <button type='button' onClick={handleLogout}>
           Logout
         </button>
-        <Avatar
-          src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRRn8HIKq1xFSeHJTiI7EBp1Cs_M0LCDxZgw&usqp=CAU'
-          alt='Avatar'
-        />
+        {avatar && userName && (
+          <Link to={`/profile/${userName}`}>
+            <UserButton>
+              <Avatar url={avatar} size={28} />
+              <P>{userName}</P>
+            </UserButton>
+          </Link>
+        )}
+        <Menu>
+          <img
+            src={`${process.env.REACT_APP_URL}/img/icons/arrow.svg`}
+            alt='Arrow'
+          />
+        </Menu>
+        <DropDown />
       </RightSide>
     </NavbarContainer>
   );
