@@ -4,7 +4,6 @@ export interface PictureProps {
   id: string;
   picture: string;
   fullSize?: boolean;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   redirect?: boolean;
 }
 

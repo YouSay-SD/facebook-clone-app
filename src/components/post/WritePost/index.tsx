@@ -88,7 +88,7 @@ const WritePost: FC = () => {
       <Container>
         <Box>
           <WritePostForm onSubmit={handleSubmit}>
-            <Avatar url={avatar} status />
+            {avatar && <Avatar url={avatar} status />}
             <Modal
               button={
                 <InputContainer>

@@ -1,5 +1,5 @@
 export interface AvatarProps {
-  url?: string;
+  url: string;
   size?: number;
   status?: boolean;
 }

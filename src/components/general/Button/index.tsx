@@ -9,9 +9,10 @@ const Button: FC<ButtonProps> = ({
   fontSize,
   width,
   onClick,
+  circle,
 }) => {
   return (
-    <ButtonContainer width={width} onClick={onClick}>
+    <ButtonContainer width={width} onClick={onClick} circle={circle}>
       {type && (
         <Icon
           src={`${process.env.REACT_APP_URL}/img/icons/${type}.svg`}

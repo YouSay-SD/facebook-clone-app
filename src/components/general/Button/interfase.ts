@@ -6,4 +6,5 @@ export interface ButtonProps {
   fontSize?: number;
   width?: number;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  circle?: boolean;
 }

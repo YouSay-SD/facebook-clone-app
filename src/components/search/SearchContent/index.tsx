@@ -37,10 +37,14 @@ const SearchContent: FC = () => {
             {usersFound.length > 0 ? (
               <>
                 {usersFound.map(({ uid, userName, avatar }) => (
-                  <Link to={`../profile/${userName}`} key={uid} target='_self'>
+                  <Link to={`/profile/${userName}`} key={uid} target='_self'>
                     <Result>
-                      <Avatar url={avatar} size={60} />
-                      <Title fontWeight={500}>{userName}</Title>
+                      {avatar && userName && (
+                        <>
+                          <Avatar url={avatar} size={60} />
+                          <Title fontWeight={500}>{userName}</Title>
+                        </>
+                      )}
                     </Result>
                   </Link>
                 ))}

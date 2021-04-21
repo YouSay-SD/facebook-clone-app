@@ -4,8 +4,12 @@ import { flexCenterVertical } from '../../../styles/mixins';
 import { IconProps, ResultsContainerProps } from './interface';
 
 export const SearchContainer = styled.div<IconProps>`
-  ${flexCenterVertical}
+  display: none;
   margin-left: 15px;
+
+  ${respondAbove.sm} {
+    ${flexCenterVertical}
+  }
 `;
 
 export const Search = styled.input`

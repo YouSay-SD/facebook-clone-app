@@ -61,8 +61,12 @@ const Searcher: FC = () => {
           {usersFound.map(({ avatar, uid, userName }: CurrentUserProps) => (
             <Link to={`../profile/${userName}`} key={uid}>
               <Result id={uid} onClick={handleHideInput}>
-                <Avatar url={avatar} />
-                <Title size='small'>{userName}</Title>
+                {avatar && userName && (
+                  <>
+                    <Avatar url={avatar} />
+                    <Title size='small'>{userName}</Title>
+                  </>
+                )}
               </Result>
             </Link>
           ))}

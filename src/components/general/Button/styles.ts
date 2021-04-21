@@ -3,14 +3,19 @@ import { respondAbove } from '../../../styles/breakpoints';
 import { flexCenter } from '../../../styles/mixins';
 import { ButtonProps } from './interfase';
 
+const setWidth: Function = (width: string) => {
+  return width;
+};
+
 export const ButtonContainer = styled.button<ButtonProps>`
   border: none;
-  width: ${({ width }) => (width ? `${width}%` : 'max-content')};
-  height: 36px;
+  width: ${({ width, circle }) =>
+    circle ? setWidth('40px') : setWidth(`${width}%` || 'max-content')};
+  height: ${({ circle }) => (circle ? '40px' : '36px')};
   background-color: ${({ theme }) => theme.colors.primary};
   transition: background-color 0.3s ease;
-  border-radius: 6px;
-  padding: 0 14px 2px;
+  border-radius: ${({ circle }) => (circle ? '50px' : '6px')};
+  ${({ circle }) => !circle && 'padding: 0 14px 2px'};
   cursor: pointer;
   ${flexCenter};
 

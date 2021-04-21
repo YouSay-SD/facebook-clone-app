@@ -6,7 +6,7 @@ import { PostHeaderContainer, TextContainer, UserName, Date } from './styles';
 const PostHeader: FC<PostHeaderProps> = ({ author, avatar, date }) => {
   return (
     <PostHeaderContainer>
-      <Avatar url={avatar} />
+      {avatar && <Avatar url={avatar} />}
       <TextContainer>
         <UserName>{author}</UserName>
         <Date>{date} February 15 at 7:36 PM</Date>

@@ -6,9 +6,14 @@ export const PictureContainer = styled.div<PictureContainerProps>`
   ${({ redirect }) => redirect && 'cursor: pointer;'};
   height: ${({ fullSize }) => (fullSize ? 'initial' : '30vw')};
   text-align: center;
+  transition: filter 0.3s ease;
 
   ${respondAbove.md} {
     height: ${({ fullSize }) => (fullSize ? 'initial' : '300px')};
+  }
+
+  &:hover {
+    ${({ fullSize }) => !fullSize && 'filter: brightness(0.9);'}
   }
 `;
 
