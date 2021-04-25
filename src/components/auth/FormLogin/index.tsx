@@ -55,10 +55,7 @@ const FormLogin: React.FC = () => {
       {errors?.password && <Alert>{errors?.password?.message}</Alert>}
 
       <Button type='submit' value='Log In' disabled={loading} />
-      {/* <ButtonGoogle onClick={handleGoogleLogin}>
-        <img src='./img/icons/google.svg' alt='Google Sign Up' />
-        Sign up with Google
-      </ButtonGoogle> */}
+
       <Archor>
         <a href='/'>Forgot Password?</a>
       </Archor>

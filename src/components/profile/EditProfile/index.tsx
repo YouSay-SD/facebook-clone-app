@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { EditProfileProps } from './interface';
-import { EditProfileContainer, Row } from './styles';
-import { Container, Grid, Title, Avatar } from '../..';
+import { EditProfileContainer, Row, Banner } from './styles';
+import { Container, Grid, Title, Avatar, Textarea } from '../..';
 import { RootStore } from '../../../store/store';
 
 const EditProfile: FC<EditProfileProps> = () => {
@@ -21,8 +21,12 @@ const EditProfile: FC<EditProfileProps> = () => {
             <Avatar url={avatar} size={140} />
           </Row>
           <Row>
-            <Title size='medium'>Profile Picture</Title>
-            <img src={banner} alt='Banner' />
+            <Title size='medium'>Banner</Title>
+            <Banner src={banner} alt='Banner' />
+          </Row>
+          <Row>
+            <Title size='medium'>Bio</Title>
+            <Textarea name='edit-bio' placeholder='Edit bio...' />
           </Row>
         </Grid>
       </Container>
