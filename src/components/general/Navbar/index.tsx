@@ -10,8 +10,9 @@ import {
   Menu,
 } from './styles';
 import { startLogout } from '../../../actions/auth/auth';
-import { Searcher, Title, P, Avatar, DropDown } from '../..';
+import { Searcher, Title, Avatar, DropDown } from '../..';
 import { RootStore } from '../../../store/store';
+import P from '../P/index';
 
 const Navbar: FC = () => {
   const dispatch = useDispatch();

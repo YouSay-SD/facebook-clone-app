@@ -1,16 +1,61 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { FC } from 'react';
-import { DropDownContainer, Item } from './styles';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import {
+  DropDownContainer,
+  DropDownProfile,
+  DropDownMenu,
+  DropDownItem,
+  DropDownAvatar,
+  DropDownUserName,
+} from './styles';
 import { DropDownProps } from './interface';
-import { Box, Button } from '../..';
+import { Button, Avatar, Title } from '../..';
+import { RootStore } from '../../../store/store';
+import { startLogout } from '../../../actions/auth/auth';
 
 const DropDown: FC<DropDownProps> = () => {
+  const dispatch = useDispatch();
+  const { userName, avatar } = useSelector((state: RootStore) => state.auth);
+
+  const handleLogout = () => {
+    dispatch(startLogout());
+  };
+
   return (
     <DropDownContainer>
-      <Box>
-        <Item>
-          <Button type='edit' circle />
-        </Item>
-      </Box>
+      <DropDownProfile>
+        <Link to={`/profile/${userName}`}>
+          <DropDownItem>
+            <DropDownAvatar>
+              {avatar && <Avatar url={avatar} size={65} />}
+            </DropDownAvatar>
+            <DropDownUserName>
+              <Title size='small' fontWeight={500}>
+                {userName}
+              </Title>
+              <p>See your profile</p>
+            </DropDownUserName>
+          </DropDownItem>
+        </Link>
+      </DropDownProfile>
+      <hr />
+      <DropDownMenu>
+        <Link to='/edit-profile'>
+          <DropDownItem>
+            <Button type='edit' circle />
+            <p>Edit Profile</p>
+          </DropDownItem>
+        </Link>
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+        <div onClick={handleLogout}>
+          <DropDownItem>
+            <Button type='logout' circle />
+            <p>Log Out</p>
+          </DropDownItem>
+        </div>
+      </DropDownMenu>
     </DropDownContainer>
   );
 };
