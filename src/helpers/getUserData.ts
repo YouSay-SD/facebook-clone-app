@@ -1,20 +1,13 @@
 import { usersRef } from '../firebase/firebaseConfig';
+import { UserProps } from '../reducers/authReducer/interface';
 
 export const getUserData = async (userName: string) => {
-  let userData = {
-    avatar:
-      'https://pbs.twimg.com/profile_images/1036710543208398848/PzOO4lu8_400x400.jpg',
-  };
+  let userData = '';
+  const docRef = usersRef.doc(userName);
 
-  if (userName) {
-    const docRef = await usersRef.doc(userName);
+  await docRef.get().then((doc: any) => {
+    userData = doc.data();
+  });
 
-    // eslint-disable-next-line consistent-return
-    await docRef.get().then((doc: any) => {
-      if (doc.exists) {
-        userData = doc.data();
-      }
-    });
-  }
   return userData;
 };

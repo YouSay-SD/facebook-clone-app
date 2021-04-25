@@ -8,7 +8,7 @@ export const startSetCurrentUser = (currentUser: object) => ({
 
 export const setCurrentUser = (userName: string) => {
   return async (dispatch: any) => {
-    const userData = await getUserData(userName);
+    const userData: any = await getUserData(userName);
     dispatch(startSetCurrentUser(userData));
   };
 };

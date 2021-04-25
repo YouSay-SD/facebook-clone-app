@@ -19,6 +19,7 @@ export { default as NavbarProfile } from './profile/NavbarProfile';
 export { default as Box } from './profile/Box';
 export { default as Preview } from './profile/Preview';
 export { default as Avatar } from './profile/Avatar';
+export { default as EditProfile } from './profile/EditProfile';
 
 // Post
 export { default as Post } from './post/Post';

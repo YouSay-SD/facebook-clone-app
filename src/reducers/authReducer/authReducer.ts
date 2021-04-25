@@ -1,17 +1,21 @@
 import { types } from '../../types/types';
 import { AuthState, Action } from './interface';
 
-const initState = {
+const initState: AuthState = {
+  uid: null,
+  userName: null,
+  avatar: '',
+  darkTheme: false,
   checking: true,
+  banner: '',
 };
 
 export const authReducer = (state: AuthState = initState, action: Action) => {
   switch (action.type) {
     case types.login:
       return {
-        uid: action.payload.uid,
+        ...action.payload,
         userName: action.payload.displayName,
-        avatar: action?.payload.avatar,
         checking: false,
       };
 

@@ -5,10 +5,7 @@ import { Form, Button, ButtonGoogle, Archor } from './styles';
 import { FormData } from './interface';
 import { Input, Alert } from '../../form';
 import { RootStore } from '../../../store/store';
-import {
-  startGoogleLogin,
-  startLoginEmailPassword,
-} from '../../../actions/auth/auth';
+import { startLoginEmailPassword } from '../../../actions/auth/auth';
 
 const FormLogin: React.FC = () => {
   const dispatch = useDispatch();
@@ -21,10 +18,6 @@ const FormLogin: React.FC = () => {
       dispatch(startLoginEmailPassword(email, password));
     }
   );
-
-  const handleGoogleLogin = () => {
-    dispatch(startGoogleLogin());
-  };
 
   return (
     <Form onSubmit={onSubmit}>
@@ -62,10 +55,10 @@ const FormLogin: React.FC = () => {
       {errors?.password && <Alert>{errors?.password?.message}</Alert>}
 
       <Button type='submit' value='Log In' disabled={loading} />
-      <ButtonGoogle onClick={handleGoogleLogin}>
+      {/* <ButtonGoogle onClick={handleGoogleLogin}>
         <img src='./img/icons/google.svg' alt='Google Sign Up' />
         Sign up with Google
-      </ButtonGoogle>
+      </ButtonGoogle> */}
       <Archor>
         <a href='/'>Forgot Password?</a>
       </Archor>

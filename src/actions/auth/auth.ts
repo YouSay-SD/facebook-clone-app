@@ -7,14 +7,21 @@ import { types } from '../../types/types';
 import { RegisterProps } from '../../components/auth/FormRegister/interface';
 import { startLoading, finishLoading } from '../ui/ui';
 import { getUserData } from '../../helpers/getUserData';
+import { UserProps } from '../../reducers/authReducer/interface';
 
-export const login = (uid: string, displayName: string, avatar: string) => {
+export const login = (
+  uid: string,
+  displayName: string,
+  avatar: string,
+  banner: string
+) => {
   return {
     type: types.login,
     payload: {
       uid,
       displayName,
       avatar,
+      banner,
     },
   };
 };
@@ -31,8 +38,8 @@ export const startLoginEmailPassword = (email: string, password: string) => {
           console.log(user);
 
           if (uid && displayName) {
-            const { avatar } = await getUserData(displayName);
-            dispatch(login(uid, displayName, avatar));
+            const { avatar, banner }: any = await getUserData(displayName);
+            dispatch(login(uid, displayName, avatar, banner));
             dispatch(finishLoading());
           }
         }
@@ -57,27 +64,22 @@ export const startRegisterWithEmailPassword = ({
         await user?.updateProfile({ displayName: userName });
         if (user) {
           const { uid, displayName } = user;
+
           if (uid && displayName) {
-            const { avatar } = await getUserData(displayName);
-            dispatch(login(uid, displayName, avatar));
+            const newUser: UserProps = {
+              uid,
+              userName: displayName,
+              avatar: `${process.env.REACT_APP_URL}/public/img/profile/profile-placeholder.jpg`,
+              darkTheme: false,
+              banner: '',
+            };
+
+            db.doc(`users/${userName}`).set(newUser);
+
+            if (uid && displayName) {
+              dispatch(login(uid, displayName, newUser.avatar, newUser.banner));
+            }
           }
-
-          interface NewUserProps {
-            uid: string;
-            userName: any;
-            avatar: any;
-          }
-
-          const newUser: NewUserProps = {
-            uid,
-            userName: displayName,
-            avatar:
-              'https://pbs.twimg.com/profile_images/1036710543208398848/PzOO4lu8_400x400.jpg',
-            // https://cdn.shopify.com/s/files/1/0525/9585/1443/products/GeekJack_thumbnail__2020_____350x350_201211.jpg?v=1611499984
-          };
-
-          // db.collection(`users/${userName}/data`).add(newUser);
-          db.doc(`users/${userName}`).set(newUser);
         }
       })
       .catch((e) => {
@@ -86,25 +88,25 @@ export const startRegisterWithEmailPassword = ({
   };
 };
 
-export const startGoogleLogin = () => {
-  return (dispatch: any) => {
-    firebase
-      .auth()
-      .signInWithPopup(googleAuthProvider)
-      .then(async ({ user }) => {
-        if (user) {
-          const { uid, displayName } = user;
-          if (uid && displayName) {
-            const { avatar } = await getUserData(displayName);
-            dispatch(login(uid, displayName, avatar));
-          }
-        }
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
-};
+// export const startGoogleLogin = () => {
+//   return (dispatch: any) => {
+//     firebase
+//       .auth()
+//       .signInWithPopup(googleAuthProvider)
+//       .then(async ({ user }) => {
+//         if (user) {
+//           const { uid, displayName } = user;
+//           if (uid && displayName) {
+//             const { avatar } = await getUserData(displayName);
+//             dispatch(login(uid, displayName, avatar));
+//           }
+//         }
+//       })
+//       .catch((e) => {
+//         console.log(e);
+//       });
+//   };
+// };
 
 export const logout = () => ({
   type: types.logout,

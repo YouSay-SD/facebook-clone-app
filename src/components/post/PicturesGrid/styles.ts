@@ -13,6 +13,5 @@ export const Preview = styled.div`
 export const PreviewContent = styled.div`
   position: sticky;
   top: 56px;
-  z-index: 10;
   padding: 20px;
 `;

@@ -19,7 +19,6 @@ const DropDown: FC<DropDownProps> = ({ active }) => {
   const dispatch = useDispatch();
   const animation = fadeInDown(active);
   const { userName, avatar } = useSelector((state: RootStore) => state.auth);
-  console.log(userName);
 
   const handleLogout = () => {
     dispatch(startLogout());

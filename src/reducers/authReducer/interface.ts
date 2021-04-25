@@ -1,8 +1,13 @@
-export interface AuthState {
-  uid?: string;
-  userName?: string;
-  avatar?: string;
-  checking: boolean;
+export interface AuthState extends UserProps {
+  checking?: boolean;
+}
+
+export interface UserProps {
+  uid: string | null;
+  userName: string | null;
+  avatar: string;
+  banner: string;
+  darkTheme: boolean;
 }
 
 export interface AuthPayloadProps {
