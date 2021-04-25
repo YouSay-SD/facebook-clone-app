@@ -1,16 +1,16 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Loader, PicturesGrid } from '../components';
-import { RootStore } from '../store/store';
-import { setCurrentUser } from '../actions/user/user';
-import { setPosts } from '../actions/post/post';
+import { Loader, PicturesGrid } from '../../components';
+import { RootStore } from '../../store/store';
+import { setCurrentUser } from '../../actions/user/user';
+import { setPosts } from '../../actions/post/post';
 
 interface ProfileProps {
   userName: string;
 }
 
-const Album: FC<ProfileProps> = () => {
+const AlbumPage: FC<ProfileProps> = () => {
   const dispatch = useDispatch();
   const { userName } = useParams<ProfileProps>();
   const { currentUser } = useSelector((state: RootStore) => state.user);
@@ -32,4 +32,4 @@ const Album: FC<ProfileProps> = () => {
   );
 };
 
-export default Album;
+export default AlbumPage;

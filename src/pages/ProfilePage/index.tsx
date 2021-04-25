@@ -9,16 +9,16 @@ import {
   Grid,
   WritePost,
   PostWrapper,
-} from '../components';
-import { RootStore } from '../store/store';
-import { setCurrentUser } from '../actions/user/user';
-import { setPictures, setPosts } from '../actions/post/post';
+} from '../../components';
+import { RootStore } from '../../store/store';
+import { setCurrentUser } from '../../actions/user/user';
+import { setPictures, setPosts } from '../../actions/post/post';
 
 interface ProfileProps {
   userName: string;
 }
 
-const Profile: FC<ProfileProps> = () => {
+const ProfilePage: FC<ProfileProps> = () => {
   const dispatch = useDispatch();
   const { userName } = useParams<ProfileProps>();
   const { posts } = useSelector((state: RootStore) => state.post);
@@ -52,4 +52,4 @@ const Profile: FC<ProfileProps> = () => {
   );
 };
 
-export default Profile;
+export default ProfilePage;

@@ -1,5 +1,6 @@
-export { default as Login } from './Login';
-export { default as Profile } from './Profile';
-export { default as Search } from './Search';
-export { default as Album } from './Album';
-export { default as Picture } from './Picture';
+export { default as LoginPage } from './LoginPage';
+export { default as ProfilePage } from './ProfilePage';
+export { default as SearchPage } from './SearchPage';
+export { default as AlbumPage } from './AlbumPage';
+export { default as PicturePage } from './PicturePage';
+export { default as EditProfilePage } from './EditProfilePage';
