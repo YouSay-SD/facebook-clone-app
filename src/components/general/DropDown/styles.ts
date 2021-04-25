@@ -1,16 +1,17 @@
 import styled from '@emotion/styled/macro';
+import { animated } from 'react-spring';
 import { respondAbove } from '../../../styles/breakpoints';
 
-export const DropDownContainer = styled.div`
+export const DropDownContainer = styled(animated.div)`
   position: fixed;
-  top: 65px;
+  top: 50px;
   right: 20px;
   padding: 20px;
   background-color: ${({ theme }) => theme.colors.secondary};
   border-radius: 10px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   padding: 15px 8px;
-  min-width: 280px;
+  min-width: 300px;
   box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1),
     inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 

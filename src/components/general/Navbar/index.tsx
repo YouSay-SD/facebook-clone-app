@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { FC, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
   NavbarContainer,
@@ -9,17 +9,15 @@ import {
   UserButton,
   Menu,
 } from './styles';
-import { startLogout } from '../../../actions/auth/auth';
-import { Searcher, Title, Avatar, DropDown } from '../..';
+import { Searcher, Title, Avatar, DropDown, P } from '../..';
 import { RootStore } from '../../../store/store';
-import P from '../P/index';
 
 const Navbar: FC = () => {
-  const dispatch = useDispatch();
   const { userName, avatar } = useSelector((state: RootStore) => state.auth);
+  const [activeDropDown, setActiveDropDown] = useState<boolean>(false);
 
-  const handleLogout = () => {
-    dispatch(startLogout());
+  const handleActiveDropDown = () => {
+    setActiveDropDown(!activeDropDown);
   };
 
   return (
@@ -32,9 +30,6 @@ const Navbar: FC = () => {
         <Searcher />
       </LeftSide>
       <RightSide>
-        <button type='button' onClick={handleLogout}>
-          Logout
-        </button>
         {avatar && userName && (
           <Link to={`/profile/${userName}`}>
             <UserButton>
@@ -43,13 +38,13 @@ const Navbar: FC = () => {
             </UserButton>
           </Link>
         )}
-        <Menu>
+        <Menu onClick={handleActiveDropDown}>
           <img
             src={`${process.env.REACT_APP_URL}/img/icons/arrow.svg`}
             alt='Arrow'
           />
         </Menu>
-        <DropDown />
+        <DropDown active={activeDropDown} />
       </RightSide>
     </NavbarContainer>
   );
