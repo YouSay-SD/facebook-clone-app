@@ -1,7 +1,9 @@
 import styled from '@emotion/styled/macro';
 import { respondAbove } from '../../../styles/breakpoints';
 
-export const TextareaContainer = styled.div``;
+export const TextareaContainer = styled.div`
+  width: 100%;
+`;
 
 export const TextareaStyled = styled.textarea`
   font-family: ${({ theme }) => theme.fontFamily.primary};

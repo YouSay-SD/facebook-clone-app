@@ -1,8 +1,23 @@
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { EditProfileProps } from './interface';
-import { EditProfileContainer, Row, Banner } from './styles';
-import { Container, Grid, Title, Avatar, Textarea } from '../..';
+import {
+  EditProfileContainer,
+  RowStyled,
+  BannerStyled,
+  TitleContainerStyled,
+  FormStyled,
+} from './styles';
+import {
+  Container,
+  Grid,
+  Title,
+  Avatar,
+  Textarea,
+  Box,
+  Button,
+  Input,
+} from '../..';
 import { RootStore } from '../../../store/store';
 
 const EditProfile: FC<EditProfileProps> = () => {
@@ -10,25 +25,49 @@ const EditProfile: FC<EditProfileProps> = () => {
     (state: RootStore) => state.auth
   );
 
-  console.log(banner);
-
   return (
     <EditProfileContainer>
       <Container>
-        <Grid gap={30}>
-          <Row>
-            <Title size='medium'>Profile Picture</Title>
-            <Avatar url={avatar} size={140} />
-          </Row>
-          <Row>
-            <Title size='medium'>Banner</Title>
-            <Banner src={banner} alt='Banner' />
-          </Row>
-          <Row>
-            <Title size='medium'>Bio</Title>
-            <Textarea name='edit-bio' placeholder='Edit bio...' />
-          </Row>
-        </Grid>
+        <Box>
+          <FormStyled>
+            <Grid gap={30}>
+              <RowStyled>
+                <TitleContainerStyled>
+                  <Title size='medium'>Profile Picture</Title>
+                  <Input
+                    type='file'
+                    placeholder='File'
+                    name='edit-picture'
+                    width={15}
+                  >
+                    Edit
+                  </Input>
+                </TitleContainerStyled>
+                <Avatar url={avatar} size={190} />
+              </RowStyled>
+              <RowStyled>
+                <TitleContainerStyled>
+                  <Title size='medium'>Banner</Title>
+                  <Input
+                    type='file'
+                    placeholder='File'
+                    name='edit-picture'
+                    width={15}
+                  >
+                    Edit
+                  </Input>
+                </TitleContainerStyled>
+                <BannerStyled src={banner} alt='Banner' />
+              </RowStyled>
+              <RowStyled>
+                <TitleContainerStyled>
+                  <Title size='medium'>Bio</Title>
+                </TitleContainerStyled>
+                <Textarea name='edit-bio' placeholder='Edit bio...' />
+              </RowStyled>
+            </Grid>
+          </FormStyled>
+        </Box>
       </Container>
     </EditProfileContainer>
   );

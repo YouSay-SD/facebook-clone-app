@@ -40,6 +40,14 @@ export const RightSide = styled.div`
   }
 `;
 
+export const ProfileLinkStyled = styled.div`
+  display: none;
+
+  ${respondAbove.sm} {
+    display: block;
+  }
+`;
+
 export const Logo = styled.img`
   width: 40px;
 `;

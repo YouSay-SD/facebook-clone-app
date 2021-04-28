@@ -25,7 +25,7 @@ const Input: FC<InputProps> = ({
         <>
           <Label htmlFor='file'>
             <Button width={100} type='file'>
-              Photo
+              {children}
             </Button>
           </Label>
           <InputStyled
@@ -35,7 +35,6 @@ const Input: FC<InputProps> = ({
             onChange={onChange}
             {...props}
           />
-          {children}
         </>
       )}
 

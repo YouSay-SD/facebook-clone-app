@@ -11,12 +11,13 @@ export const DropDownContainer = styled(animated.div)`
   border-radius: 10px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   padding: 15px 8px;
-  min-width: 300px;
+  min-width: 280px;
   box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1),
     inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 
   ${respondAbove.sm} {
     right: 30px;
+    min-width: 300px;
   }
 
   hr {

@@ -8,6 +8,7 @@ import {
   Logo,
   UserButton,
   Menu,
+  ProfileLinkStyled,
 } from './styles';
 import { Searcher, Title, Avatar, DropDown, P } from '../..';
 import { RootStore } from '../../../store/store';
@@ -31,12 +32,14 @@ const Navbar: FC = () => {
       </LeftSide>
       <RightSide>
         {avatar && userName && (
-          <Link to={`/profile/${userName}`}>
-            <UserButton>
-              <Avatar url={avatar} size={28} />
-              <P>{userName}</P>
-            </UserButton>
-          </Link>
+          <ProfileLinkStyled>
+            <Link to={`/profile/${userName}`}>
+              <UserButton>
+                <Avatar url={avatar} size={28} />
+                <P>{userName}</P>
+              </UserButton>
+            </Link>
+          </ProfileLinkStyled>
         )}
         <Menu onClick={handleActiveDropDown}>
           <img
