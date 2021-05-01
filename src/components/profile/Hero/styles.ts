@@ -83,6 +83,7 @@ export const TextContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  flex-direction: column;
 
   p {
     opacity: 0.7;

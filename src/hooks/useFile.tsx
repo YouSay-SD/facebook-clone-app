@@ -5,13 +5,17 @@ export const useFile = <T extends Object>(initState: T) => {
 
   const [imageToUpload, setImageToUpload] = useState<any>(initState);
 
+  const resetFile = () => {
+    setImagePreview(null);
+    setImageToUpload(null);
+  };
+
   const handleFileChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     const reader = new FileReader();
 
     // Set Images Preview
     reader.onload = async () => {
       if (reader.readyState === 2) {
-        console.log(typeof reader.result);
         setImagePreview({
           ...imagePreview,
           [target.name]: reader.result,
@@ -30,5 +34,5 @@ export const useFile = <T extends Object>(initState: T) => {
     }
   };
 
-  return { imagePreview, imageToUpload, handleFileChange };
+  return { imagePreview, imageToUpload, handleFileChange, resetFile };
 };

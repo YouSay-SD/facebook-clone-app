@@ -26,9 +26,8 @@ export const Routes: FC = () => {
     firebase.auth().onAuthStateChanged(async (user) => {
       if (user) {
         if (user.uid && user.displayName) {
-          console.log(user.displayName);
-          const { avatar, banner }: any = await getUserData(user.displayName);
-          dispatch(login(user.uid, user.displayName, avatar, banner));
+          // const { avatar, banner }: any = await getUserData(user.displayName);
+          dispatch(login(user.uid, user.displayName));
         }
       } else {
         dispatch(checkingFinish());

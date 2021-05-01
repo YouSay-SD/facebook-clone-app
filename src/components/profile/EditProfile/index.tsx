@@ -1,5 +1,5 @@
 import React, { FC, useState, ChangeEvent, FormEvent } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { EditProfileProps } from './interface';
 import {
   EditProfileContainer,
@@ -20,21 +20,43 @@ import {
 } from '../..';
 import { RootStore } from '../../../store/store';
 import { useFile } from '../../../hooks/useFile';
+import { fileUpload } from '../../../helpers/fileUpload';
+import { updateProfile } from '../../../actions/auth/auth';
+import { useFormCustom } from '../../../hooks/useFormCustom';
 
 const EditProfile: FC<EditProfileProps> = () => {
-  const { avatar, banner, userName } = useSelector(
+  const dispatch = useDispatch();
+  const { avatar, banner, bio, userName } = useSelector(
     (state: RootStore) => state.auth
   );
 
-  const { handleFileChange, imagePreview, imageToUpload } = useFile({
-    banner: '',
-    avatar: '',
+  const { formValues, handleInputChange } = useFormCustom({
+    body: bio,
   });
+  const { body } = formValues;
 
-  const onSubmit = (e: FormEvent) => {
+  const { handleFileChange, imagePreview, imageToUpload } = useFile({});
+  const { banner: bannerPreview, avatar: avatarPreview } = imagePreview;
+  const { banner: bannerToUpload, avatar: avatarToUpload } = imageToUpload;
+
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log('submit', imageToUpload);
-    console.log(imagePreview);
+
+    if (bannerToUpload) {
+      await fileUpload(bannerToUpload);
+    }
+
+    if (avatarToUpload) {
+      await fileUpload(avatarToUpload);
+    }
+
+    const newUpdates = {
+      banner: bannerPreview || banner,
+      avatar: avatarPreview || avatar,
+      bio: body || bio,
+    };
+
+    dispatch(updateProfile(newUpdates));
   };
 
   return (
@@ -57,7 +79,7 @@ const EditProfile: FC<EditProfileProps> = () => {
                     Edit
                   </Input>
                 </TitleContainerStyled>
-                <Avatar url={imagePreview.avatar || avatar} size={190} />
+                <Avatar url={avatarPreview || avatar} size={190} />
               </RowStyled>
               <RowStyled>
                 <TitleContainerStyled>
@@ -73,16 +95,18 @@ const EditProfile: FC<EditProfileProps> = () => {
                     Edit
                   </Input>
                 </TitleContainerStyled>
-                <BannerStyled
-                  src={imagePreview.banner || banner}
-                  alt='Banner'
-                />
+                <BannerStyled src={bannerPreview || banner} alt='Banner' />
               </RowStyled>
               <RowStyled>
                 <TitleContainerStyled>
                   <Title size='medium'>Bio</Title>
                 </TitleContainerStyled>
-                <Textarea name='edit-bio' placeholder='Edit bio...' />
+                <Textarea
+                  placeholder='Edit bio...'
+                  name='body'
+                  value={body}
+                  onChange={handleInputChange}
+                />
               </RowStyled>
             </Grid>
             <Input

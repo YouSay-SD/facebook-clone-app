@@ -2,6 +2,7 @@ import {
   db,
   firebase,
   googleAuthProvider,
+  usersRef,
 } from '../../firebase/firebaseConfig';
 import { types } from '../../types/types';
 import { RegisterProps } from '../../components/auth/FormRegister/interface';
@@ -9,20 +10,41 @@ import { startLoading, finishLoading } from '../ui/ui';
 import { getUserData } from '../../helpers/getUserData';
 import { UserProps } from '../../reducers/authReducer/interface';
 
-export const login = (
-  uid: string,
-  displayName: string,
-  avatar: string,
-  banner: string
-) => {
+export const startlogin = ({
+  uid,
+  userName,
+  avatar,
+  banner,
+  bio,
+  darkTheme,
+}: UserProps) => {
   return {
     type: types.login,
     payload: {
       uid,
-      displayName,
+      userName,
       avatar,
       banner,
+      bio,
+      darkTheme,
     },
+  };
+};
+
+export const login = (uid: string, userName: string) => {
+  return async (dispatch: any) => {
+    const { avatar, banner, bio, darkTheme }: any = await getUserData(userName);
+
+    dispatch(
+      startlogin({
+        uid,
+        userName,
+        avatar,
+        banner,
+        bio,
+        darkTheme,
+      })
+    );
   };
 };
 
@@ -35,11 +57,9 @@ export const startLoginEmailPassword = (email: string, password: string) => {
       .then(async ({ user }) => {
         if (user) {
           const { uid, displayName } = user;
-          console.log(user);
 
           if (uid && displayName) {
-            const { avatar, banner }: any = await getUserData(displayName);
-            dispatch(login(uid, displayName, avatar, banner));
+            dispatch(login(uid, displayName));
             dispatch(finishLoading());
           }
         }
@@ -69,15 +89,16 @@ export const startRegisterWithEmailPassword = ({
             const newUser: UserProps = {
               uid,
               userName: displayName,
-              avatar: `${process.env.REACT_APP_URL}/public/img/profile/profile-placeholder.jpg`,
+              avatar: `${process.env.REACT_APP_URL}/img/profile/profile-placeholder.jpg`,
               darkTheme: false,
               banner: '',
+              bio: '',
             };
 
             db.doc(`users/${userName}`).set(newUser);
 
             if (uid && displayName) {
-              dispatch(login(uid, displayName, newUser.avatar, newUser.banner));
+              dispatch(login(uid, displayName));
             }
           }
         }
@@ -88,26 +109,41 @@ export const startRegisterWithEmailPassword = ({
   };
 };
 
-// export const startGoogleLogin = () => {
-//   return (dispatch: any) => {
-//     firebase
-//       .auth()
-//       .signInWithPopup(googleAuthProvider)
-//       .then(async ({ user }) => {
-//         if (user) {
-//           const { uid, displayName } = user;
-//           if (uid && displayName) {
-//             const { avatar } = await getUserData(displayName);
-//             dispatch(login(uid, displayName, avatar));
-//           }
-//         }
-//       })
-//       .catch((e) => {
-//         console.log(e);
-//       });
-//   };
-// };
+// Update Profile
+interface UpdateProfileProps {
+  avatar: string;
+  banner: string;
+  bio: string;
+}
 
+// Update Profile
+export const startUpdateProfile = ({
+  avatar,
+  banner,
+  bio,
+}: UpdateProfileProps) => ({
+  type: types.updateProfile,
+  payload: {
+    avatar,
+    banner,
+    bio,
+  },
+});
+
+export const updateProfile = ({ avatar, banner, bio }: UpdateProfileProps) => {
+  return async (dispatch: any, getState: any) => {
+    const { userName } = getState().auth;
+    const updateProps: UpdateProfileProps = {
+      avatar,
+      banner,
+      bio,
+    };
+    await usersRef.doc(userName).update(updateProps);
+    await dispatch(startUpdateProfile(updateProps));
+  };
+};
+
+// Logout
 export const logout = () => ({
   type: types.logout,
 });
@@ -119,4 +155,5 @@ export const startLogout = () => {
   };
 };
 
+// Checking
 export const checkingFinish = () => ({ type: types.checkingFinish });

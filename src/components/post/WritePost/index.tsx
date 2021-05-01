@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   WritePostContainer,
@@ -29,42 +29,28 @@ import {
 } from '../../../actions/post/post';
 import { fileUpload } from '../../../helpers/fileUpload';
 import { useFormCustom } from '../../../hooks/useFormCustom';
+import { useFile } from '../../../hooks/useFile';
 
 const WritePost: FC = () => {
   const { avatar, userName } = useSelector((state: RootStore) => state.auth);
   const { loadingPost } = useSelector((state: RootStore) => state.post);
-  const [photoPreview, setPhotoPreview] = useState<any>();
-  const [fileObject, setFileObject] = useState<any>();
   const { reset, formValues, handleInputChange } = useFormCustom({
     body: '',
   });
+  const { handleFileChange, imagePreview, imageToUpload, resetFile } = useFile({
+    picture: '',
+  });
+
   const { body } = formValues;
   const dispatch = useDispatch();
-
-  const handleImage = (e: any) => {
-    const reader = new FileReader();
-
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        setPhotoPreview(reader.result);
-      }
-    };
-    reader.readAsDataURL(e.target.files[0]);
-
-    const file = e.target.files[0];
-    setFileObject(file);
-  };
-
-  const handleRemovePreview = () => {
-    setPhotoPreview(null);
-    setFileObject(null);
-  };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     dispatch(startLoadingPost());
 
-    const fileUrl = fileObject ? await fileUpload(fileObject) : null;
+    const fileUrl = imageToUpload
+      ? await fileUpload(imageToUpload.picture)
+      : null;
     const newPost = {
       author: userName,
       body,
@@ -78,8 +64,7 @@ const WritePost: FC = () => {
       dispatch(setPosts(userName));
     }
     dispatch(finishLoadingPost());
-    setFileObject(null);
-    setPhotoPreview(null);
+    resetFile();
     reset();
   };
 
@@ -112,10 +97,10 @@ const WritePost: FC = () => {
                     onChange={handleInputChange}
                     placeholder="What's on your mind?"
                   />
-                  {photoPreview && (
+                  {imagePreview && (
                     <PhotoPreviewContainer>
-                      <RemovePhotoPreview onClick={handleRemovePreview} />
-                      <PhotoPreview src={photoPreview} />
+                      <RemovePhotoPreview onClick={() => resetFile()} />
+                      <PhotoPreview src={imagePreview.picture} />
                     </PhotoPreviewContainer>
                   )}
                   <Input
@@ -132,8 +117,8 @@ const WritePost: FC = () => {
               id='upload-picture'
               type='file'
               placeholder='Photo'
-              name='file'
-              onChange={handleImage}
+              name='picture'
+              onChange={handleFileChange}
             />
           </WritePostForm>
         </Box>

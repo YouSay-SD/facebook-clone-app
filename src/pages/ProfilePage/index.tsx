@@ -23,7 +23,7 @@ const ProfilePage: FC<ProfileProps> = () => {
   const { userName } = useParams<ProfileProps>();
   const { posts } = useSelector((state: RootStore) => state.post);
   const { currentUser } = useSelector((state: RootStore) => state.user);
-  const { userName: authUserName } = useSelector(
+  const { userName: authUserName, bio } = useSelector(
     (state: RootStore) => state.auth
   );
   const { userName: currentUserName, avatar, uid } = currentUser;
@@ -39,7 +39,7 @@ const ProfilePage: FC<ProfileProps> = () => {
 
   return (
     <>
-      <Hero userName={currentUserName} avatar={avatar} />
+      <Hero userName={currentUserName} avatar={avatar} bio={bio} />
       <NavbarProfile />
       <Grid col={1} gap={20}>
         {posts.length !== 0 && <Preview type='Photos' posts={posts} />}

@@ -1,6 +1,7 @@
 export const types = {
   login: '[Auth] Login',
   logout: '[Auth] Logout',
+  updateProfile: '[Auth] Update Profile',
   checkingFinish: '[Auth] Finish Checking Login State',
 
   uiStartLoading: '[Ui] Start Loading',

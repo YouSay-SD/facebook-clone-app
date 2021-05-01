@@ -5,15 +5,18 @@ export interface AuthState extends UserProps {
 export interface UserProps {
   uid: string | null;
   userName: string | null;
-  avatar: string;
-  banner: string;
+  avatar?: string;
+  banner?: string;
   darkTheme: boolean;
+  bio: string;
 }
 
 export interface AuthPayloadProps {
   uid: string;
-  displayName: string;
   avatar: string;
+  banner: string;
+  bio: string;
+  userName: string;
 }
 
 export type Action = {
