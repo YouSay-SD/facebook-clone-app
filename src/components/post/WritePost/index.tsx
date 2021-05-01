@@ -43,6 +43,7 @@ const WritePost: FC = () => {
 
   const handleImage = (e: any) => {
     const reader = new FileReader();
+
     reader.onload = () => {
       if (reader.readyState === 2) {
         setPhotoPreview(reader.result);
@@ -128,6 +129,7 @@ const WritePost: FC = () => {
               </WritePostContent>
             </Modal>
             <Input
+              id='upload-picture'
               type='file'
               placeholder='Photo'
               name='file'

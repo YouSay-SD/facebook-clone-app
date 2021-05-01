@@ -2,7 +2,7 @@ import styled from '@emotion/styled/macro';
 import { respondAbove } from '../../../styles/breakpoints';
 
 export const EditProfileContainer = styled.div`
-  margin-top: 30px;
+  margin: 30px 0;
 `;
 
 export const TitleContainerStyled = styled.div`
@@ -38,4 +38,6 @@ export const BannerStyled = styled.img`
   }
 `;
 
-export const FormStyled = styled.form``;
+export const FormStyled = styled.form`
+  padding: 20px;
+`;

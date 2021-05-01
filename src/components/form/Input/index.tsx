@@ -4,6 +4,7 @@ import { InputProps } from './interface';
 import { Button } from '../..';
 
 const Input: FC<InputProps> = ({
+  id,
   type,
   width,
   widthMobile,
@@ -23,13 +24,13 @@ const Input: FC<InputProps> = ({
 
       {type === 'file' && (
         <>
-          <Label htmlFor='file'>
+          <Label htmlFor={id}>
             <Button width={100} type='file'>
               {children}
             </Button>
           </Label>
           <InputStyled
-            id='file'
+            id={id}
             type='file'
             ref={innerRef}
             onChange={onChange}
