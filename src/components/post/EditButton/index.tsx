@@ -1,21 +1,36 @@
 import React, { FC } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { Content, FormEditPost } from './styles';
-import { Modal, Box, Button, Title, P, Textarea, Input, Alert } from '../..';
+import {
+  Modal,
+  Box,
+  Button,
+  Loader,
+  Title,
+  Textarea,
+  Input,
+  Alert,
+} from '../..';
 import { EditButtonProps } from './interface';
 import { UpdatePost } from '../../../actions/post/post';
+import { RootStore } from '../../../store/store';
+import { loadUpdatePost } from '../../../actions/ui/ui';
 
 const EditButton: FC<EditButtonProps> = ({ idPost, body }) => {
   const dispatch = useDispatch();
+  const { loadingUpdatePost } = useSelector((state: RootStore) => state.ui);
   const { register, errors, handleSubmit } = useForm();
 
   const onSubmit = ({ bodyEdited }: any) => {
+    dispatch(loadUpdatePost(true));
     dispatch(UpdatePost(idPost, bodyEdited));
+    dispatch(loadUpdatePost(false));
   };
 
   return (
     <div>
+      {loadingUpdatePost && <Loader type='post' text='Updating...' />}
       <Modal button={<Button type='edit' />}>
         <Box>
           <Content>

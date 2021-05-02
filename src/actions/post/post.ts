@@ -1,8 +1,9 @@
 import { types } from '../../types/types';
 import { fileUpload } from '../../helpers/fileUpload';
-import { db } from '../../firebase/firebaseConfig';
+import { db, postsRef } from '../../firebase/firebaseConfig';
 import { getPictures } from '../../helpers/getPictures';
 import { getPosts } from '../../helpers/getPosts';
+import { getAllPosts } from '../../helpers/getAllPosts';
 import {
   FormPostProps,
   PostProps,
@@ -12,11 +13,11 @@ import {
 export const startNewPost = (newPost: FormPostProps) => {
   return async (dispatch: any, getState: any) => {
     const { userName } = getState().auth;
-
-    const doc = await db.collection(`posts/${userName}/post`).add(newPost);
+    const doc = await postsRef.add(newPost);
   };
 };
 
+// Set Posts
 export const startSetPosts = (posts: PostProps[]) => ({
   type: types.getPosts,
   payload: posts,
@@ -26,6 +27,19 @@ export const setPosts = (userName: string) => {
   return async (dispatch: any) => {
     const posts = await getPosts(userName);
     dispatch(startSetPosts(posts));
+  };
+};
+
+// Set All Posts
+export const startSetAllPosts = (posts: PostProps[]) => ({
+  type: types.getAllPosts,
+  payload: posts,
+});
+
+export const setAllPosts = () => {
+  return async (dispatch: any) => {
+    const posts = await getAllPosts();
+    dispatch(startSetAllPosts(posts));
   };
 };
 
@@ -47,6 +61,7 @@ export const startUploading = (file: string) => {
   };
 };
 
+// Start Loading Post
 export const startLoadingPost = () => ({
   type: types.startLoadingPost,
 });
@@ -75,15 +90,10 @@ export const startDeletePost = (idPost: string) => ({
   payload: idPost,
 });
 
-export const DeletePost = (idPost: string) => {
+export const deletePost = (idPost: string) => {
   return async (dispatch: any, getState: any) => {
     const { userName } = getState().auth;
-    await db
-      .collection(`posts`)
-      .doc(userName)
-      .collection('post')
-      .doc(idPost)
-      .delete();
+    await postsRef.doc(idPost).delete();
 
     await dispatch(startDeletePost(idPost));
   };

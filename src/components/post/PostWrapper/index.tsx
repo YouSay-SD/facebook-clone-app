@@ -5,6 +5,7 @@ import { PostWrapperContainer } from './styles';
 import { PostComponentProps } from '../Post/interface';
 
 const PostWrapper: FC<PostWrapperProps> = ({ posts }) => {
+  console.log(posts);
   return (
     <PostWrapperContainer>
       <Container>

@@ -1,5 +1,6 @@
 export interface PostState {
   posts: PostProps[];
+  allPosts: PostProps[];
   pictures: PictureProps[];
   activePost: PostProps | null;
   loadingPost: boolean;
@@ -28,6 +29,7 @@ export interface FormPostProps {
 
 export interface AuthPayloadProps {
   posts: PostProps[];
+  allPosts: PostProps[];
   pictures: PictureProps[];
   idPost?: string;
 }

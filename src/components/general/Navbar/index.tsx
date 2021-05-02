@@ -24,10 +24,12 @@ const Navbar: FC = () => {
   return (
     <NavbarContainer>
       <LeftSide>
-        <Logo
-          src={`${process.env.REACT_APP_URL}/img/icons/facebook.svg`}
-          alt='Facebook'
-        />
+        <Link to='/'>
+          <Logo
+            src={`${process.env.REACT_APP_URL}/img/icons/facebook.svg`}
+            alt='Facebook'
+          />
+        </Link>
         <Searcher />
       </LeftSide>
       <RightSide>

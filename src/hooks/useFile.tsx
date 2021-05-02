@@ -28,6 +28,7 @@ export const useFile = <T extends Object>(initState: T) => {
       if (target.files) {
         reader.readAsDataURL(target.files[0]);
         const fileImage = target.files[0];
+        console.log(fileImage);
         setImageToUpload({
           ...imageToUpload,
           [target.name]: fileImage,

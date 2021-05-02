@@ -13,6 +13,7 @@ import {
 import { RootStore } from '../../store/store';
 import { setCurrentUser } from '../../actions/user/user';
 import { setPictures, setPosts } from '../../actions/post/post';
+import { getAllPosts } from '../../helpers/getAllPosts';
 
 interface ProfileProps {
   userName: string;
@@ -45,7 +46,7 @@ const ProfilePage: FC<ProfileProps> = () => {
         bio={bio}
         banner={banner}
       />
-      <NavbarProfile />
+      {/* <NavbarProfile /> */}
       <Grid col={1} gap={20}>
         {posts.length !== 0 && <Preview type='Photos' posts={posts} />}
         {authUserName === currentUserName && <WritePost />}

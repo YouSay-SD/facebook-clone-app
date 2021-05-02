@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   WritePostContainer,
@@ -22,19 +22,17 @@ import {
 import { RootStore } from '../../../store/store';
 import {
   startNewPost,
-  startLoadingPost,
-  finishLoadingPost,
   setPictures,
   setPosts,
 } from '../../../actions/post/post';
 import { fileUpload } from '../../../helpers/fileUpload';
 import { useFormCustom } from '../../../hooks/useFormCustom';
 import { useFile } from '../../../hooks/useFile';
+import { loadCreatePost, openModalCreatePost } from '../../../actions/ui/ui';
 
 const WritePost: FC = () => {
   const { avatar, userName } = useSelector((state: RootStore) => state.auth);
-  const { loadingPost } = useSelector((state: RootStore) => state.post);
-  const [modalState, setModalState] = useState(false);
+  const { loadingCreatePost } = useSelector((state: RootStore) => state.ui);
   const { reset, formValues, handleInputChange } = useFormCustom({
     body: '',
   });
@@ -45,82 +43,78 @@ const WritePost: FC = () => {
   const { body } = formValues;
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    setModalState(true);
-    console.log('open modal');
-  }, [imagePreview, setModalState]);
-
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    dispatch(startLoadingPost());
+    dispatch(loadCreatePost(true));
 
+    console.log('imageToUpload', imageToUpload);
     const fileUrl = imageToUpload
       ? await fileUpload(imageToUpload.picture)
       : null;
+
+    console.log('fileUrl', fileUrl);
     const newPost = {
       author: userName,
       body,
       picture: fileUrl,
       date: new Date().getTime(),
     };
+    console.log('newPost', newPost);
 
     dispatch(startNewPost(newPost));
     if (userName) {
       dispatch(setPictures(userName));
       dispatch(setPosts(userName));
     }
-    setModalState(false);
-    dispatch(finishLoadingPost());
+    openModalCreatePost(false);
+    dispatch(loadCreatePost(false));
     resetFile();
     reset();
   };
 
   return (
     <WritePostContainer>
-      {loadingPost && <Loader type='post' text='Posting...' />}
+      <Modal type='modalCreatePost'>
+        <WritePostContent>
+          <Box>
+            <Title>Create Post</Title>
+            <Textarea
+              name='body'
+              value={body}
+              onChange={handleInputChange}
+              placeholder="What's on your mind?"
+            />
+            {imagePreview.picture && (
+              <PhotoPreviewContainer>
+                <RemovePhotoPreview onClick={() => resetFile()} />
+                <PhotoPreview src={imagePreview.picture} />
+              </PhotoPreviewContainer>
+            )}
+            <Input
+              type='submit'
+              name='submit'
+              value='Post'
+              placeholder='Post'
+              disabled={loadingCreatePost}
+            />
+          </Box>
+        </WritePostContent>
+      </Modal>
+      {loadingCreatePost && <Loader type='post' text='Posting...' />}
       <Container>
         <Box>
           <WritePostForm onSubmit={handleSubmit}>
             {avatar && <Avatar url={avatar} status />}
-            <Modal
-              open={modalState}
-              button={
-                <InputContainer>
-                  <Input
-                    type='text'
-                    placeholder="What's on your mind?"
-                    name='post'
-                    autoComplete='off'
-                    disabled
-                  />
-                </InputContainer>
-              }
-            >
-              <WritePostContent>
-                <Box>
-                  <Title>Create Post</Title>
-                  <Textarea
-                    name='body'
-                    value={body}
-                    onChange={handleInputChange}
-                    placeholder="What's on your mind?"
-                  />
-                  {imagePreview.picture && (
-                    <PhotoPreviewContainer>
-                      <RemovePhotoPreview onClick={() => resetFile()} />
-                      <PhotoPreview src={imagePreview.picture} />
-                    </PhotoPreviewContainer>
-                  )}
-                  <Input
-                    type='submit'
-                    name='submit'
-                    value='Post'
-                    placeholder='Post'
-                    disabled={loadingPost}
-                  />
-                </Box>
-              </WritePostContent>
-            </Modal>
+
+            <InputContainer onClick={() => loadCreatePost(true)}>
+              <Input
+                type='text'
+                placeholder="What's on your mind?"
+                name='post'
+                autoComplete='off'
+                disabled
+              />
+            </InputContainer>
             <Input
               id='upload-picture'
               type='file'

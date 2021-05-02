@@ -22,9 +22,10 @@ export const Image = styled.div<ImageProps>`
 `;
 
 export const HeroContainer = styled.div`
-  padding-bottom: 20px;
+  padding-bottom: 25px;
   position: relative;
   overflow: hidden;
+  margin-bottom: 25px;
 `;
 
 export const BlurImage = styled.div<ImageProps>`

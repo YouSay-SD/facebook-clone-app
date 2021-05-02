@@ -1,10 +1,9 @@
-import { db, postsRef } from '../firebase/firebaseConfig';
+import { db, postsRef, firebase } from '../firebase/firebaseConfig';
 import { PostProps } from '../reducers/postReducer/interface';
 
-export const getPosts = async (userName: string) => {
+export const getAllPosts = async () => {
   const postsSnap = await postsRef
     // .orderBy('date', 'desc')
-    .where('author', '==', userName)
     .get();
 
   const posts: PostProps[] = [];

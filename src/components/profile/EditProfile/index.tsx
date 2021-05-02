@@ -17,15 +17,21 @@ import {
   Box,
   Button,
   Input,
+  Loader,
 } from '../..';
 import { RootStore } from '../../../store/store';
 import { useFile } from '../../../hooks/useFile';
 import { fileUpload } from '../../../helpers/fileUpload';
 import { updateProfile } from '../../../actions/auth/auth';
 import { useFormCustom } from '../../../hooks/useFormCustom';
+import {
+  startLoadingPost,
+  finishLoadingPost,
+} from '../../../actions/post/post';
 
 const EditProfile: FC<EditProfileProps> = () => {
   const dispatch = useDispatch();
+  const { loadingPost } = useSelector((state: RootStore) => state.post);
   const { avatar, banner, bio, userName } = useSelector(
     (state: RootStore) => state.auth
   );
@@ -41,6 +47,7 @@ const EditProfile: FC<EditProfileProps> = () => {
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    dispatch(startLoadingPost());
 
     if (bannerToUpload) {
       await fileUpload(bannerToUpload);
@@ -57,10 +64,13 @@ const EditProfile: FC<EditProfileProps> = () => {
     };
 
     dispatch(updateProfile(newUpdates));
+    dispatch(finishLoadingPost());
   };
 
   return (
     <EditProfileContainer>
+      {loadingPost && <Loader type='post' text='Updating...' />}
+
       <Container>
         <Box>
           <FormStyled onSubmit={onSubmit}>

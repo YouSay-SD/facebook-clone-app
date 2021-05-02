@@ -20,6 +20,7 @@ export { default as Box } from './profile/Box';
 export { default as Preview } from './profile/Preview';
 export { default as Avatar } from './profile/Avatar';
 export { default as EditProfile } from './profile/EditProfile';
+export { default as NewsFeed } from './profile/NewsFeed';
 
 // Post
 export { default as Post } from './post/Post';

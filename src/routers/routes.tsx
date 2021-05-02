@@ -14,6 +14,7 @@ import { login, checkingFinish } from '../actions/auth/auth';
 import { RootStore } from '../store/store';
 import { Navbar, Loader } from '../components';
 import { getUserData } from '../helpers/getUserData';
+import NewsFeedPage from '../pages/NewsFeedPage/index';
 
 export const Routes: FC = () => {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ export const Routes: FC = () => {
       ) : (
         <>
           <Navbar />
+          <Route exact path='/' component={NewsFeedPage} />
           <Route exact path='/profile/:userName' component={ProfilePage} />
           <Route exact path='/album/:userName' component={AlbumPage} />
           <Route exact path='/edit-profile' component={EditProfilePage} />
@@ -58,7 +60,7 @@ export const Routes: FC = () => {
             component={PicturePage}
           />
           <Route exact path='/search' component={SearchPage} />
-          {/* <Redirect to={`/profile/${userName}`} /> */}
+          <Redirect to='/' />
         </>
       )}
     </Switch>
