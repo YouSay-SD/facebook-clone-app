@@ -12,10 +12,7 @@ import {
   UserName,
 } from './styles';
 
-const Hero: FC<HeroProps> = ({ userName, avatar, bio }) => {
-  const { currentUser } = useSelector((state: RootStore) => state.user);
-  const { banner } = currentUser;
-
+const Hero: FC<HeroProps> = ({ userName, avatar, banner, bio }) => {
   return (
     <HeroContainer>
       <Container hasPaddingMobile={false}>

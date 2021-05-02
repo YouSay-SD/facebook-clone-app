@@ -23,10 +23,10 @@ const ProfilePage: FC<ProfileProps> = () => {
   const { userName } = useParams<ProfileProps>();
   const { posts } = useSelector((state: RootStore) => state.post);
   const { currentUser } = useSelector((state: RootStore) => state.user);
-  const { userName: authUserName, bio } = useSelector(
+  const { userName: authUserName } = useSelector(
     (state: RootStore) => state.auth
   );
-  const { userName: currentUserName, avatar, uid } = currentUser;
+  const { userName: currentUserName, avatar, uid, banner, bio } = currentUser;
 
   useEffect(() => {
     dispatch(setCurrentUser(userName));
@@ -39,7 +39,12 @@ const ProfilePage: FC<ProfileProps> = () => {
 
   return (
     <>
-      <Hero userName={currentUserName} avatar={avatar} bio={bio} />
+      <Hero
+        userName={currentUserName}
+        avatar={avatar}
+        bio={bio}
+        banner={banner}
+      />
       <NavbarProfile />
       <Grid col={1} gap={20}>
         {posts.length !== 0 && <Preview type='Photos' posts={posts} />}

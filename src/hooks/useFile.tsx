@@ -6,8 +6,8 @@ export const useFile = <T extends Object>(initState: T) => {
   const [imageToUpload, setImageToUpload] = useState<any>(initState);
 
   const resetFile = () => {
-    setImagePreview(null);
-    setImageToUpload(null);
+    setImagePreview('');
+    setImageToUpload('');
   };
 
   const handleFileChange = ({ target }: ChangeEvent<HTMLInputElement>) => {

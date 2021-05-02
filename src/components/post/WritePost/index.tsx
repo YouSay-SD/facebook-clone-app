@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   WritePostContainer,
@@ -34,6 +34,7 @@ import { useFile } from '../../../hooks/useFile';
 const WritePost: FC = () => {
   const { avatar, userName } = useSelector((state: RootStore) => state.auth);
   const { loadingPost } = useSelector((state: RootStore) => state.post);
+  const [modalState, setModalState] = useState(false);
   const { reset, formValues, handleInputChange } = useFormCustom({
     body: '',
   });
@@ -43,6 +44,11 @@ const WritePost: FC = () => {
 
   const { body } = formValues;
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setModalState(true);
+    console.log('open modal');
+  }, [imagePreview, setModalState]);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -63,6 +69,7 @@ const WritePost: FC = () => {
       dispatch(setPictures(userName));
       dispatch(setPosts(userName));
     }
+    setModalState(false);
     dispatch(finishLoadingPost());
     resetFile();
     reset();
@@ -76,6 +83,7 @@ const WritePost: FC = () => {
           <WritePostForm onSubmit={handleSubmit}>
             {avatar && <Avatar url={avatar} status />}
             <Modal
+              open={modalState}
               button={
                 <InputContainer>
                   <Input
@@ -97,7 +105,7 @@ const WritePost: FC = () => {
                     onChange={handleInputChange}
                     placeholder="What's on your mind?"
                   />
-                  {imagePreview && (
+                  {imagePreview.picture && (
                     <PhotoPreviewContainer>
                       <RemovePhotoPreview onClick={() => resetFile()} />
                       <PhotoPreview src={imagePreview.picture} />
