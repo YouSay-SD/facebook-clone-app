@@ -11,26 +11,28 @@ export const useFile = <T extends Object>(initState: T) => {
   };
 
   const handleFileChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    const reader = new FileReader();
+    if (target.value) {
+      const reader = new FileReader();
 
-    // Set Images Preview
-    reader.onload = async () => {
-      if (reader.readyState === 2) {
-        setImagePreview({
-          ...imagePreview,
-          [target.name]: reader.result,
+      // Set Images Preview
+      reader.onload = async () => {
+        if (reader.readyState === 2) {
+          setImagePreview({
+            ...imagePreview,
+            [target.name]: reader.result,
+          });
+        }
+      };
+
+      // Set Image To Upload
+      if (target.files) {
+        reader.readAsDataURL(target.files[0]);
+        const fileImage = target.files[0];
+        setImageToUpload({
+          ...imageToUpload,
+          [target.name]: fileImage,
         });
       }
-    };
-
-    // Set Image To Upload
-    if (target.files) {
-      reader.readAsDataURL(target.files[0]);
-      const fileImage = target.files[0];
-      setImageToUpload({
-        ...imageToUpload,
-        [target.name]: fileImage,
-      });
     }
   };
 
