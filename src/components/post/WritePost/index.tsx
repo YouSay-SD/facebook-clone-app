@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   WritePostContainer,
@@ -31,6 +31,7 @@ import { useFile } from '../../../hooks/useFile';
 import { loadCreatePost, openModalCreatePost } from '../../../actions/ui/ui';
 
 const WritePost: FC = () => {
+  const [openModal, setOpenModal] = useState(false);
   const { avatar, userName } = useSelector((state: RootStore) => state.auth);
   const { loadingCreatePost } = useSelector((state: RootStore) => state.ui);
   const { reset, formValues, handleInputChange } = useFormCustom({
@@ -39,42 +40,45 @@ const WritePost: FC = () => {
   const { handleFileChange, imagePreview, imageToUpload, resetFile } = useFile({
     picture: '',
   });
+  console.log(openModal);
 
   const { body } = formValues;
   const dispatch = useDispatch();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    dispatch(loadCreatePost(true));
+    // dispatch(loadCreatePost(true));
+    setOpenModal(true);
 
-    console.log('imageToUpload', imageToUpload);
-    const fileUrl = imageToUpload
-      ? await fileUpload(imageToUpload.picture)
-      : null;
+    // console.log('imageToUpload', imageToUpload);
+    // const fileUrl = imageToUpload
+    //   ? await fileUpload(imageToUpload.picture)
+    //   : null;
 
-    console.log('fileUrl', fileUrl);
-    const newPost = {
-      author: userName,
-      body,
-      picture: fileUrl,
-      date: new Date().getTime(),
-    };
-    console.log('newPost', newPost);
+    // console.log('fileUrl', fileUrl);
+    // const newPost = {
+    //   author: userName,
+    //   body,
+    //   picture: fileUrl,
+    //   date: new Date().getTime(),
+    // };
+    // console.log('newPost', newPost);
 
-    dispatch(startNewPost(newPost));
-    if (userName) {
-      dispatch(setPictures(userName));
-      dispatch(setPosts(userName));
-    }
-    openModalCreatePost(false);
-    dispatch(loadCreatePost(false));
-    resetFile();
-    reset();
+    // dispatch(startNewPost(newPost));
+    // if (userName) {
+    //   dispatch(setPictures(userName));
+    //   dispatch(setPosts(userName));
+    // }
+    // setOpenModal(false);
+    // openModalCreatePost(false);
+    // dispatch(loadCreatePost(false));
+    // resetFile();
+    // reset();
   };
 
   return (
     <WritePostContainer>
-      <Modal type='modalCreatePost'>
+      <Modal open={openModal}>
         <WritePostContent>
           <Box>
             <Title>Create Post</Title>
@@ -106,7 +110,7 @@ const WritePost: FC = () => {
           <WritePostForm onSubmit={handleSubmit}>
             {avatar && <Avatar url={avatar} status />}
 
-            <InputContainer onClick={() => loadCreatePost(true)}>
+            <InputContainer onClick={() => setOpenModal(true)}>
               <Input
                 type='text'
                 placeholder="What's on your mind?"
