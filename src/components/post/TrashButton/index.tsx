@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Content } from './styles';
 import { Modal, Box, Button, Title, P, Loader } from '../..';
@@ -10,6 +10,7 @@ import { RootStore } from '../../../store/store';
 const TrashButton: FC<TrashButtonProps> = ({ idPost }) => {
   const dispatch = useDispatch();
   const { loadingDeletePost } = useSelector((state: RootStore) => state.ui);
+  const [showModal, setShowModal] = useState(false);
 
   const handleDeletePost = () => {
     dispatch(loadDeletePost(true));
@@ -20,7 +21,11 @@ const TrashButton: FC<TrashButtonProps> = ({ idPost }) => {
   return (
     <div>
       {loadingDeletePost && <Loader type='post' text='Updating...' />}
-      <Modal button={<Button type='delete' />}>
+      <Modal
+        button={<Button type='delete' />}
+        setShowModal={setShowModal}
+        showModal={showModal}
+      >
         <Box>
           <Content>
             <Title>Are you sure?</Title>

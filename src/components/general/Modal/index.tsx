@@ -4,24 +4,24 @@ import { RootStore } from '../../../store/store';
 import { modalAnimation } from './animations';
 import { BoxModal, BoxShadow, Background, ButtonContainer } from './styles';
 
-const Modal = ({ children, button, open }: any) => {
-  const ui = useSelector((state: RootStore) => state.ui);
-  const [openModal, setOpenModal] = useState<boolean>(open);
-  console.log('open', openModal);
-  // setOpenModal(open);
-  const showHideModal = modalAnimation(openModal);
+const Modal = ({ children, button, showModal, setShowModal }: any) => {
+  // const ui = useSelector((state: RootStore) => state.ui);
+  // const [showModal, setshowModal] = useState<boolean>(showModal);
+  console.log('open', showModal);
+  // setshowModal(open);
+  const showHideModal = modalAnimation(showModal);
 
   return (
     <div>
-      {/* <ButtonContainer onClick={() => setOpenModal(true)}>
+      <ButtonContainer onClick={() => setShowModal(true)}>
         {button}
-      </ButtonContainer> */}
+      </ButtonContainer>
 
       <BoxModal style={showHideModal}>
         <BoxShadow>{children}</BoxShadow>
       </BoxModal>
 
-      <Background style={showHideModal} onClick={() => setOpenModal(false)} />
+      <Background style={showHideModal} onClick={() => setShowModal(false)} />
     </div>
   );
 };

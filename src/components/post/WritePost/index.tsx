@@ -32,6 +32,7 @@ import { loadCreatePost, openModalCreatePost } from '../../../actions/ui/ui';
 
 const WritePost: FC = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const { avatar, userName } = useSelector((state: RootStore) => state.auth);
   const { loadingCreatePost } = useSelector((state: RootStore) => state.ui);
   const { reset, formValues, handleInputChange } = useFormCustom({
@@ -50,35 +51,49 @@ const WritePost: FC = () => {
     // dispatch(loadCreatePost(true));
     setOpenModal(true);
 
-    // console.log('imageToUpload', imageToUpload);
-    // const fileUrl = imageToUpload
-    //   ? await fileUpload(imageToUpload.picture)
-    //   : null;
+    console.log('imageToUpload', imageToUpload);
+    const fileUrl = imageToUpload
+      ? await fileUpload(imageToUpload.picture)
+      : null;
 
-    // console.log('fileUrl', fileUrl);
-    // const newPost = {
-    //   author: userName,
-    //   body,
-    //   picture: fileUrl,
-    //   date: new Date().getTime(),
-    // };
-    // console.log('newPost', newPost);
+    console.log('fileUrl', fileUrl);
+    const newPost = {
+      author: userName,
+      body,
+      picture: fileUrl,
+      date: new Date().getTime(),
+    };
+    console.log('newPost', newPost);
 
-    // dispatch(startNewPost(newPost));
-    // if (userName) {
-    //   dispatch(setPictures(userName));
-    //   dispatch(setPosts(userName));
-    // }
-    // setOpenModal(false);
-    // openModalCreatePost(false);
-    // dispatch(loadCreatePost(false));
-    // resetFile();
-    // reset();
+    dispatch(startNewPost(newPost));
+    if (userName) {
+      dispatch(setPictures(userName));
+      dispatch(setPosts(userName));
+    }
+    setOpenModal(false);
+    openModalCreatePost(false);
+    dispatch(loadCreatePost(false));
+    resetFile();
+    reset();
   };
 
   return (
     <WritePostContainer>
-      <Modal open={openModal}>
+      <Modal
+        button={
+          <InputContainer>
+            <Input
+              type='text'
+              placeholder="What's on your mind?"
+              name='post'
+              autoComplete='off'
+              disabled
+            />
+          </InputContainer>
+        }
+        showModal={showModal}
+        setShowModal={setShowModal}
+      >
         <WritePostContent>
           <Box>
             <Title>Create Post</Title>
@@ -109,16 +124,6 @@ const WritePost: FC = () => {
         <Box>
           <WritePostForm onSubmit={handleSubmit}>
             {avatar && <Avatar url={avatar} status />}
-
-            <InputContainer onClick={() => setOpenModal(true)}>
-              <Input
-                type='text'
-                placeholder="What's on your mind?"
-                name='post'
-                autoComplete='off'
-                disabled
-              />
-            </InputContainer>
             <Input
               id='upload-picture'
               type='file'
