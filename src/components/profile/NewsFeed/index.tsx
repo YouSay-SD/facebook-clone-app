@@ -10,9 +10,7 @@ const NewsFeed: FC = () => {
 
   return (
     <NewsFeedStyled>
-      <Container>
-        <PostWrapper posts={allPosts} />
-      </Container>
+      <PostWrapper posts={allPosts} />
     </NewsFeedStyled>
   );
 };

@@ -25,7 +25,7 @@ const Preview: FC<PreviewProps> = ({ type, posts }) => {
             <Title>{type}</Title>
             <SeeAll onClick={goAlbumPage}>See All {type}</SeeAll>
           </TitleContainer>
-          <Grid col={3} gap={10}>
+          <Grid col={3} gap={5}>
             {postsReduced &&
               postsReduced.map(
                 ({ picture, id }) =>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FormLogin from '../FormLogin';
 import Modal from '../../general/Modal';
 import FormRegister from '../FormRegister/index';
@@ -12,6 +12,8 @@ import {
 } from './styles';
 
 const AuthContent: React.FC = () => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <>
       <LoginContainer>
@@ -23,7 +25,11 @@ const AuthContent: React.FC = () => {
         </LogoContainer>
         <FormContainer>
           <FormLogin />
-          <Modal button={<Button type='button'>Create New Account</Button>}>
+          <Modal
+            button={<Button type='button'>Create New Account</Button>}
+            showModal={showModal}
+            setShowModal={setShowModal}
+          >
             <FormRegister />
           </Modal>
         </FormContainer>

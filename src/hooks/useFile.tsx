@@ -17,11 +17,14 @@ export const useFile = <T extends Object>(initState: T) => {
       // Set Images Preview
       reader.onload = async () => {
         if (reader.readyState === 2) {
+          console.log(reader);
           setImagePreview({
             ...imagePreview,
             [target.name]: reader.result,
           });
         }
+
+        console.log(imagePreview);
       };
 
       // Set Image To Upload

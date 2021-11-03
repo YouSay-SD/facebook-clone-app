@@ -36,6 +36,7 @@ export const Text = styled.p<ButtonProps>`
 
 export const Icon = styled.img`
   width: 13px;
+  min-width: 13px;
 
   ${respondAbove.sm} {
     width: 15px;

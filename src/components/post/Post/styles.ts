@@ -13,6 +13,7 @@ export const PostContainer = styled.div`
 export const PostHeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  gap: 0 20px;
 `;
 
 export const PostMenu = styled.div`

@@ -5,6 +5,7 @@ import { modalAnimation } from './animations';
 import { BoxModal, BoxShadow, Background, ButtonContainer } from './styles';
 
 const Modal = ({ children, button, showModal, setShowModal }: any) => {
+  console.log(setShowModal);
   // const ui = useSelector((state: RootStore) => state.ui);
   // const [showModal, setshowModal] = useState<boolean>(showModal);
   console.log('open', showModal);

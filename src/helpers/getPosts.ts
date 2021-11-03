@@ -3,8 +3,8 @@ import { PostProps } from '../reducers/postReducer/interface';
 
 export const getPosts = async (userName: string) => {
   const postsSnap = await postsRef
-    // .orderBy('date', 'desc')
     .where('author', '==', userName)
+    .orderBy('date', 'desc')
     .get();
 
   const posts: PostProps[] = [];

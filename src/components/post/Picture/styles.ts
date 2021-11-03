@@ -4,12 +4,12 @@ import { PictureContainerProps } from './interface';
 
 export const PictureContainer = styled.div<PictureContainerProps>`
   ${({ redirect }) => redirect && 'cursor: pointer;'};
-  height: ${({ fullSize }) => (fullSize ? 'initial' : '30vw')};
+  height: ${({ fullSize }) => (fullSize ? 'initial' : '27vw')};
   text-align: center;
   transition: filter 0.3s ease;
 
   ${respondAbove.md} {
-    height: ${({ fullSize }) => (fullSize ? 'initial' : '300px')};
+    height: ${({ fullSize }) => (fullSize ? 'initial' : '270px')};
   }
 
   &:hover {

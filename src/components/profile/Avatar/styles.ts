@@ -3,8 +3,10 @@ import { AvatarImgProps, AvatarContainerProps } from './interface';
 
 export const AvatarContainer = styled.div<AvatarContainerProps>`
   position: relative;
-  width: ${({ size }) => size || '40'}px;
-  height: ${({ size }) => size || '40'}px;
+  min-width: ${({ size }) => size || '40'}px;
+  max-width: ${({ size }) => size || '40'}px;
+  min-height: ${({ size }) => size || '40'}px;
+  max-height: ${({ size }) => size || '40'}px;
 `;
 
 export const AvatarImg = styled.img<AvatarImgProps>`
